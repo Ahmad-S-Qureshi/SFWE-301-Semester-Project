@@ -1,7 +1,11 @@
 # This is the repository for SFWE 301 team Lemon||Nomel
-## See the javadocs folder for code
+## See the Java-Code folder for code
 asjdbabjsdjlas code details
-## See the helpful-tips folder for notes
+## See the Helpful-Tips folder for notes
 asdkjbajsd tips 
+## See Reports for generated reports
+asdasd
+## See Test-Reports for test cases
+asdasdsa
 ## See installation notes here
 ashdasjd
