@@ -29,9 +29,7 @@ import javax.activation.DataHandler;
 import javax.activation.DataSource;
 import javax.activation.FileDataSource;
 import javax.mail.Multipart;
-import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeBodyPart;
-import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 import java.io.File;
 
@@ -41,7 +39,7 @@ import static javax.mail.Message.RecipientType.TO;
 
 public class GMailer {
 
-    private static final String TEST_FROM = "ahmadsqureshi@arizona.edu";
+    private static final String TEST_FROM = "jorgedr22@gmail.com";
     private static final String TEST_TO = "ahmadsqureshi@arizona.edu";
     private final Gmail service;
 
