@@ -1,4 +1,9 @@
-public class ReportGenerator {
+package main.java;
+public abstract class ReportGenerator {
+    protected String filepath;
+    static int reportNumber;
+    abstract String parseData();
+    abstract void writeToFile();
     // Makes CSV report files
     // One function for each type of report
 }
