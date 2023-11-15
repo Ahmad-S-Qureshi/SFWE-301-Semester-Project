@@ -19,6 +19,7 @@ public class Scholarship {
     }
 
     public Scholarship(
+        //TODO: Fix constructor so it actually works with static members
         String donorContact,
         String name,
         int amount,
