@@ -4,38 +4,34 @@ import java.io.FileWriter;
 import java.util.ArrayList;
 
 
-public class AnnualReportGenerator extends ReportGenerator {
-    private ArrayList<Scholarship> annualData;
-    private int year;
+public class ScholarshipReportGenerator extends ReportGenerator {
+    private ArrayList <Scholarship> scholarshipData;
     protected String filepath;
     protected String filePrefix;
-    //pass in data as arraylist 
-    public AnnualReportGenerator(ArrayList<Scholarship> annualD, int year) {
+    public static int reportNumber = 0;
+    public ScholarshipReportGenerator(ArrayList<Scholarship> scholarship) {
         this.filepath = "src/main/AnnualReports/";
-        this.annualData = annualD;
-        this.year = year;
+        this.scholarshipData = scholarship;
         this.filePrefix = "AnnualReport";
     }
-
     public void writeToFile(){
         try {
-            String completeFilePath = this.filepath + filePrefix + "_" + year + ".csv";
+            String completeFilePath = this.filepath + filePrefix + reportNumber + ".txt";
             File newAnnualReport = new File(completeFilePath);
             System.out.println(newAnnualReport.createNewFile());
             FileWriter ReportWriter = new FileWriter(completeFilePath);
             ReportWriter.write(parseData());
             ReportWriter.close();
+            reportNumber++;
             System.out.println("Report Generated");
         } catch (Exception e){
             System.out.println(e.getMessage());
         }
     }
     public String parseData() {
-        //TODO -- Fix this thing so it works with the static members.
-        String reportString = "Scholarship,Amount Rewarded, Amount Disbursed, Date of Disbursement\n";
-        for (Scholarship data : annualData){
-            reportString = reportString + data.getName() + "," + Integer.toString(data.getAmount()) + "," + Integer.toString(data.getAmountDisbursed()) 
-                    + "," + data.getDateAwarded() + "\n";
+        String reportString = "";
+        for (Scholarship data : scholarshipData){
+            reportString = reportString + data + "\n";
         }
         return reportString;
     }
