@@ -1,11 +1,11 @@
 package main.java;
 public class Scholarship {
-    private static String donorContact;
-    private static String name;
-    private static int amount;
-    private static int amountDisbursed;
-    private static String deadline;
-    private static String dateAwarded;
+    private String donorContact;
+    private String name;
+    private int amount;
+    private int amountDisbursed;
+    private String deadline;
+    private String dateAwarded;
     
     public Scholarship() {
         //Has scholarship name, amount, amound disbursed, deadline, donor, date awarded, and amount.
@@ -27,20 +27,20 @@ public class Scholarship {
         String deadline,
         String dateAwarded) {
 
-        Scholarship.donorContact = donorContact;
-        Scholarship.name = name;
-        Scholarship.amount = amount;
-        Scholarship.amountDisbursed = amountDisbursed;
-        Scholarship.deadline = deadline;
-        Scholarship.dateAwarded = dateAwarded;
+        this.donorContact = donorContact;
+        this.name = name;
+        this.amount = amount;
+        this.amountDisbursed = amountDisbursed;
+        this.deadline = deadline;
+        this.dateAwarded = dateAwarded;
     }
 
-    public static String getDonorContact() { return donorContact; }
-    public static String getName() { return name; }
-    public static int getAmount() { return amount; }
-    public static int getAmountDisbursed() { return amountDisbursed; }
-    public static String getDeadline() { return deadline; }
-    public static String getDateAwarded() { return dateAwarded; }
+    public String getDonorContact() { return donorContact; }
+    public String getName() { return name; }
+    public int getAmount() { return amount; }
+    public int getAmountDisbursed() { return amountDisbursed; }
+    public String getDeadline() { return deadline; }
+    public String getDateAwarded() { return dateAwarded; }
 
     
 }

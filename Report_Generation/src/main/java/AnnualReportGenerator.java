@@ -5,14 +5,15 @@ import java.util.ArrayList;
 
 
 public class AnnualReportGenerator extends ReportGenerator {
-    private ArrayList<Scholarship> annualData;
+    private static ArrayList<Scholarship> annualData;
+    static int reportNumber = 0;
     private int year;
     protected String filepath;
     protected String filePrefix;
     //pass in data as arraylist 
     public AnnualReportGenerator(ArrayList<Scholarship> annualD, int year) {
         this.filepath = "src/main/AnnualReports/";
-        this.annualData = annualD;
+        AnnualReportGenerator.annualData = annualD;
         this.year = year;
         this.filePrefix = "AnnualReport";
     }
@@ -33,7 +34,7 @@ public class AnnualReportGenerator extends ReportGenerator {
     public String parseData() {
         //TODO -- Fix this thing so it works with the static members.
         String reportString = "Scholarship,Amount Rewarded, Amount Disbursed, Date of Disbursement\n";
-        for (Scholarship data : annualData){
+        for (Scholarship data : AnnualReportGenerator.annualData){
             reportString = reportString + data.getName() + "," + Integer.toString(data.getAmount()) + "," + Integer.toString(data.getAmountDisbursed()) 
                     + "," + data.getDateAwarded() + "\n";
         }
