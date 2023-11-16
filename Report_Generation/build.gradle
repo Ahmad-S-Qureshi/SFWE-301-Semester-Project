@@ -1,5 +1,7 @@
-apply plugin: 'java'
-apply plugin: 'application'
+plugins {
+    id 'java'
+    id 'application'
+}
 
 mainClassName = 'Main'
 sourceCompatibility = 11
@@ -9,6 +11,24 @@ version = '1.0'
 repositories {
     mavenCentral()
 }
+
+// Configuring the sourceSets explicitly
+sourceSets {
+    main {
+        java {
+            srcDirs = ['src/main/java']
+        }
+    }
+}
+
+task generateJavadoc(type: Javadoc) {
+    source = sourceSets.main.allJava
+    classpath += project.files(sourceSets.main.compileClasspath)
+    destinationDir = file("$buildDir/docs/javadoc")
+}
+
+// Make 'javadoc' task depend on 'build' task
+build.dependsOn generateJavadoc
 
 dependencies {
     implementation 'com.google.api-client:google-api-client:2.0.0'
