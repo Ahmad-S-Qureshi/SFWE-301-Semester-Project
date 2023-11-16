@@ -4,12 +4,25 @@ import main.java.AnnualReportGenerator;
 import main.java.Scholarship;
 import main.java.Student;
 
+/**
+ * The Main class serves as a demonstration of the AnnualReportGenerator.
+ * It runs generator tests with a set of dummy scholarships and generates reports.
+ * Each test has a set of students and a related file in a separate folder.
+ * The program passes the test if the generated report matches the report in the folder.
+ */
+
 public class Main {
-    // Runs Generator Tests and will serve as demo
-    // Each test will have a set of students and a related file in a separate folder
-    // The program will pass the test if the generated report matches the report in the folder
+    /**
+     * The main method is the entry point of the program.
+     * It creates dummy scholarships, adds them to an ArrayList, and generates an annual report.
+     *
+     * @param args The command-line arguments (not used in this program).
+     */
     public static void main(String[] args) {
+        // Sets dummy year to demo
         int year = 2000;
+
+        // Create an ArrayList to store dummy scholarships
         ArrayList<Scholarship> scholarships = new ArrayList<>();
 
         // Create 10 dummy scholarships and add them to the ArrayList
@@ -24,7 +37,10 @@ public class Main {
         scholarships.add(new Scholarship("(999)-999-9999", "Ninth Scholarship", 3200, 0, "04/30/2023", "0/0/0000"));
         scholarships.add(new Scholarship("(101)-101-1010", "Tenth Scholarship", 2800, 0, "03/31/2023", "0/0/0000"));
 
+        // Create an instance of AnnualReportGenerator with the scholarships and year
         AnnualReportGenerator generator = new AnnualReportGenerator(scholarships, year);
+
+        // Generate the annual report and write it to a file
         generator.writeToFile();
     }
 }
