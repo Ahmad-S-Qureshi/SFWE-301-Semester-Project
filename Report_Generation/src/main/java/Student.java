@@ -1,12 +1,12 @@
 package main.java;
 
 public class Student {
-    private static long ID;
-    private static double GPA;
-    private static boolean financialNeed;
-    private static String gender;
-    private static String major;
-    private static String ethnicity;
+    private long ID;
+    private double GPA;
+    private boolean financialNeed;
+    private String gender;
+    private String major;
+    private String ethnicity;
 
     // Constructor without parameters
     public Student() {
@@ -27,24 +27,24 @@ public class Student {
         String major,
         String ethnicity) {
 
-        Student.ID = ID;
-        Student.GPA = GPA;
-        Student.financialNeed = financialNeed;
-        Student.gender = gender;
-        Student.major = major;
-        Student.ethnicity = ethnicity;
+        this.ID = ID;
+        this.GPA = GPA;
+        this.financialNeed = financialNeed;
+        this.gender = gender;
+        this.major = major;
+        this.ethnicity = ethnicity;
     }
 
     // Getters
-    public static long getID() {return ID;}
+    public long getID() {return ID;}
 
-    public static double getGPA() {return GPA;}
+    public double getGPA() {return GPA;}
 
-    public static boolean hasFinancialNeed() {return financialNeed;}
+    public boolean hasFinancialNeed() {return financialNeed;}
 
-    public static String getGender() {return gender;}
+    public String getGender() {return gender;}
 
-    public static String getMajor() {return major;}
+    public String getMajor() {return major;}
 
-    public static String getEthnicity() {return ethnicity;}
+    public String getEthnicity() {return ethnicity;}
 }
