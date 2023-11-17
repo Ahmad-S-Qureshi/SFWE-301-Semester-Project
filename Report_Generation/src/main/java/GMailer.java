@@ -13,7 +13,7 @@ import com.google.api.client.util.store.FileDataStoreFactory;
 import com.google.api.services.gmail.Gmail;
 import com.google.api.services.gmail.model.Message;
 import org.apache.commons.codec.binary.Base64;
-
+import org.apache.http.protocol.HTTP;
 
 import javax.mail.Session;
 import javax.mail.internet.InternetAddress;
@@ -37,12 +37,26 @@ import java.io.File;
 import static com.google.api.services.gmail.GmailScopes.GMAIL_SEND;
 import static javax.mail.Message.RecipientType.TO;
 
+/**
+ * GMailer is a class for sending emails using the Gmail API.
+ * An example is as follows: new GMailer.sendMail("Your Subject", "Your message", your_file)
+ */
 public class GMailer {
 
+    //From address
     private static final String TEST_FROM = "jorgedr22@gmail.com";
+
+    // To address
     private static final String TEST_TO = "ahmadsqureshi@arizona.edu";
+
+    // Instance of Gmail API
     private final Gmail service;
 
+    /**
+     * Constructor for GMailer.
+     *
+     * @throws Exception if an error occurs during initialization
+     */
     public GMailer() throws Exception {
         NetHttpTransport httpTransport = GoogleNetHttpTransport.newTrustedTransport();
         GsonFactory jsonFactory = GsonFactory.getDefaultInstance();
@@ -51,6 +65,13 @@ public class GMailer {
                 .build();
     }
 
+     /* Retrieves Gmail API credentials.
+     *
+     * @param httpTransport the HTTP transport
+     * @param jsonFactory   the JSON factory
+     * @return the credentials
+     * @throws IOException if an error occurs during credential retrieval
+     */
     private static Credential getCredentials(final NetHttpTransport httpTransport, GsonFactory jsonFactory)
             throws IOException {
         GoogleClientSecrets clientSecrets = GoogleClientSecrets.load(jsonFactory, new InputStreamReader(GMailer.class.getResourceAsStream("/credentials.json")));
@@ -65,6 +86,14 @@ public class GMailer {
         return new AuthorizationCodeInstalledApp(flow, receiver).authorize("user");
     }
 
+     /**
+     * Sends an email with an attachment.
+     *
+     * @param subject the email subject
+     * @param message the email message
+     * @param file    the file to be attached
+     * @throws Exception if an error occurs during email sending
+     */
     public void sendMail(String subject, String message, File file) throws Exception {
         Properties props = new Properties();
         Session session = Session.getDefaultInstance(props, null);
@@ -110,6 +139,12 @@ public class GMailer {
         }
     }
 
+    /**
+     * Main method for testing the GMailer class.
+     *
+     * @param args command line arguments
+     * @throws Exception if an error occurs during execution
+     */
     public static void main(String[] args) throws Exception {
         File attachment = new File("attachment.jpg");
         new GMailer().sendMail("Hi From Java", "This was sent from Java!\nAhmad's team is making good progress", attachment);
