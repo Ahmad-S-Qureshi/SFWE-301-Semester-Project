@@ -1,3 +1,4 @@
+package main.java;
 //This student class inherits from the user class
 public class Student extends User{
     private String major;

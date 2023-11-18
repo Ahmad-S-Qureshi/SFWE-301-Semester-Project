@@ -3,7 +3,6 @@ package main.java;
 import java.io.File;
 import java.io.FileWriter;
 import java.util.ArrayList;
-import Scholarship.java;
 
 /**
  * The AnnualReportGenerator class extends ReportGenerator and is specifically designed

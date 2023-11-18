@@ -1,3 +1,4 @@
+package main.java;
 public class Scholarship {
     private String scholarshipName;
     private int payout;
