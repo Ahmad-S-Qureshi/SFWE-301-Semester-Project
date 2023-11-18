@@ -9,6 +9,7 @@ public class ScholarshipReportGenerator extends ReportGenerator {
     protected String filepath;
     protected String filePrefix;
     public static int reportNumber = 0;
+    
     public ScholarshipReportGenerator(ArrayList<Scholarship> scholarship) {
         this.filepath = "src/main/AnnualReports/";
         this.scholarshipData = scholarship;

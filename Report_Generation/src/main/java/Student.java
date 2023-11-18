@@ -1,50 +1,160 @@
-package main.java;
-
-public class Student {
-    private long ID;
-    private double GPA;
-    private boolean financialNeed;
-    private String gender;
+//This student class inherits from the user class
+public class Student extends User{
     private String major;
-    private String ethnicity;
+    private double gpa;
+    private String studentID; 
+    private String citizenship;
+    private int unitsEnrolled; 
+    private String expectedGraduation;
+    private String essayResponses; //FIXME: may need a new database for this or we make an array of long strings here????
+    private String bursarAccountReference;
+    //FIXME: how do we want to do this ----->     private scholarship awardedScholarship;
 
-    // Constructor without parameters
-    public Student() {
-        ID = 0;
-        GPA = 0.0;
-        financialNeed = false;
-        gender = "Unknown";
-        major = "Undeclared";
-        ethnicity = "Unspecified";
+
+    public Student(){//This is the default constructor for the student class
+        this.major = "None";
+        this.gpa = 0.0;
+        this.studentID = "None";
+        this.citizenship = "None";
+        this.unitsEnrolled = 0;
+        this.expectedGraduation = "None";
+        this.essayResponses = "None"; //FIXME: may need a new database for this or we make an array of long strings here????
+        this.bursarAccountReference = "None";
     }
-
-    // Additional constructor with parameters
-    public Student(
-        long ID,
-        double GPA,
-        boolean financialNeed,
-        String gender,
-        String major,
-        String ethnicity) {
-
-        this.ID = ID;
-        this.GPA = GPA;
-        this.financialNeed = financialNeed;
-        this.gender = gender;
+    ////// Overloaded constructors for the student class //////
+    public Student(String major){
         this.major = major;
-        this.ethnicity = ethnicity;
+        this.gpa = 0.0;
+        this.studentID = "None";
+        this.citizenship = "None";
+        this.unitsEnrolled = 0;
+        this.expectedGraduation = "None";
+        this.essayResponses = "None"; //FIXME: may need a new database for this or we make an array of long strings here????
+        this.bursarAccountReference = "None";
+    }
+    public Student(String major, double gpa){
+        this.major = major;
+        this.gpa = gpa;
+        this.studentID = "None";
+        this.citizenship = "None";
+        this.unitsEnrolled = 0;
+        this.expectedGraduation = "None";
+        this.essayResponses = "None"; //FIXME: may need a new database for this or we make an array of long strings here????
+        this.bursarAccountReference = "None";
+    }   
+    public Student(String major, double gpa, String studentID){
+        this.major = major;
+        this.gpa = gpa;
+        this.studentID = studentID;
+        this.citizenship = "None";
+        this.unitsEnrolled = 0;
+        this.expectedGraduation = "None";
+        this.essayResponses = "None"; //FIXME: may need a new database for this or we make an array of long strings here????
+        this.bursarAccountReference = "None";
+    }
+    public Student(String major, double gpa, String studentID, String citizenship){
+        this.major = major;
+        this.gpa = gpa;
+        this.studentID = studentID;
+        this.citizenship = citizenship;
+        this.unitsEnrolled = 0;
+        this.expectedGraduation = "None";
+        this.essayResponses = "None"; //FIXME: may need a new database for this or we make an array of long strings here????
+        this.bursarAccountReference = "None";
+    }
+    public Student(String major, double gpa, String studentID, String citizenship, int unitsEnrolled){
+        this.major = major;
+        this.gpa = gpa;
+        this.studentID = studentID;
+        this.citizenship = citizenship;
+        this.unitsEnrolled = unitsEnrolled;
+        this.expectedGraduation = "None";
+        this.essayResponses = "None"; //FIXME: may need a new database for this or we make an array of long strings here????
+        this.bursarAccountReference = "None";
+    }
+    public Student(String major, double gpa, String studentID, String citizenship, int unitsEnrolled, String expectedGraduation){
+        this.major = major;
+        this.gpa = gpa;
+        this.studentID = studentID;
+        this.citizenship = citizenship;
+        this.unitsEnrolled = unitsEnrolled;
+        this.expectedGraduation = expectedGraduation;
+        this.essayResponses = "None"; //FIXME: may need a new database for this or we make an array of long strings here????
+        this.bursarAccountReference = "None";
+    }
+    public Student(String major, double gpa, String studentID, String citizenship, int unitsEnrolled, String expectedGraduation, String essayResponses){
+        this.major = major;
+        this.gpa = gpa;
+        this.studentID = studentID;
+        this.citizenship = citizenship;
+        this.unitsEnrolled = unitsEnrolled;
+        this.expectedGraduation = expectedGraduation;
+        this.essayResponses = essayResponses; //FIXME: may need a new database for this or we make an array of long strings here????
+        this.bursarAccountReference = "None";
+    }
+    public Student(String major, double gpa, String studentID, String citizenship, int unitsEnrolled, String expectedGraduation, String essayResponses, String bursarAccountReference){
+        this.major = major;
+        this.gpa = gpa;
+        this.studentID = studentID;
+        this.citizenship = citizenship;
+        this.unitsEnrolled = unitsEnrolled;
+        this.expectedGraduation = expectedGraduation;
+        this.essayResponses = essayResponses; //FIXME: may need a new database for this or we make an array of long strings here????
+        this.bursarAccountReference = bursarAccountReference;
     }
 
-    // Getters
-    public long getID() {return ID;}
+    //// End overloaded constructors for the student class //////
 
-    public double getGPA() {return GPA;}
+    ////// Mututators and accessors for the student class //////
+    public void setMajor(String major){
+        this.major = major;
+    }
+    public String getMajor(){
+        return major;
+    }
+    public void setGpa(double gpa){
+        this.gpa = gpa;
+    }
+    public double getGpa(){
+        return gpa;
+    }
+    public void setStudentID(String studentID){
+        this.studentID = studentID;
+    }
+    public String getStudentID(){
+        return studentID;
+    }
+    public void setCitizenship(String citizenship){
+        this.citizenship = citizenship;
+    }
+    public String getCitizenship(){
+        return citizenship;
+    }
+    public void setUnitsEnrolled(int unitsEnrolled){
+        this.unitsEnrolled = unitsEnrolled;
+    }
+    public int getUnitsEnrolled(){
+        return unitsEnrolled;
+    }
+    public void setExpectedGraduation(String expectedGraduation){
+        this.expectedGraduation = expectedGraduation;
+    }
+    public String getExpectedGraduation(){
+        return expectedGraduation;
+    }
+    public void setEssayResponses(String essayResponses){
+        this.essayResponses = essayResponses;
+    }
+    public String getEssayResponses(){
+        return essayResponses;
+    }
+    public void setBursarAccountReference(String bursarAccountReference){
+        this.bursarAccountReference = bursarAccountReference;
+    }
+    public String getBursarAccountReference(){
+        return bursarAccountReference;
+    }
+    ////// End mututators and accessors for the student class //////
+    
 
-    public boolean hasFinancialNeed() {return financialNeed;}
-
-    public String getGender() {return gender;}
-
-    public String getMajor() {return major;}
-
-    public String getEthnicity() {return ethnicity;}
 }
