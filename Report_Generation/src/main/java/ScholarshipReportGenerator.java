@@ -12,7 +12,7 @@ public class ScholarshipReportGenerator extends ReportGenerator {
     public static int reportNumber = 0;
 
     public ScholarshipReportGenerator(ArrayList<Scholarship> scholarship) {
-        this.filepath = "src/main/ScholarshipReports/";
+        this.filepath = "src/Reports/ScholarshipReports/";
         this.scholarshipData = scholarship;
         this.filePrefix = "ScholarshipReport";
     }

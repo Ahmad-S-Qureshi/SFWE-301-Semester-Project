@@ -21,7 +21,7 @@ public class Main {
         ArrayList<Scholarship> scholarships = new ArrayList<>();
 
         // Generate a specified number of random scholarships and add them to the ArrayList
-        generateRandomScholarships(scholarships, 314);
+        generateRandomScholarships(scholarships, 3140);
 
         // Create an instance of AnnualReportGenerator with the scholarships and year
         for (int year = 2015; year < 2025; year++){

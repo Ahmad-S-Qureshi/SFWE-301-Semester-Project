@@ -22,7 +22,7 @@ public class AnnualReportGenerator extends ReportGenerator {
      * @param year    The year for which the annual report is generated.
      */
     public AnnualReportGenerator(ArrayList<Scholarship> annualD, int year) {
-        this.filepath = "src/main/AnnualReports/";
+        this.filepath = "src/Reports/AnnualReports/";
         AnnualReportGenerator.scholarships = annualD;
         this.year = year;
         this.filePrefix = "AnnualReport";
