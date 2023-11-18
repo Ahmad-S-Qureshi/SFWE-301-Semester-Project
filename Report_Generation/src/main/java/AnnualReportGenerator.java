@@ -5,7 +5,8 @@ import java.io.FileWriter;
 import java.util.ArrayList;
 
 /**
- * The AnnualReportGenerator class extends ReportGenerator and is specifically designed
+ * The AnnualReportGenerator class extends ReportGenerator and is specifically
+ * designed
  * for generating annual reports based on scholarship data.
  */
 public class AnnualReportGenerator extends ReportGenerator {
@@ -14,10 +15,11 @@ public class AnnualReportGenerator extends ReportGenerator {
     private int year;
 
     /**
-     * Constructs an AnnualReportGenerator with the provided scholarship data and year.
+     * Constructs an AnnualReportGenerator with the provided scholarship data and
+     * year.
      *
      * @param annualD The ArrayList of scholarships for the annual report.
-     * @param year The year for which the annual report is generated.
+     * @param year    The year for which the annual report is generated.
      */
     public AnnualReportGenerator(ArrayList<Scholarship> annualD, int year) {
         this.filepath = "src/main/AnnualReports/";
@@ -54,10 +56,10 @@ public class AnnualReportGenerator extends ReportGenerator {
     @Override
     public String parseData() {
         // TODO -- Fix this thing so it works with the static members.
-        String reportString = "Scholarship,Amount Rewarded, Amount Disbursed, Date of Disbursement\n";
+        String reportString = "Scholarship name, Amount Rewarded, Deadline, Required Info, Preffered Majors\n";
         for (Scholarship data : AnnualReportGenerator.scholarships) {
-            reportString = reportString + data.getName() + "," + Integer.toString(data.getAmount()) + ","
-                    + Integer.toString(data.getAmountDisbursed()) + "," + data.getDateAwarded() + "\n";
+            reportString = reportString + data.getScholarshipName() + "," + Integer.toString(data.getPayout()) + "," +
+                    data.getDeadline() + "," + data.getCustomRequiredInfo() + ", " + data.getPreferedMajors() + "\n";
         }
         return reportString;
     }

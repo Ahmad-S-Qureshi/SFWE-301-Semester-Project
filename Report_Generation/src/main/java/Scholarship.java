@@ -1,4 +1,5 @@
 package main.java;
+
 public class Scholarship {
     private String scholarshipName;
     private int payout;
@@ -6,44 +7,49 @@ public class Scholarship {
     private String customRequiredInfo;
     private String preferedMajors;
 
-    public Scholarship(){ //This is the constructor
+    public Scholarship() { // This is the constructor
         this.scholarshipName = "No Name";
         this.payout = 0;
         this.deadline = "N/A";
         this.customRequiredInfo = "None";
         this.preferedMajors = "None";
     }
-    
+
     ///// Start Overloaded constructors for the scholarship class /////
-    public Scholarship(String scholarshipName){
+    public Scholarship(String scholarshipName) {
         this.scholarshipName = scholarshipName;
         this.payout = 0;
         this.deadline = "N/A";
         this.customRequiredInfo = "None";
         this.preferedMajors = "None";
     }
-    public Scholarship(String scholarshipName, int payout){
+
+    public Scholarship(String scholarshipName, int payout) {
         this.scholarshipName = scholarshipName;
         this.payout = payout;
         this.deadline = "N/A";
         this.customRequiredInfo = "None";
         this.preferedMajors = "None";
     }
-    public Scholarship(String scholarshipName, int payout, String deadline){
+
+    public Scholarship(String scholarshipName, int payout, String deadline) {
         this.scholarshipName = scholarshipName;
         this.payout = payout;
         this.deadline = deadline;
         this.customRequiredInfo = "None";
         this.preferedMajors = "None";
     }
-    public Scholarship(String scholarshipName, int payout, String deadline, String customRequiredInfo){
+
+    public Scholarship(String scholarshipName, int payout, String deadline, String customRequiredInfo) {
         this.scholarshipName = scholarshipName;
         this.payout = payout;
         this.deadline = deadline;
         this.customRequiredInfo = customRequiredInfo;
         this.preferedMajors = "None";
     }
-    public Scholarship(String scholarshipName, int payout, String deadline, String customRequiredInfo, String preferedMajors){
+
+    public Scholarship(String scholarshipName, int payout, String deadline, String customRequiredInfo,
+            String preferedMajors) {
         this.scholarshipName = scholarshipName;
         this.payout = payout;
         this.deadline = deadline;
@@ -54,36 +60,45 @@ public class Scholarship {
 
     ///////// Start mutators and accessors /////////
 
-    public String getScholarshipName(){
+    public String getScholarshipName() {
         return scholarshipName;
     }
-    public void setScholarshipName(String scholarshipName){
+
+    public void setScholarshipName(String scholarshipName) {
         this.scholarshipName = scholarshipName;
     }
-    public int getPayout(){
+
+    public int getPayout() {
         return payout;
     }
-    public void setPayout(int payout){
+
+    public void setPayout(int payout) {
         this.payout = payout;
     }
-    public String getDeadline(){
+
+    public String getDeadline() {
         return deadline;
     }
-    public void setDeadline(String deadline){
+
+    public void setDeadline(String deadline) {
         this.deadline = deadline;
     }
-    public String getCustomRequiredInfo(){
+
+    public String getCustomRequiredInfo() {
         return customRequiredInfo;
     }
-    public void setCustomRequiredInfo(String customRequiredInfo){
+
+    public void setCustomRequiredInfo(String customRequiredInfo) {
         this.customRequiredInfo = customRequiredInfo;
     }
-    public String getPreferedMajors(){
+
+    public String getPreferedMajors() {
         return preferedMajors;
     }
-    public void setPreferedMajors(String preferedMajors){
+
+    public void setPreferedMajors(String preferedMajors) {
         this.preferedMajors = preferedMajors;
     }
     ///////// End mutators and accessors /////////
-    
+
 }

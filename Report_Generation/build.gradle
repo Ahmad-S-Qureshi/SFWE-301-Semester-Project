@@ -3,7 +3,7 @@ plugins {
     id 'application'
 }
 
-mainClassName = 'GMailer'
+mainClassName = 'Main'
 sourceCompatibility = 11
 targetCompatibility = 11
 version = '1.0'

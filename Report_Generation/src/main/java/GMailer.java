@@ -33,17 +33,17 @@ import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMultipart;
 import java.io.File;
 
-
 import static com.google.api.services.gmail.GmailScopes.GMAIL_SEND;
 import static javax.mail.Message.RecipientType.TO;
 
 /**
  * GMailer is a class for sending emails using the Gmail API.
- * An example is as follows: new GMailer.sendMail("Your Subject", "Your message", your_file)
+ * An example is as follows: new GMailer.sendMail("Your Subject", "Your
+ * message", your_file)
  */
 public class GMailer {
 
-    //From address
+    // From address
     private static final String TEST_FROM = "jorgedr22@gmail.com";
 
     // To address
@@ -65,16 +65,21 @@ public class GMailer {
                 .build();
     }
 
-     /* Retrieves Gmail API credentials.
+    /*
+     * Retrieves Gmail API credentials.
      *
      * @param httpTransport the HTTP transport
-     * @param jsonFactory   the JSON factory
+     * 
+     * @param jsonFactory the JSON factory
+     * 
      * @return the credentials
+     * 
      * @throws IOException if an error occurs during credential retrieval
      */
     private static Credential getCredentials(final NetHttpTransport httpTransport, GsonFactory jsonFactory)
             throws IOException {
-        GoogleClientSecrets clientSecrets = GoogleClientSecrets.load(jsonFactory, new InputStreamReader(GMailer.class.getResourceAsStream("/credentials.json")));
+        GoogleClientSecrets clientSecrets = GoogleClientSecrets.load(jsonFactory,
+                new InputStreamReader(GMailer.class.getResourceAsStream("/credentials.json")));
 
         GoogleAuthorizationCodeFlow flow = new GoogleAuthorizationCodeFlow.Builder(
                 httpTransport, jsonFactory, clientSecrets, Set.of(GMAIL_SEND))
@@ -86,7 +91,7 @@ public class GMailer {
         return new AuthorizationCodeInstalledApp(flow, receiver).authorize("user");
     }
 
-     /**
+    /**
      * Sends an email with an attachment.
      *
      * @param subject the email subject
@@ -113,7 +118,6 @@ public class GMailer {
         mimeBodyPart.setFileName(file.getName());
         multipart.addBodyPart(mimeBodyPart);
         email.setContent(multipart);
-    
 
         ByteArrayOutputStream buffer = new ByteArrayOutputStream();
         email.writeTo(buffer);
@@ -121,8 +125,6 @@ public class GMailer {
         String encodedEmail = Base64.encodeBase64URLSafeString(rawMessageBytes);
         Message msg = new Message();
         msg.setRaw(encodedEmail);
-
-
 
         System.err.println("Attempting Sending Email");
         try {
@@ -147,7 +149,8 @@ public class GMailer {
      */
     public static void main(String[] args) throws Exception {
         File attachment = new File("attachment.jpg");
-        new GMailer().sendMail("Hi From Java", "This was sent from Java!\nAhmad's team is making good progress", attachment);
+        new GMailer().sendMail("Hi From Java", "This was sent from Java!\nAhmad's team is making good progress",
+                attachment);
     }
 
 }

@@ -1,4 +1,5 @@
 package main.java;
+
 import java.util.ArrayList;
 
 public class ApplicationData {
@@ -13,14 +14,16 @@ public class ApplicationData {
         applicationDataSet.add(firstPair);
     }
 
-    //Pair adder
+    // Pair adder
     public static void addPair(String question, String answer) {
         ArrayList<String> pair = new ArrayList<>();
         pair.add(question);
         pair.add(answer);
-        applicationDataSet.add(pair); 
+        applicationDataSet.add(pair);
     }
 
     // Getter for accessing the static data
-    public static ArrayList<ArrayList<String>> getApplicationDataSet() {return applicationDataSet;}
+    public static ArrayList<ArrayList<String>> getApplicationDataSet() {
+        return applicationDataSet;
+    }
 }

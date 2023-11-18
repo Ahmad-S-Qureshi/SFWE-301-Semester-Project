@@ -3,8 +3,10 @@ package main.java;
 import java.util.ArrayList;
 
 /**
- * The ReportGenerator class is responsible for generating reports based on scholarship and student data.
- * It provides methods to parse data, write reports to files, and create CSV report files for different report types.
+ * The ReportGenerator class is responsible for generating reports based on
+ * scholarship and student data.
+ * It provides methods to parse data, write reports to files, and create CSV
+ * report files for different report types.
  */
 public class ReportGenerator {
     /** The file path where the reports will be saved. */
@@ -30,7 +32,8 @@ public class ReportGenerator {
 
     /**
      * Writes the generated reports to files.
-     * This method currently prints a message indicating that it is not yet implemented.
+     * This method currently prints a message indicating that it is not yet
+     * implemented.
      */
     public void writeToFile() {
         System.out.println("writeToFile not yet implemented");
