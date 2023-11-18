@@ -4,6 +4,7 @@ public class Scholarship {
     private String scholarshipName;
     private int payout;
     private String deadline;
+    private String disbursmentDate;
     private String customRequiredInfo;
     private String preferedMajors;
 
@@ -20,6 +21,7 @@ public class Scholarship {
         this.scholarshipName = scholarshipName;
         this.payout = 0;
         this.deadline = "N/A";
+        this.disbursmentDate = "N/A";
         this.customRequiredInfo = "None";
         this.preferedMajors = "None";
     }
@@ -56,6 +58,16 @@ public class Scholarship {
         this.customRequiredInfo = customRequiredInfo;
         this.preferedMajors = preferedMajors;
     }
+
+    public Scholarship(String scholarshipName, int payout, String deadline, String disbursmentDate, String customRequiredInfo,
+            String preferedMajors) {
+        this.scholarshipName = scholarshipName;
+        this.payout = payout;
+        this.deadline = deadline;
+        this.disbursmentDate = disbursmentDate;
+        this.customRequiredInfo = customRequiredInfo;
+        this.preferedMajors = preferedMajors;
+    }
     ///// End Overloaded constructors for the scholarship class /////
 
     ///////// Start mutators and accessors /////////
@@ -82,6 +94,14 @@ public class Scholarship {
 
     public void setDeadline(String deadline) {
         this.deadline = deadline;
+    }
+
+    public String getDisbursementDate() {
+        return disbursmentDate;
+    }
+
+    public void setDisbursementDate(String disbursmentDate) {
+        this.disbursmentDate = disbursmentDate;
     }
 
     public String getCustomRequiredInfo() {
