@@ -22,7 +22,7 @@ public class AnnualReportGenerator extends ReportGenerator {
      * @param year    The year for which the annual report is generated.
      */
     public AnnualReportGenerator(ArrayList<Scholarship> annualD, int year) {
-        this.filepath = "src/main/AnnualReports/";
+        this.filepath = "src/Reports/AnnualReports/";
         AnnualReportGenerator.scholarships = annualD;
         this.year = year;
         this.filePrefix = "AnnualReport";
@@ -56,10 +56,12 @@ public class AnnualReportGenerator extends ReportGenerator {
     @Override
     public String parseData() {
         // TODO -- Fix this thing so it works with the static members.
-        String reportString = "Scholarship name, Amount Rewarded, Deadline, Required Info, Preffered Majors\n";
+        String reportString = "Scholarship name, Amount Rewarded, Deadline, Disbursment Date, Required Info, Preffered Majors\n";
         for (Scholarship data : AnnualReportGenerator.scholarships) {
+            if (data.getDisbursementDate().substring(0,4).equals(Integer.toString(year))){
             reportString = reportString + data.getScholarshipName() + "," + Integer.toString(data.getPayout()) + "," +
-                    data.getDeadline() + "," + data.getCustomRequiredInfo() + ", " + data.getPreferedMajors() + "\n";
+                    data.getDeadline() + "," + data.getDisbursementDate() + ", " + data.getCustomRequiredInfo() + ", " + data.getPreferedMajors() + "\n";
+            }
         }
         return reportString;
     }
