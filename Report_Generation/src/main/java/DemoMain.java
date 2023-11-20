@@ -3,14 +3,14 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class ScholarshipApplicationForm extends JFrame {
+public class DemoMain extends JFrame {
 
     private JTextField emailField;
     private JTextField nameField;
     private JTextField scholarshipsField;
     private JTextField studentsField;
 
-    public ScholarshipApplicationForm() {
+    public DemoMain() {
         super("Scholarship Report Generator Demo Form");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -130,7 +130,7 @@ public class ScholarshipApplicationForm extends JFrame {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
-                new ScholarshipApplicationForm();
+                new DemoMain();
             }
         });
     }
