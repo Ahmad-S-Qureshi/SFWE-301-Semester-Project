@@ -135,27 +135,3 @@ public class DemoMain extends JFrame {
         });
     }
 }
-
-// Placeholder class for JTextField
-class JTextFieldWithPlaceholder extends JTextField {
-
-    private String placeholder;
-
-    public JTextFieldWithPlaceholder(String placeholder) {
-        this.placeholder = placeholder;
-    }
-
-    @Override
-    protected void paintComponent(Graphics g) {
-        super.paintComponent(g);
-        if (getText().isEmpty()) {
-            int textY = (getHeight() - g.getFontMetrics().getHeight()) / 2 + g.getFontMetrics().getAscent();
-            g.setColor(Color.GRAY);
-            g.drawString(placeholder, 2, textY);
-        }
-    }
-
-    public void setPlaceholder(String placeholder) {
-        this.placeholder = placeholder;
-    }
-}

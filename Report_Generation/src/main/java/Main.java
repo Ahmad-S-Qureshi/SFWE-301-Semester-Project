@@ -56,13 +56,40 @@ public class Main {
         String scholarshipName = "Scholarship" + (scholarships.size() + 1);
         int payout = new Random().nextInt(2000) + 500; // Random payout between 500 and 2500
         String deadline = getRandomDate();
-        String disbursementDate = getRandomDate();
-        String customRequiredInfo = "Info"; // You can customize this
-        String preferedMajors = "Major"; // You can customize this
-
-        // Create and return a new Scholarship object
-        return new Scholarship(scholarshipName, payout, deadline, disbursementDate, customRequiredInfo, preferedMajors);
+        
+        // Ensure disbursement date is greater than the deadline
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        Date deadlineDate = null;
+        Date disbursementDate = null;
+    
+        try {
+            deadlineDate = dateFormat.parse(deadline);
+    
+            // Generate a random disbursement date that is after the deadline
+            do {
+                String disbursementDateString = getRandomDate();
+                disbursementDate = dateFormat.parse(disbursementDateString);
+    
+                if (disbursementDate.compareTo(deadlineDate) <= 0) {
+                    // If disbursement date is not after the deadline, generate a new one
+                    continue;
+                }
+    
+                // If we reach here, the disbursement date is valid
+                String customRequiredInfo = "Info"; // You can customize this
+                String preferedMajors = "Major"; // You can customize this
+    
+                // Create and return a new Scholarship object
+                return new Scholarship(scholarshipName, payout, deadline, disbursementDateString, customRequiredInfo, preferedMajors);
+    
+            } while (true);
+    
+        } catch (Exception e) {
+            e.printStackTrace(); // Handle parsing exceptions if needed
+            return null;
+        }
     }
+    
 
     /**
      * Generates a random date within a specific range.
