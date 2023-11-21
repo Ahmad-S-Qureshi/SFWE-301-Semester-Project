@@ -24,6 +24,7 @@ public class DemoMain extends JFrame {
     private JTextField nameField;
     private JTextField scholarshipsField;
     private JTextField studentsField;
+    public ArrayList<Scholarship> scholarshipData;
 
     public DemoMain() {
         super("Scholarship Report Generator Demo Form");
@@ -65,14 +66,9 @@ public class DemoMain extends JFrame {
         annualReportButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                        // Create an ArrayList to store dummy scholarships
-                        ArrayList<Scholarship> scholarships = new ArrayList<>();
-
-                        // Generate a specified number of random scholarships and add them to the ArrayList
-                        generateRandomScholarships(scholarships, 3150);
-                        AnnualReportGenerator generator = new AnnualReportGenerator(scholarships, 2022);
+                        AnnualReportGenerator generator = new AnnualReportGenerator(scholarshipData, 2022);
                         String path = generator.writeToFile();
-                        System.out.println("Generated " + scholarships.size() + " Scholarships");
+                        System.out.println("Generated " + scholarshipData.size() + " Scholarships");
                         try {
                             new GMailer().sendMail("Annual Report", "We are the best Report Team!", new File(path), emailField.getText());
                         } catch (Exception a) {
@@ -86,15 +82,16 @@ public class DemoMain extends JFrame {
         disbursementButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Handle submission logic here
-                String email = emailField.getText();
-                String name = nameField.getText();
-                String scholarships = scholarshipsField.getText();
+                Random rand = new Random();
+                Student tempStudent = new Student("unknown", 0, "" + rand.nextInt(scholarshipData.size()));
+                DisbursementReportGenerator generator = new DisbursementReportGenerator(tempStudent, scholarshipData.get(rand.nextInt(scholarshipData.size())));
+                String path = generator.writeToFile();
+                System.out.println("Generated " + scholarshipData.size() + " Scholarships");
+                try {
+                    new GMailer().sendMail("Annual Report", "We are the best Report Team!", new File(path), emailField.getText());
+                } catch (Exception a) {
 
-                // Print or process the data as needed
-                System.out.println("Email: " + email);
-                System.out.println("Name: " + name);
-                System.out.println("Number of Scholarships: " + scholarships);
+                }
             }
         });
 
@@ -103,15 +100,14 @@ public class DemoMain extends JFrame {
         scholarshipButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Handle submission logic here
-                String email = emailField.getText();
-                String name = nameField.getText();
-                String scholarships = scholarshipsField.getText();
+                ScholarshipReportGenerator generator = new ScholarshipReportGenerator(scholarshipData);
+                String path = generator.writeToFile();
+                try {
+                    new GMailer().sendMail("Annual Report", "We are the best Report Team!", new File(path), emailField.getText());
+                } catch (Exception a) {
 
-                // Print or process the data as needed
-                System.out.println("Email: " + email);
-                System.out.println("Name: " + name);
-                System.out.println("Number of Scholarships: " + scholarships);
+                }
+
             }
         });
 
@@ -137,19 +133,12 @@ public class DemoMain extends JFrame {
             @Override
 
             public void actionPerformed(ActionEvent e) {
-                Random rand = new Random();
-                // Handle submission logic here
-                ArrayList<Scholarship> scholarshipData = new ArrayList<Scholarship>();
-                for(int i = 0; i < Integer.parseInt(scholarshipsField.getText()); i++) {
-                    scholarshipData.add(new Scholarship("Scholarship" + rand.nextInt(Integer.parseInt(scholarshipsField.getText()))));
-                }
-                System.out.println("Made " + scholarshipData.size() + " Scholarships");
+                
+                        // Create an ArrayList to store dummy scholarships
+                        scholarshipData = new ArrayList<>();
 
-                ArrayList<Student> studentData = new ArrayList<Student>();
-                for(int i = 0; i < Integer.parseInt(studentsField.getText()); i++) {
-                    studentData.add(new Student("Engineering", 0./0, "" + i));
-                }
-                System.out.println("Made " + studentData.size() + " Students");
+                        // Generate a specified number of random scholarships and add them to the ArrayList
+                        generateRandomScholarships(scholarshipData, 3150);
 
             }
         });

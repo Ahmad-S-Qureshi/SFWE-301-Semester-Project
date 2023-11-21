@@ -59,8 +59,8 @@ public class DisbursementReportGenerator extends ReportGenerator {
     @Override
     public String parseData() {
         // TODO -- Fix this thing so it works with the static members.
-        String reportString = "Scholarship Name, Student Name, Amount Rewarded, Disbursment Date\n";
-        reportString = reportString + scholarship.getScholarshipName() + "," + student.getName() + ", " + Integer.toString(scholarship.getPayout()) + "," +
+        String reportString = "Scholarship Name, Student ID, Amount Rewarded, Disbursment Date\n";
+        reportString = reportString + scholarship.getScholarshipName() + "," + student.getStudentID() + ", " + Integer.toString(scholarship.getPayout()) + "," +
                 scholarship.getDisbursementDate() + "\n";
         return reportString;
     }
