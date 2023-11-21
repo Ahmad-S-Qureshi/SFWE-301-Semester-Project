@@ -37,7 +37,7 @@ public class AnnualReportTest {
     public static void main(String[] args) {
 
         
-        AnnualReportGenerator AnnualRepo = new AnnualReportGenerator();
+        AnnualReportGenerator AnnualRepo = new AnnualReportGenerator(null, 0);
         
         final String AnnualReportFileGen = AnnualRepo.writeToFile();
         final String AnnualReportTestFile1 = "src/Test-Reports/AnnualReportTest1.csv";
