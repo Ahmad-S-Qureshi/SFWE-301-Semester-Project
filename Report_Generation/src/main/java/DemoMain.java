@@ -4,6 +4,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Random;
+import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import main.java.JTextFieldWithPlaceholder;
 import main.java.Scholarship;
@@ -11,6 +14,7 @@ import main.java.ScholarshipReportGenerator;
 import main.java.Student;
 import main.java.AnnualReportGenerator;
 import main.java.DisbursementReportGenerator;
+import main.java.GMailer;
 import main.java.DisbursementReportGenerator;
 
 
@@ -61,17 +65,21 @@ public class DemoMain extends JFrame {
         annualReportButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Handle submission logic here
-                String email = emailField.getText();
-                String name = nameField.getText();
-                String scholarships = scholarshipsField.getText();
+                        // Create an ArrayList to store dummy scholarships
+                        ArrayList<Scholarship> scholarships = new ArrayList<>();
 
-                // Print or process the data as needed
-                System.out.println("Email: " + email);
-                System.out.println("Name: " + name);
-                System.out.println("Number of Scholarships: " + scholarships);
-            }
-        });
+                        // Generate a specified number of random scholarships and add them to the ArrayList
+                        generateRandomScholarships(scholarships, 3150);
+                        AnnualReportGenerator generator = new AnnualReportGenerator(scholarships, 2022);
+                        String path = generator.writeToFile();
+                        System.out.println("Generated " + scholarships.size() + " Scholarships");
+                        try {
+                            new GMailer().sendMail("Annual Report", "We are the best Report Team!", new File(path), emailField.getText());
+                        } catch (Exception a) {
+
+                        }
+                    }
+                });
 
         // Submit Button
         JButton disbursementButton = new JButton("Generate Disbursement Report");
@@ -160,6 +168,81 @@ public class DemoMain extends JFrame {
         setVisible(true);
     }
 
+    private static void generateRandomScholarships(ArrayList<Scholarship> scholarships, int numberOfScholarships) {
+        for (int i = 0; i < numberOfScholarships; i++) {
+            scholarships.add(generateRandomScholarship(scholarships));
+        }
+    }
+
+    /**
+     * Generates a single random scholarship.
+     *
+     * @return A randomly generated Scholarship object.
+     */
+    private static Scholarship generateRandomScholarship(ArrayList<Scholarship> scholarships) {
+        // You can customize the parameters of the generated scholarship here
+        String scholarshipName = "Scholarship" + (scholarships.size() + 1);
+        int payout = new Random().nextInt(2000) + 500; // Random payout between 500 and 2500
+        String deadline = getRandomDate();
+        
+        // Ensure disbursement date is greater than the deadline
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        Date deadlineDate = null;
+        Date disbursementDate = null;
+    
+        try {
+            deadlineDate = dateFormat.parse(deadline);
+    
+            // Generate a random disbursement date that is after the deadline
+            do {
+                String disbursementDateString = getRandomDate();
+                disbursementDate = dateFormat.parse(disbursementDateString);
+    
+                if (disbursementDate.compareTo(deadlineDate) <= 0) {
+                    // If disbursement date is not after the deadline, generate a new one
+                    continue;
+                }
+    
+                // If we reach here, the disbursement date is valid
+                String customRequiredInfo = "Info"; // You can customize this
+                String preferedMajors = "Major"; // You can customize this
+    
+                // Create and return a new Scholarship object
+                return new Scholarship(scholarshipName, payout, deadline, disbursementDateString, customRequiredInfo, preferedMajors);
+    
+            } while (true);
+    
+        } catch (Exception e) {
+            e.printStackTrace(); // Handle parsing exceptions if needed
+            return null;
+        }
+    }
+    
+
+    /**
+     * Generates a random date within a specific range.
+     *
+     * @return A string representation of the random date.
+     */
+    private static String getRandomDate() {
+        // Set the range of years for the random date
+        int startYear = 2014;
+        int endYear = 2024;
+
+        // Generate a random year within the specified range
+        int randomYear = startYear + new Random().nextInt(endYear - startYear + 1);
+
+        // Generate a random month (1-12)
+        int randomMonth = 1 + new Random().nextInt(12);
+
+        // Generate a random day (1-28 for simplicity)
+        int randomDay = 1 + new Random().nextInt(28);
+
+        // Format the random date as "YYYY-MM-DD"
+        return String.format("%04d-%02d-%02d", randomYear, randomMonth, randomDay);
+    }
+
+
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
@@ -168,4 +251,7 @@ public class DemoMain extends JFrame {
             }
         });
     }
+
+
+
 }

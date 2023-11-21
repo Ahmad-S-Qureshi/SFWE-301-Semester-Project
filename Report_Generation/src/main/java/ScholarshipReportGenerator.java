@@ -22,7 +22,7 @@ public class ScholarshipReportGenerator extends ReportGenerator {
         this.reportDate = formattedString;
     }
 
-    public void writeToFile() {
+    public String writeToFile() {
         try {
             String completeFilePath = this.filepath + filePrefix + reportDate + ".csv";
             File newAnnualReport = new File(completeFilePath);
@@ -31,8 +31,10 @@ public class ScholarshipReportGenerator extends ReportGenerator {
             ReportWriter.write(parseData());
             ReportWriter.close();
             System.out.println("Report Generated");
+            return completeFilePath;
         } catch (Exception e) {
             System.out.println(e.getMessage());
+            return null;
         }
     }
 

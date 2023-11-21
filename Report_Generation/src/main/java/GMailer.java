@@ -1,4 +1,4 @@
-
+package main.java;
 import com.google.api.client.auth.oauth2.Credential;
 import com.google.api.client.extensions.java6.auth.oauth2.AuthorizationCodeInstalledApp;
 import com.google.api.client.extensions.jetty.auth.oauth2.LocalServerReceiver;
@@ -13,7 +13,6 @@ import com.google.api.client.util.store.FileDataStoreFactory;
 import com.google.api.services.gmail.Gmail;
 import com.google.api.services.gmail.model.Message;
 import org.apache.commons.codec.binary.Base64;
-import org.apache.http.protocol.HTTP;
 
 import javax.mail.Session;
 import javax.mail.internet.InternetAddress;
@@ -44,10 +43,7 @@ import static javax.mail.Message.RecipientType.TO;
 public class GMailer {
 
     // From address
-    private static final String TEST_FROM = "jorgedr22@gmail.com";
-
-    // To address
-    private static final String TEST_TO = "ahmadsqureshi@arizona.edu";
+    private static final String TEST_FROM = "sfwereportgenerator@gmail.com";
 
     // Instance of Gmail API
     private final Gmail service;
@@ -99,12 +95,13 @@ public class GMailer {
      * @param file    the file to be attached
      * @throws Exception if an error occurs during email sending
      */
-    public void sendMail(String subject, String message, File file) throws Exception {
+    public void sendMail(String subject, String message, File file, String to) throws Exception {
+        final String toString = to;
         Properties props = new Properties();
         Session session = Session.getDefaultInstance(props, null);
         MimeMessage email = new MimeMessage(session);
         email.setFrom(new InternetAddress(TEST_FROM));
-        email.addRecipient(TO, new InternetAddress(TEST_TO));
+        email.addRecipient(TO, new InternetAddress(toString));
         email.setSubject(subject);
         email.setText(message);
 
@@ -126,7 +123,7 @@ public class GMailer {
         Message msg = new Message();
         msg.setRaw(encodedEmail);
 
-        System.err.println("Attempting Sending Email");
+        System.out.println("Attempting Sending Email");
         try {
             msg = service.users().messages().send("me", msg).execute();
             System.out.println("Message id: " + msg.getId());
@@ -134,7 +131,7 @@ public class GMailer {
         } catch (GoogleJsonResponseException e) {
             GoogleJsonError error = e.getDetails();
             if (error.getCode() == 403) {
-                System.err.println("Unable to send message: " + e.getDetails());
+                System.out.println("Unable to send message: " + e.getDetails());
             } else {
                 throw e;
             }
@@ -147,10 +144,10 @@ public class GMailer {
      * @param args command line arguments
      * @throws Exception if an error occurs during execution
      */
-    public static void main(String[] args) throws Exception {
-        File attachment = new File("attachment.jpg");
-        new GMailer().sendMail("Hi From Java", "This was sent from Java!\nAhmad's team is making good progress",
-                attachment);
-    }
+    // public static void main(String[] args) throws Exception {
+    //     File attachment = new File("attachment.jpg");
+    //     new GMailer().sendMail("Hi From Java", "This was sent from Java!\nAhmad's team is making good progress",
+    //             attachment, "ahmadsqureshi@arizona.edu");
+    // }
 
 }

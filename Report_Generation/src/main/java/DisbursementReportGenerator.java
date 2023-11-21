@@ -34,7 +34,7 @@ public class DisbursementReportGenerator extends ReportGenerator {
      * Overrides the method in the superclass.
      */
     @Override
-    public void writeToFile() {
+    public String writeToFile() {
         try {
             String completeFilePath = this.filepath + filePrefix + "_" + scholarship.getScholarshipName() + ".csv";
             File newAnnualReport = new File(completeFilePath);
@@ -43,8 +43,10 @@ public class DisbursementReportGenerator extends ReportGenerator {
             ReportWriter.write(parseData());
             ReportWriter.close();
             System.out.println("Report Generated");
+            return completeFilePath;
         } catch (Exception e) {
             System.out.println(e.getMessage());
+            return null;
         }
     }
 

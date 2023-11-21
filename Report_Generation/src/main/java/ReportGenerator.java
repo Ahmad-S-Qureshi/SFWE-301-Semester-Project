@@ -1,6 +1,7 @@
 package main.java;
 
 import java.util.ArrayList;
+import java.io.File;
 
 /**
  * The ReportGenerator class is responsible for generating reports based on
@@ -13,10 +14,10 @@ public class ReportGenerator {
     protected String filepath;
 
     /** The list of scholarships to be used in report generation. */
-    protected static ArrayList<Scholarship> scholarships;
+    public static ArrayList<Scholarship> scholarships;
 
     /** The list of students to be used in report generation. */
-    protected static ArrayList<Student> students;
+    public static ArrayList<Student> students;
 
     /**
      * Parses the data for report generation.
@@ -35,8 +36,9 @@ public class ReportGenerator {
      * This method currently prints a message indicating that it is not yet
      * implemented.
      */
-    public void writeToFile() {
+    public String writeToFile() {
         System.out.println("writeToFile not yet implemented");
+        return null;
     }
 
     /**

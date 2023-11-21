@@ -33,17 +33,20 @@ public class AnnualReportGenerator extends ReportGenerator {
      * Overrides the method in the superclass.
      */
     @Override
-    public void writeToFile() {
+    public String writeToFile() {
         try {
             String completeFilePath = this.filepath + filePrefix + "_" + year + ".csv";
             File newAnnualReport = new File(completeFilePath);
             System.out.println(newAnnualReport.createNewFile());
             FileWriter ReportWriter = new FileWriter(completeFilePath);
             ReportWriter.write(parseData());
+            System.out.println("Printed " + parseData());
             ReportWriter.close();
             System.out.println("Report Generated");
+            return completeFilePath;
         } catch (Exception e) {
             System.out.println(e.getMessage());
+            return null;
         }
     }
 
@@ -55,7 +58,6 @@ public class AnnualReportGenerator extends ReportGenerator {
      */
     @Override
     public String parseData() {
-        // TODO -- Fix this thing so it works with the static members.
         String reportString = "Scholarship name, Amount Rewarded, Deadline, Disbursment Date, Required Info, Preffered Majors\n";
         for (Scholarship data : AnnualReportGenerator.scholarships) {
             if (data.getDisbursementDate().substring(0,4).equals(Integer.toString(year))){
