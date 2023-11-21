@@ -15,6 +15,7 @@ public class Scholarship {
         this.deadline = "N/A";
         this.customRequiredInfo = "None";
         this.preferedMajors = "None";
+        this.donorContact = "Unknown";
     }
 
     ///// Start Overloaded constructors for the scholarship class /////
@@ -25,6 +26,7 @@ public class Scholarship {
         this.disbursmentDate = "N/A";
         this.customRequiredInfo = "None";
         this.preferedMajors = "None";
+        this.donorContact = "Unknown";
     }
 
     public Scholarship(String scholarshipName, int payout) {
@@ -33,6 +35,7 @@ public class Scholarship {
         this.deadline = "N/A";
         this.customRequiredInfo = "None";
         this.preferedMajors = "None";
+        this.donorContact = "Unknown";
     }
 
     public Scholarship(String scholarshipName, int payout, String deadline) {
@@ -41,6 +44,7 @@ public class Scholarship {
         this.deadline = deadline;
         this.customRequiredInfo = "None";
         this.preferedMajors = "None";
+        this.donorContact = "Unknown";
     }
 
     public Scholarship(String scholarshipName, int payout, String deadline, String customRequiredInfo) {
@@ -49,6 +53,7 @@ public class Scholarship {
         this.deadline = deadline;
         this.customRequiredInfo = customRequiredInfo;
         this.preferedMajors = "None";
+        this.donorContact = "Unknown";
     }
 
     public Scholarship(String scholarshipName, int payout, String deadline, String customRequiredInfo,
@@ -58,6 +63,7 @@ public class Scholarship {
         this.deadline = deadline;
         this.customRequiredInfo = customRequiredInfo;
         this.preferedMajors = preferedMajors;
+        this.donorContact = "Unknown";
     }
 
     public Scholarship(String scholarshipName, int payout, String deadline, String disbursmentDate, String customRequiredInfo,
@@ -68,6 +74,7 @@ public class Scholarship {
         this.disbursmentDate = disbursmentDate;
         this.customRequiredInfo = customRequiredInfo;
         this.preferedMajors = preferedMajors;
+        this.donorContact = "Unknown";
     }
     public Scholarship(String scholarshipName, int payout, String deadline, String disbursmentDate, String customRequiredInfo,
             String preferedMajors, String donorContact) {
@@ -117,6 +124,10 @@ public class Scholarship {
 
     public String getCustomRequiredInfo() {
         return customRequiredInfo;
+    }
+
+    public String getDonorContact() {
+        return donorContact;
     }
 
     public void setCustomRequiredInfo(String customRequiredInfo) {
