@@ -30,12 +30,12 @@ sourceSets {
     }
 }
 
-task generateJavadoc(type: Javadoc) {
+task myJavadocs(type: Javadoc) {
     source = sourceSets.main.allJava
     classpath += project.files(sourceSets.main.compileClasspath)
     destinationDir = file("$buildDir/docs/javadoc")
 }
 
 // Make 'javadoc' task depend on 'build' task
-build.dependsOn generateJavadoc
+// build.dependsOn generateJavadoc
 

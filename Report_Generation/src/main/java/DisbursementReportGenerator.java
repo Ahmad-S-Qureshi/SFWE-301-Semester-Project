@@ -19,8 +19,8 @@ public class DisbursementReportGenerator extends ReportGenerator {
      * Constructs an AnnualReportGenerator with the provided scholarship data and
      * year.
      *
-     * @param annualD The ArrayList of scholarships for the annual report.
-     * @param year    The year for which the annual report is generated.
+     * @param student The student that won the scholarship.
+     * @param scholarship The scholarship student won.
      */
     public DisbursementReportGenerator(Student student, Scholarship scholarship) {
         this.filepath = "src/Reports/DisbursementReports/";
