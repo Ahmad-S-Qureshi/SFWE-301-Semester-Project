@@ -88,7 +88,7 @@ public class DemoMain extends JFrame {
                 String path = generator.writeToFile();
                 System.out.println("Generated " + scholarshipData.size() + " Scholarships");
                 try {
-                    new GMailer().sendMail("Annual Report", "We are the best Report Team!", new File(path), emailField.getText());
+                    new GMailer().sendMail("Disbursement Report", "We are the best Report Team!", new File(path), emailField.getText());
                 } catch (Exception a) {
 
                 }
@@ -103,7 +103,7 @@ public class DemoMain extends JFrame {
                 ScholarshipReportGenerator generator = new ScholarshipReportGenerator(scholarshipData);
                 String path = generator.writeToFile();
                 try {
-                    new GMailer().sendMail("Annual Report", "We are the best Report Team!", new File(path), emailField.getText());
+                    new GMailer().sendMail("Scholarship Report", "We are the best Report Team!", new File(path), emailField.getText());
                 } catch (Exception a) {
 
                 }
