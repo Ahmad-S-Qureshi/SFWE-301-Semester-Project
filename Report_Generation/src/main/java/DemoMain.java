@@ -189,15 +189,14 @@ public class DemoMain extends JFrame {
             do {
                 String disbursementDateString = getRandomDate();
                 disbursementDate = dateFormat.parse(disbursementDateString);
-    
                 if (disbursementDate.compareTo(deadlineDate) <= 0) {
                     // If disbursement date is not after the deadline, generate a new one
                     continue;
                 }
     
                 // If we reach here, the disbursement date is valid
-                String customRequiredInfo = ; // You can customize this
-                String preferedMajors = "Major"; // You can customize this
+                String customRequiredInfo = InfoChoices.get(Rand.nextInt(InfoChoices.size())); // You can customize this
+                String preferedMajors = majorChoices.get(Rand.nextInt(majorChoices.size())); // You can customize this
     
                 // Create and return a new Scholarship object
                 return new Scholarship(scholarshipName, payout, deadline, disbursementDateString, customRequiredInfo, preferedMajors);
