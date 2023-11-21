@@ -3,6 +3,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 import java.io.File;
 import java.text.SimpleDateFormat;
@@ -170,8 +171,11 @@ public class DemoMain extends JFrame {
     private static Scholarship generateRandomScholarship(ArrayList<Scholarship> scholarships) {
         // You can customize the parameters of the generated scholarship here
         String scholarshipName = "Scholarship" + (scholarships.size() + 1);
-        int payout = new Random().nextInt(2000) + 500; // Random payout between 500 and 2500
+        Random Rand = new Random();
+        int payout = Rand.nextInt(2000) + 500; // Random payout between 500 and 2500
         String deadline = getRandomDate();
+        ArrayList<String> majorChoices = new ArrayList<String>(List.of("Computer Science", "Software Engineering", "Electrical and Computer Engineering", "Computer Science and Engineering", "Systems Engineering", "Industrial Engineering"));
+        ArrayList<String> InfoChoices = new ArrayList<String>(List.of("Transcript", "Essay", "Resume"));
         
         // Ensure disbursement date is greater than the deadline
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
@@ -192,7 +196,7 @@ public class DemoMain extends JFrame {
                 }
     
                 // If we reach here, the disbursement date is valid
-                String customRequiredInfo = "Info"; // You can customize this
+                String customRequiredInfo = ; // You can customize this
                 String preferedMajors = "Major"; // You can customize this
     
                 // Create and return a new Scholarship object
