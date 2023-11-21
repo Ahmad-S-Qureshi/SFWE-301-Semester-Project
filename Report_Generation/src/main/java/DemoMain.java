@@ -2,8 +2,13 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.Random;
+
 import main.java.JTextFieldWithPlaceholder;
+import main.java.Scholarship;
 import main.java.ScholarshipReportGenerator;
+import main.java.Student;
 import main.java.AnnualReportGenerator;
 import main.java.DisbursementReportGenerator;
 import main.java.DisbursementReportGenerator;
@@ -122,16 +127,22 @@ public class DemoMain extends JFrame {
         JButton generateDataButton = new JButton("Generate Data");
         generateDataButton.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e) {
-                // Handle submission logic here
-                String email = emailField.getText();
-                String name = nameField.getText();
-                String scholarships = scholarshipsField.getText();
 
-                // Print or process the data as needed
-                System.out.println("Email: " + email);
-                System.out.println("Name: " + name);
-                System.out.println("Number of Scholarships: " + scholarships);
+            public void actionPerformed(ActionEvent e) {
+                Random rand = new Random();
+                // Handle submission logic here
+                ArrayList<Scholarship> scholarshipData = new ArrayList<Scholarship>();
+                for(int i = 0; i < Integer.parseInt(scholarshipsField.getText()); i++) {
+                    scholarshipData.add(new Scholarship("Scholarship" + rand.nextInt(Integer.parseInt(scholarshipsField.getText()))));
+                }
+                System.out.println("Made " + scholarshipData.size() + " Scholarships");
+
+                ArrayList<Student> studentData = new ArrayList<Student>();
+                for(int i = 0; i < Integer.parseInt(studentsField.getText()); i++) {
+                    studentData.add(new Student("Engineering", 0./0, "" + i));
+                }
+                System.out.println("Made " + studentData.size() + " Students");
+
             }
         });
 
