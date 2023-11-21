@@ -15,7 +15,9 @@ import main.java.ScholarshipReportGenerator;
 import main.java.Student;
 import main.java.AnnualReportGenerator;
 import main.java.DisbursementReportGenerator;
+import main.java.ApplicationReportGenerator;
 import main.java.GMailer;
+import main.java.ApplicationData;
 
 
 public class DemoMain extends JFrame {
@@ -116,15 +118,21 @@ public class DemoMain extends JFrame {
         applicationButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Handle submission logic here
-                String email = emailField.getText();
-                String name = nameField.getText();
-                String scholarships = scholarshipsField.getText();
+                Random Rand = new Random();
+                ApplicationData data = new ApplicationData();
+                ArrayList<String> questions = new ArrayList<String>(List.of("Is it peKan or picon?", "Is 42 the answer to life", "Who's never gonna give you up", "What does the fox say"));
+                ArrayList<String> answers = new ArrayList<String>(List.of("A cat in a ghost costume", "cheese", "Frog with a hat"));
+                for(int i = 0; i < 10; i++) {
+                    data.addPair(questions.get(Rand.nextInt(questions.size())), answers.get(Rand.nextInt(answers.size())));
+                }
+                ApplicationReportGenerator generator = new ApplicationReportGenerator(scholarshipData.get(Rand.nextInt(scholarshipData.size())), new Student(), data);
+                String path = generator.writeToFile();
+                System.out.println("Generated " + scholarshipData.size() + " Scholarships");
+                try {
+                    new GMailer().sendMail("Disbursement Report", "We are the best Report Team!", new File(path), emailField.getText());
+                } catch (Exception a) {
 
-                // Print or process the data as needed
-                System.out.println("Email: " + email);
-                System.out.println("Name: " + name);
-                System.out.println("Number of Scholarships: " + scholarships);
+                }
             }
         });
         
