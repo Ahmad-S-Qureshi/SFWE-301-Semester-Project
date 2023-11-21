@@ -35,21 +35,21 @@ public class AnnualReportTest {
     }
 
     public static void main(String[] args) {
-        
-        ArrayList<Scholarship> ScholarshipData = new ArrayList<Scholarship>();
-        //Annual Report Test 1
-        
-        AnnualReportGenerator generator = new AnnualReportGenerator(ScholarshipData, 2023);
-        
 
+        
+        AnnualReportGenerator AnnualRepo = new AnnualReportGenerator();
+        
+        final String AnnualReportFileGen = AnnualRepo.writeToFile();
+        final String AnnualReportTestFile1 = "src/Test-Reports/AnnualReportTest1.csv";
 
+        //Annual Report Test 1        
          try {
             // Read data from CSV files
-            List<String[]> GeneratedData = readCSV(PathToGeneratedCSV1);
-            List<String[]> TestDataCompare = readCSV(DisbursementTestFile1);
+            List<String[]> DataRead = readCSV(AnnualReportFileGen);
+            List<String[]> DataCompare = readCSV(AnnualReportTestFile1);
 
             // Compare data
-            if (compareCSVData(GeneratedData, TestDataCompare)) {
+            if (compareCSVData(DataRead, DataCompare)) {
                 System.out.println("Test 1 Passed");
             } 
             else {
