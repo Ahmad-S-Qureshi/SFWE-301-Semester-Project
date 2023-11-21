@@ -3,6 +3,12 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import main.java.JTextFieldWithPlaceholder;
+import main.java.ScholarshipReportGenerator;
+import main.java.AnnualReportGenerator;
+import main.java.DisbursementReportGenerator;
+import main.java.DisbursementReportGenerator;
+
+
 public class DemoMain extends JFrame {
 
     private JTextField emailField;
@@ -112,12 +118,29 @@ public class DemoMain extends JFrame {
                 System.out.println("Number of Scholarships: " + scholarships);
             }
         });
+        
+        JButton generateDataButton = new JButton("Generate Data");
+        generateDataButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Handle submission logic here
+                String email = emailField.getText();
+                String name = nameField.getText();
+                String scholarships = scholarshipsField.getText();
+
+                // Print or process the data as needed
+                System.out.println("Email: " + email);
+                System.out.println("Name: " + name);
+                System.out.println("Number of Scholarships: " + scholarships);
+            }
+        });
 
         // Add buttons to the panel
         panel.add(disbursementButton);
         panel.add(scholarshipButton);
         panel.add(annualReportButton);
         panel.add(applicationButton);
+        panel.add(generateDataButton);
 
         // Set up the frame
         add(panel);
