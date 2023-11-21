@@ -58,7 +58,7 @@ public class AnnualReportGenerator extends ReportGenerator {
      */
     @Override
     public String parseData() {
-        String reportString = "Scholarship name, Amount Rewarded, Deadline, Disbursment Date, Required Info, Preffered Majors\n";
+        String reportString = "Scholarship name, Amount Rewarded, Deadline, Disbursment Date, Required Info, Prefered Major(s)\n";
         for (Scholarship data : AnnualReportGenerator.scholarships) {
             if (data.getDisbursementDate().substring(0,4).equals(Integer.toString(year))){
             reportString = reportString + data.getScholarshipName() + "," + Integer.toString(data.getPayout()) + "," +
