@@ -72,6 +72,8 @@ public class ScholarshipReportTest{
             e.printStackTrace();
         }
 
+        ScholarshipRepo = new ArrayList<Scholarship>();
+
         // Test 2
         try {
             List<String[]> ReportData = readCSV("src/Test-Reports/ScholarshipInfo2.csv");
