@@ -42,13 +42,8 @@ public class ScholarshipReportGenerator extends ReportGenerator {
         String reportString = "Donor Contact, Scholarship Name, Amount, Deadline\n";
         LocalDate currentDate = LocalDate.now();
 
-        for (Scholarship data : scholarshipData) {  // Use the instance variable
-            LocalDate disbursementDate = LocalDate.parse(data.getDisbursementDate());
-
-            if (disbursementDate.isAfter(currentDate)) {
-                reportString += data.getDonorContact() + "," + data.getScholarshipName() + "," + data.getPayout() + "," +
-                        data.getDeadline() + "\n";
-            }
+        for (Scholarship data : scholarshipData) {  // Use the instance variable 
+            reportString += data.getDonorContact() + "," + data.getScholarshipName() + "," + data.getPayout() + "," +data.getDeadline() + "\n";
         }
         return reportString;
     }

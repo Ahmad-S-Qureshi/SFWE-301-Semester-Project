@@ -1,9 +1,10 @@
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.Arrays;
-import java.util.List;
-
 import com.opencsv.CSVReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.io.FileReader;
+import java.util.List;
+import main.java.*;
 
 public class ScholarshipReportTest{
 
@@ -36,7 +37,72 @@ public class ScholarshipReportTest{
 
     public static void main(String[] args) {
 
+        ArrayList<Scholarship> ScholarshipRepo = new ArrayList<Scholarship>();
+
         // Test 1
+        try {
+            List<String[]> ReportData = readCSV("src/Test-Reports/ScholarshipInfo1.csv");
+            for (int i = 1; i < ReportData.size(); i++) {
+                String[] strings = ReportData.get(i);
+                //Donor Contact, Scholarship Name, Amount, Deadline
+                ScholarshipRepo.add(new Scholarship(strings[1],Integer.parseInt(strings[2]),strings[3],"NA","NA","NA",strings[0]));  
+            }
+        }
+        catch (Exception e) {
+            System.out.println("Could not read Report " + e.getMessage());
+        }
         
+        ScholarshipReportGenerator ScholarshipRepo1 = new ScholarshipReportGenerator(ScholarshipRepo);
+        final String ScholarshipReportFile1 = ScholarshipRepo1.writeToFile();
+        final String ScholarshipReportTestFile1 = "src/Test-Reports/ScholarshipInfo1.csv";
+
+        try {
+            // Read data from CSV files
+            List<String[]> DataRead = readCSV(ScholarshipReportFile1);
+            List<String[]> DataCompare = readCSV(ScholarshipReportTestFile1);
+
+            // Compare data
+            if (compareCSVData(DataRead, DataCompare)) {
+                System.out.println("Test 1 Passed");
+            } 
+            else {
+                System.out.println("Test 1 Failed");
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        // Test 2
+        try {
+            List<String[]> ReportData = readCSV("src/Test-Reports/ScholarshipInfo2.csv");
+            for (int i = 1; i < ReportData.size(); i++) {
+                String[] strings = ReportData.get(i);
+                //Donor Contact, Scholarship Name, Amount, Deadline
+                ScholarshipRepo.add(new Scholarship(strings[1],Integer.parseInt(strings[2]),strings[3],"NA","NA","NA",strings[0]));  
+            }
+        }
+        catch (Exception e) {
+            System.out.println("Could not read Report " + e.getMessage());
+        }
+        
+        ScholarshipReportGenerator ScholarshipRepo2 = new ScholarshipReportGenerator(ScholarshipRepo);
+        final String ScholarshipReportFile2 = ScholarshipRepo2.writeToFile();
+        final String ScholarshipReportTestFile2 = "src/Test-Reports/ScholarshipInfo2.csv";
+
+        try {
+            // Read data from CSV files
+            List<String[]> DataRead = readCSV(ScholarshipReportFile2);
+            List<String[]> DataCompare = readCSV(ScholarshipReportTestFile2);
+
+            // Compare data
+            if (compareCSVData(DataRead, DataCompare)) {
+                System.out.println("Test 2 Passed");
+            } 
+            else {
+                System.out.println("Test 2 Failed");
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

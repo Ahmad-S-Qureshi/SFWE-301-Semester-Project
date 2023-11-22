@@ -51,7 +51,7 @@ public class AnnualReportTest {
         catch (Exception e) {
             System.out.println("Could not read Report");
         }
-        System.out.println(AnnualRepoData.size());  
+         
         AnnualReportGenerator AnnualRepo1 = new AnnualReportGenerator(AnnualRepoData,2024);
         final String AnnualReportFileGen1 = AnnualRepo1.writeToFile();
         final String AnnualReportTestFile1 = "src/Test-Reports/AnnualReportTest1.csv";
