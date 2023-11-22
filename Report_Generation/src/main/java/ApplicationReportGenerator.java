@@ -43,12 +43,12 @@ public class ApplicationReportGenerator extends ReportGenerator {
     @Override
     public String writeToFile() {
         try {
-            String completeFilePath = this.filepath + filePrefix + "_" + this.student +".csv";
+            String completeFilePath = this.filepath + filePrefix + "_" + student.getName() +".csv";
             File newAnnualReport = new File(completeFilePath);
             System.out.println(newAnnualReport.createNewFile());
             FileWriter ReportWriter = new FileWriter(completeFilePath);
             ReportWriter.write(parseData());
-            System.out.println("Printed " + parseData());
+            //System.out.println("Printed " + parseData());
             ReportWriter.close();
             System.out.println("Report Generated");
             return completeFilePath;

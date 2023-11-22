@@ -13,6 +13,7 @@ public class ApplicationReportTest {
             return reader.readAll();
         }
         catch (Exception e) {
+            System.out.println(e.getMessage());
             return null;
         }
     }
@@ -36,19 +37,18 @@ public class ApplicationReportTest {
     public static void main(String[] args) {
         
         Scholarship Scholarship1 = new Scholarship();
-        ApplicationData ApplicationReport1 = new ApplicationData();
         Student Student1 = new Student();
+        ApplicationData ApplicationReport1 = new ApplicationData();
          
         // Test 1
+        Student1.setName("Jorge Del Rio");
+        Scholarship1.setScholarshipName("Hitting The Griddy Scholarship");
         try {
-            Student1.setName("Jorge Del Rio");
-            Scholarship1.setScholarshipName("Hitting The Griddy Scholarship");
-
             List<String[]> ReportData = readCSV("src/Test-Reports/ApplicationInfo1.csv");
             for (int i = 1; i < ReportData.size(); i++) {
                 String[] strings = ReportData.get(i);
                 //Question, Answer
-                ApplicationReport1.addPair(strings[0], strings[1]);
+                ApplicationReport1.addPair(strings[0],strings[1]);
             }
         }
         catch (Exception e) {
@@ -74,10 +74,46 @@ public class ApplicationReportTest {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        Scholarship Scholarship2 = new Scholarship();
+        Student Student2 = new Student();
+        ApplicationData ApplicationReport2 = new ApplicationData();
+
+        // Test 2
+        Student2.setName("Jorge Del Rio");
+        Scholarship2.setScholarshipName("What In The Graddle?");
+        try {
+            List<String[]> ReportData = readCSV("src/Test-Reports/ApplicationInfo2.csv");
+            for (int i = 1; i < ReportData.size(); i++) {
+                String[] strings = ReportData.get(i);
+                //Question, Answer
+                ApplicationReport2.addPair(strings[0],strings[1]);
+            }
+        }
+        catch (Exception e) {
+            System.out.println("Could not read Report " + e.getMessage());
+        }
         
-        Scholarship1 = new Scholarship();
-        ApplicationReport1 = new ApplicationData();
-        Student1 = new Student();
+        ApplicationReportGenerator ApplicationRepo2 = new ApplicationReportGenerator(Scholarship2,Student2,ApplicationReport2);
+        final String ApplicationReportFile2 = ApplicationRepo2.writeToFile();
+        final String ApplicationReportTestFile2 = "src/Test-Reports/ApplicationInfo2.csv";
+
+        try {
+            // Read data from CSV files
+            List<String[]> DataRead = readCSV(ApplicationReportFile2);
+            List<String[]> DataCompare = readCSV(ApplicationReportTestFile2);
+
+            // Compare data
+            if (compareCSVData(DataRead, DataCompare)) {
+                System.out.println("Test 2 Passed");
+            } 
+            else {
+                System.out.println("Test 2 Failed");
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
         
     }
 }
