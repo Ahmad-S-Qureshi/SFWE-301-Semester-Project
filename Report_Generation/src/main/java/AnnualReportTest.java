@@ -46,7 +46,6 @@ public class AnnualReportTest {
                 String[] strings = ReportData.get(i);
                 AnnualRepoData.add(new Scholarship(strings[0],Integer.parseInt(strings[1]),strings[2],strings[3],strings[4],strings[5]));    
             }
-
         }
         catch (Exception e) {
             System.out.println("Could not read Report");
