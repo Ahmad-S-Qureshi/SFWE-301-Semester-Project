@@ -11,6 +11,7 @@ public class ScholarshipReportGenerator extends ReportGenerator {
     protected String filepath;
     protected String filePrefix;
     protected String reportDate;
+    protected static int fileNum = 1;
 
     public ScholarshipReportGenerator(ArrayList<Scholarship> scholarship) {
         this.filepath = "src/Reports/ScholarshipReports/";
@@ -24,13 +25,14 @@ public class ScholarshipReportGenerator extends ReportGenerator {
 
     public String writeToFile() {
         try {
-            String completeFilePath = this.filepath + filePrefix + reportDate + ".csv";
+            String completeFilePath = this.filepath + filePrefix + reportDate + fileNum + ".csv";
             File newAnnualReport = new File(completeFilePath);
             System.out.println(newAnnualReport.createNewFile());
             FileWriter ReportWriter = new FileWriter(completeFilePath);
             ReportWriter.write(parseData());
             ReportWriter.close();
             System.out.println("Report Generated");
+            ScholarshipReportGenerator.fileNum++;
             return completeFilePath;
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -42,13 +44,8 @@ public class ScholarshipReportGenerator extends ReportGenerator {
         String reportString = "Donor Contact, Scholarship Name, Amount, Deadline\n";
         LocalDate currentDate = LocalDate.now();
 
-        for (Scholarship data : scholarshipData) {  // Use the instance variable
-            LocalDate disbursementDate = LocalDate.parse(data.getDisbursementDate());
-
-            if (disbursementDate.isAfter(currentDate)) {
-                reportString += data.getDonorContact() + "," + data.getScholarshipName() + "," + data.getPayout() + "," +
-                        data.getDeadline() + "\n";
-            }
+        for (Scholarship data : scholarshipData) {  // Use the instance variable 
+            reportString += data.getDonorContact() + "," + data.getScholarshipName() + "," + data.getPayout() + "," +data.getDeadline() + "\n";
         }
         return reportString;
     }

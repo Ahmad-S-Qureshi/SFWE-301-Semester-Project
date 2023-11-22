@@ -6,11 +6,12 @@ import java.io.FileReader;
 import java.util.List;
 import main.java.*;
 
-public class AnnualReportTest {
+public class ScholarshipReportTest{
 
     private static List<String[]> readCSV(String filePath) throws IOException {
+    
         try (CSVReader reader = new CSVReader(new FileReader(filePath))) {
-            return reader.readAll();
+        return reader.readAll();
         }
         catch (Exception e) {
             return null;
@@ -36,29 +37,29 @@ public class AnnualReportTest {
 
     public static void main(String[] args) {
 
-        
-        ArrayList<Scholarship> AnnualRepoData = new ArrayList<Scholarship>();
-        
-        //Annual Report Test 1  
+        ArrayList<Scholarship> ScholarshipRepo = new ArrayList<Scholarship>();
+
+        // Test 1
         try {
-            List<String[]> ReportData = readCSV("src/Test-Reports/AnnualReportTest1.csv");
+            List<String[]> ReportData = readCSV("src/Test-Reports/ScholarshipInfo1.csv");
             for (int i = 1; i < ReportData.size(); i++) {
                 String[] strings = ReportData.get(i);
-                AnnualRepoData.add(new Scholarship(strings[0],Integer.parseInt(strings[1]),strings[2],strings[3],strings[4],strings[5]));    
+                //Donor Contact, Scholarship Name, Amount, Deadline
+                ScholarshipRepo.add(new Scholarship(strings[1],Integer.parseInt(strings[2]),strings[3],"NA","NA","NA",strings[0]));  
             }
         }
         catch (Exception e) {
-            System.out.println("Could not read Report");
+            System.out.println("Could not read Report " + e.getMessage());
         }
-         
-        AnnualReportGenerator AnnualRepo1 = new AnnualReportGenerator(AnnualRepoData,2024);
-        final String AnnualReportFileGen1 = AnnualRepo1.writeToFile();
-        final String AnnualReportTestFile1 = "src/Test-Reports/AnnualReportTest1.csv";
-      
-         try {
+        
+        ScholarshipReportGenerator ScholarshipRepo1 = new ScholarshipReportGenerator(ScholarshipRepo);
+        final String ScholarshipReportFile1 = ScholarshipRepo1.writeToFile();
+        final String ScholarshipReportTestFile1 = "src/Test-Reports/ScholarshipInfo1.csv";
+
+        try {
             // Read data from CSV files
-            List<String[]> DataRead = readCSV(AnnualReportFileGen1);
-            List<String[]> DataCompare = readCSV(AnnualReportTestFile1);
+            List<String[]> DataRead = readCSV(ScholarshipReportFile1);
+            List<String[]> DataCompare = readCSV(ScholarshipReportTestFile1);
 
             // Compare data
             if (compareCSVData(DataRead, DataCompare)) {
@@ -71,26 +72,29 @@ public class AnnualReportTest {
             e.printStackTrace();
         }
 
-        //Annual Report Test 2  
+        ScholarshipRepo = new ArrayList<Scholarship>();
+
+        // Test 2
         try {
-            List<String[]> ReportData = readCSV("src/Test-Reports/AnnualReportTest2.csv");
+            List<String[]> ReportData = readCSV("src/Test-Reports/ScholarshipInfo2.csv");
             for (int i = 1; i < ReportData.size(); i++) {
                 String[] strings = ReportData.get(i);
-                AnnualRepoData.add(new Scholarship(strings[0],Integer.parseInt(strings[1]),strings[2],strings[3],strings[4],strings[5]));    
+                //Donor Contact, Scholarship Name, Amount, Deadline
+                ScholarshipRepo.add(new Scholarship(strings[1],Integer.parseInt(strings[2]),strings[3],"NA","NA","NA",strings[0]));  
             }
         }
         catch (Exception e) {
-            System.out.println("Could not read Report");
+            System.out.println("Could not read Report " + e.getMessage());
         }
-          
-        AnnualReportGenerator AnnualRepo2 = new AnnualReportGenerator(AnnualRepoData,2023);
-        final String AnnualReportFileGen2 = AnnualRepo2.writeToFile();
-        final String AnnualReportTestFile2 = "src/Test-Reports/AnnualReportTest2.csv";
-      
-         try {
+        
+        ScholarshipReportGenerator ScholarshipRepo2 = new ScholarshipReportGenerator(ScholarshipRepo);
+        final String ScholarshipReportFile2 = ScholarshipRepo2.writeToFile();
+        final String ScholarshipReportTestFile2 = "src/Test-Reports/ScholarshipInfo2.csv";
+
+        try {
             // Read data from CSV files
-            List<String[]> DataRead = readCSV(AnnualReportFileGen2);
-            List<String[]> DataCompare = readCSV(AnnualReportTestFile2);
+            List<String[]> DataRead = readCSV(ScholarshipReportFile2);
+            List<String[]> DataCompare = readCSV(ScholarshipReportTestFile2);
 
             // Compare data
             if (compareCSVData(DataRead, DataCompare)) {
@@ -102,6 +106,5 @@ public class AnnualReportTest {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 }

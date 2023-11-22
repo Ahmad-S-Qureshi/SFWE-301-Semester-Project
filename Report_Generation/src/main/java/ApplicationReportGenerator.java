@@ -19,7 +19,6 @@ public class ApplicationReportGenerator extends ReportGenerator {
     private Scholarship scholarship;
     private Student student;
     private ApplicationData questions;
-    private static int reportNum = 1;
 
 // schlarship, studnet
     /**
@@ -34,7 +33,7 @@ public class ApplicationReportGenerator extends ReportGenerator {
         this.scholarship = scholarship;
         this.student = student;
         this.questions = data;
-        this.filePrefix = "ApplicationReport";
+        this.filePrefix = scholarship.getScholarshipName();
     }
 
     /**
@@ -44,14 +43,13 @@ public class ApplicationReportGenerator extends ReportGenerator {
     @Override
     public String writeToFile() {
         try {
-            String completeFilePath = this.filepath + filePrefix + "_" + reportNum + ".csv";
+            String completeFilePath = this.filepath + filePrefix + "_" + this.student +".csv";
             File newAnnualReport = new File(completeFilePath);
             System.out.println(newAnnualReport.createNewFile());
             FileWriter ReportWriter = new FileWriter(completeFilePath);
             ReportWriter.write(parseData());
             System.out.println("Printed " + parseData());
             ReportWriter.close();
-            reportNum++;
             System.out.println("Report Generated");
             return completeFilePath;
         } catch (Exception e) {
