@@ -29,7 +29,7 @@ public class MatchingReportGenerator extends ReportGenerator {
      * @param year    The year for which the annual report is generated.
      */
     public MatchingReportGenerator(ArrayList<Scholarship> scholarshipData, ArrayList<Student> studentData) {
-        this.filepath = "src/Reports/AnnualReports/";
+        this.filepath = "src/Reports/MatchingReport/";
         this.scholarshipData = scholarshipData;
         this.studentData = studentData;
         this.filePrefix = "MatchingReport";
