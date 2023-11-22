@@ -29,7 +29,7 @@ public class ApplicationReportGenerator extends ReportGenerator {
      * @param year    The year for which the annual report is generated.
      */
     public ApplicationReportGenerator(Scholarship scholarship, Student student, ApplicationData data) {
-        this.filepath = "src/Reports/ApplicationReport/";
+        this.filepath = "src/Reports/ApplicationReports/";
         this.scholarship = scholarship;
         this.student = student;
         this.questions = data;
