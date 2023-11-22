@@ -37,11 +37,12 @@ public class AnnualReportGenerator extends ReportGenerator {
         try {
             String completeFilePath = this.filepath + filePrefix + "_" + year + ".csv";
             File newAnnualReport = new File(completeFilePath);
-            System.out.println(newAnnualReport.createNewFile());
+            //System.out.println(newAnnualReport.createNewFile());
             FileWriter ReportWriter = new FileWriter(completeFilePath);
             ReportWriter.write(parseData());
-            System.out.println("Printed " + parseData());
+            //System.out.println("Printed " + parseData());
             ReportWriter.close();
+            //System.out.print(AnnualReportGenerator.scholarships.size());
             System.out.println("Report Generated");
             return completeFilePath;
         } catch (Exception e) {
@@ -58,11 +59,11 @@ public class AnnualReportGenerator extends ReportGenerator {
      */
     @Override
     public String parseData() {
-        String reportString = "Scholarship name, Amount Rewarded, Deadline, Disbursment Date, Required Info, Prefered Major(s)\n";
+        String reportString = "Scholarship Name,Amount Rewarded,Deadline,Disbursement Date,Required Info,Preferred Major(s)\n";
         for (Scholarship data : AnnualReportGenerator.scholarships) {
             if (data.getDisbursementDate().substring(0,4).equals(Integer.toString(year))){
             reportString = reportString + data.getScholarshipName() + "," + Integer.toString(data.getPayout()) + "," +
-                    data.getDeadline() + "," + data.getDisbursementDate() + ", " + data.getCustomRequiredInfo() + ", " + data.getPreferedMajors() + "\n";
+                    data.getDeadline() + "," + data.getDisbursementDate() + "," + data.getCustomRequiredInfo() + "," + data.getPreferedMajors() + "\n";
             }
         }
         return reportString;

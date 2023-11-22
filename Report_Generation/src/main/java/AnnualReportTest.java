@@ -37,15 +37,28 @@ public class AnnualReportTest {
     public static void main(String[] args) {
 
         
-        AnnualReportGenerator AnnualRepo = new AnnualReportGenerator();
+        ArrayList<Scholarship> AnnualRepoData = new ArrayList<Scholarship>();
         
-        final String AnnualReportFileGen = AnnualRepo.writeToFile();
-        final String AnnualReportTestFile1 = "src/Test-Reports/AnnualReportTest1.csv";
+        //Annual Report Test 1  
+        try {
+            List<String[]> ReportData = readCSV("src/Test-Reports/AnnualReportTest1.csv");
+            for (int i = 1; i < ReportData.size(); i++) {
+                String[] strings = ReportData.get(i);
+                AnnualRepoData.add(new Scholarship(strings[0],Integer.parseInt(strings[1]),strings[2],strings[3],strings[4],strings[5]));    
+            }
 
-        //Annual Report Test 1        
+        }
+        catch (Exception e) {
+            System.out.println("Could not read Report");
+        }
+        System.out.println(AnnualRepoData.size());  
+        AnnualReportGenerator AnnualRepo1 = new AnnualReportGenerator(AnnualRepoData,2024);
+        final String AnnualReportFileGen1 = AnnualRepo1.writeToFile();
+        final String AnnualReportTestFile1 = "src/Test-Reports/AnnualReportTest1.csv";
+      
          try {
             // Read data from CSV files
-            List<String[]> DataRead = readCSV(AnnualReportFileGen);
+            List<String[]> DataRead = readCSV(AnnualReportFileGen1);
             List<String[]> DataCompare = readCSV(AnnualReportTestFile1);
 
             // Compare data
@@ -58,5 +71,38 @@ public class AnnualReportTest {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        //Annual Report Test 2  
+        try {
+            List<String[]> ReportData = readCSV("src/Test-Reports/AnnualReportTest2.csv");
+            for (int i = 1; i < ReportData.size(); i++) {
+                String[] strings = ReportData.get(i);
+                AnnualRepoData.add(new Scholarship(strings[0],Integer.parseInt(strings[1]),strings[2],strings[3],strings[4],strings[5]));    
+            }
+        }
+        catch (Exception e) {
+            System.out.println("Could not read Report");
+        }
+          
+        AnnualReportGenerator AnnualRepo2 = new AnnualReportGenerator(AnnualRepoData,2023);
+        final String AnnualReportFileGen2 = AnnualRepo2.writeToFile();
+        final String AnnualReportTestFile2 = "src/Test-Reports/AnnualReportTest2.csv";
+      
+         try {
+            // Read data from CSV files
+            List<String[]> DataRead = readCSV(AnnualReportFileGen2);
+            List<String[]> DataCompare = readCSV(AnnualReportTestFile2);
+
+            // Compare data
+            if (compareCSVData(DataRead, DataCompare)) {
+                System.out.println("Test 2 Passed");
+            } 
+            else {
+                System.out.println("Test 2 Failed");
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 }
