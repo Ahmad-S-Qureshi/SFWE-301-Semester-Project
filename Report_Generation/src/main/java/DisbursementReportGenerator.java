@@ -36,7 +36,7 @@ public class DisbursementReportGenerator extends ReportGenerator {
     @Override
     public String writeToFile() {
         try {
-            String completeFilePath = this.filepath + filePrefix + "_" + scholarship.getScholarshipName() + ".csv";
+            String completeFilePath = this.filepath + filePrefix + "_" + student.getStudentID() + ".csv";
             File newAnnualReport = new File(completeFilePath);
             System.out.println(newAnnualReport.createNewFile());
             FileWriter ReportWriter = new FileWriter(completeFilePath);
@@ -58,10 +58,9 @@ public class DisbursementReportGenerator extends ReportGenerator {
      */
     @Override
     public String parseData() {
-        // TODO -- Fix this thing so it works with the static members.
         String reportString = "Scholarship Name, Student ID, Amount Rewarded, Disbursment Date\n";
-        reportString = reportString + scholarship.getScholarshipName() + "," + student.getStudentID() + ", " + Integer.toString(scholarship.getPayout()) + "," +
-                scholarship.getDisbursementDate() + "\n";
+        reportString = reportString + scholarship.getScholarshipName() + "," + student.getStudentID() + "," + scholarship.getPayout() + "," +
+                scholarship.getDisbursementDate();
         return reportString;
     }
 }
