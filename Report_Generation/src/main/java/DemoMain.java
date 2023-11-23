@@ -1,4 +1,5 @@
 import javax.swing.*;
+import com.opencsv.CSVReader;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -6,26 +7,38 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
 import main.java.JTextFieldWithPlaceholder;
 import main.java.Scholarship;
 import main.java.ScholarshipReportGenerator;
 import main.java.Student;
 import main.java.AnnualReportGenerator;
+import main.java.ApplicationReportGenerator;
 import main.java.DisbursementReportGenerator;
 import main.java.GMailer;
+import main.java.ApplicationData;
 
 
 public class DemoMain extends JFrame {
 
     private JTextField emailField;
     private JTextField nameField;
-    private JTextField scholarshipsField;
-    private JTextField studentsField;
+    private JTextField yearField;
+    //private JTextField scholarshipsField;
     public ArrayList<Scholarship> scholarshipData;
+    //private JTextField studentsField;
 
+    private static List<String[]> readCSV(String filePath) throws IOException {
+        try (CSVReader reader = new CSVReader(new FileReader(filePath))) {
+            return reader.readAll();
+        }
+        catch (Exception e) {
+            return null;
+        }
+    }
     public DemoMain() {
         super("Scholarship Report Generator Demo Form");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -42,6 +55,10 @@ public class DemoMain extends JFrame {
         JLabel nameLabel = new JLabel("Name:");
         nameField = new JTextFieldWithPlaceholder("Enter your name");
 
+        // Yeay
+        JLabel yearLabel = new JLabel("Year:");
+        yearField = new JTextFieldWithPlaceholder("Enter year:");
+
         // // Number of Scholarships
         // JLabel scholarshipsLabel = new JLabel("Number of Scholarships:");
         // scholarshipsField = new JTextFieldWithPlaceholder("Enter the number of scholarships");
@@ -55,10 +72,12 @@ public class DemoMain extends JFrame {
         panel.add(emailField);
         panel.add(nameLabel);
         panel.add(nameField);
+        panel.add(yearLabel);
+        panel.add(yearField);
         //panel.add(scholarshipsLabel);
-        panel.add(scholarshipsField);
+        //panel.add(scholarshipsField);
         //panel.add(studentsLabel);
-        panel.add(studentsField);
+        //panel.add(studentsField);
 
 
         // Submit Button
@@ -66,13 +85,36 @@ public class DemoMain extends JFrame {
         annualReportButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                        AnnualReportGenerator generator = new AnnualReportGenerator(scholarshipData, 2022);
-                        String path = generator.writeToFile();
-                        System.out.println("Generated " + scholarshipData.size() + " Scholarships");
+                        ArrayList<Scholarship> AnnualRepoData = new ArrayList<Scholarship>();
+                        
                         try {
-                            new GMailer().sendMail("Annual Report", "We are the best Report Team!", new File(path), emailField.getText());
-                        } catch (Exception a) {
+                            if(Integer.parseInt(yearField.getText())==2023){
+                                List<String[]> ReportData = readCSV("src/Test-Reports/AnnualReportTest2.csv");
+                                for (int i = 1; i < ReportData.size(); i++) {
+                                    String[] strings = ReportData.get(i);
+                                    AnnualRepoData.add(new Scholarship(strings[0],Integer.parseInt(strings[1]),strings[2],strings[3],strings[4],strings[5]));    
+                                }
+                            }
+                            else if(Integer.parseInt(yearField.getText())==2024){
+                                List<String[]> ReportData = readCSV("src/Test-Reports/AnnualReportTest1.csv");
+                                for (int i = 1; i < ReportData.size(); i++) {
+                                    String[] strings = ReportData.get(i);
+                                    AnnualRepoData.add(new Scholarship(strings[0],Integer.parseInt(strings[1]),strings[2],strings[3],strings[4],strings[5]));    
+                                }
+                            }
+                        }
+                        catch (Exception a) {
+                            System.out.println("Could not read Report");
+                            System.out.println(a.getMessage());
+                        }
 
+                        AnnualReportGenerator generator = new AnnualReportGenerator(AnnualRepoData, Integer.parseInt(yearField.getText()));
+                        String path = generator.writeToFile();
+                        
+                        try {
+                            new GMailer().sendMail("Annual Report " + yearField.getText(), "This is the Annual Report for the year "+yearField.getText(), new File(path), emailField.getText());
+                        } catch (Exception a) {
+                            System.out.println(a.getMessage());
                         }
                     }
                 });
@@ -82,15 +124,53 @@ public class DemoMain extends JFrame {
         disbursementButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Random rand = new Random();
-                Student tempStudent = new Student("unknown", 0, "" + rand.nextInt(scholarshipData.size()));
-                DisbursementReportGenerator generator = new DisbursementReportGenerator(tempStudent, scholarshipData.get(rand.nextInt(scholarshipData.size())));
-                String path = generator.writeToFile();
-                System.out.println("Generated " + scholarshipData.size() + " Scholarships");
+                Student Student = new Student();
+                Scholarship Scholarship = new Scholarship();
+        
                 try {
-                    new GMailer().sendMail("Disbursement Report", "We are the best Report Team!", new File(path), emailField.getText());
+                    if(nameField.getText().equalsIgnoreCase("Jorge Del Rio")){
+                        List<String[]> ReportData = readCSV("src/Test-Reports/DisbursementTest1.csv");
+                        for (int i = 1; i < 2; i++) {
+                            String[] strings = ReportData.get(i);
+                            Scholarship.setScholarshipName(strings[0]);
+                            Student.setStudentID(strings[1]);
+                            Scholarship.setPayout(Integer.parseInt(strings[2]));
+                            Scholarship.setDisbursementDate(strings[3]);
+                        }
+                    }
+                    else if (nameField.getText().equalsIgnoreCase("Favorite Student")) {
+                        List<String[]> ReportData = readCSV("src/Test-Reports/DisbursementTest2.csv");
+                        for (int i = 1; i < 2; i++) {
+                            String[] strings = ReportData.get(i);
+                            Scholarship.setScholarshipName(strings[0]);
+                            Student.setStudentID(strings[1]);
+                            Scholarship.setPayout(Integer.parseInt(strings[2]));
+                            Scholarship.setDisbursementDate(strings[3]);
+                        }
+                    }
+                    else if (nameField.getText().equalsIgnoreCase("Gradle")) {
+                        List<String[]> ReportData = readCSV("src/Test-Reports/DisbursementTest3.csv");
+                        for (int i = 1; i < 2; i++) {
+                            String[] strings = ReportData.get(i);
+                            Scholarship.setScholarshipName(strings[0]);
+                            Student.setStudentID(strings[1]);
+                            Scholarship.setPayout(Integer.parseInt(strings[2]));
+                            Scholarship.setDisbursementDate(strings[3]);
+                        }
+                    }
+                }
+                catch (Exception a) {
+                    System.out.println("Could not read Report " + a.getMessage());
+                }     
+                
+                DisbursementReportGenerator generator = new DisbursementReportGenerator(Student, Scholarship);
+                String path = generator.writeToFile();
+                //System.out.println("Generated " + scholarshipData.size() + " Scholarships");
+                
+                try {
+                    new GMailer().sendMail("Disbursement Report", "This is the Disbursement for " + Student.getName(), new File(path), emailField.getText());
                 } catch (Exception a) {
-
+                    System.out.println(a.getMessage());
                 }
             }
         });
@@ -100,14 +180,27 @@ public class DemoMain extends JFrame {
         scholarshipButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                ScholarshipReportGenerator generator = new ScholarshipReportGenerator(scholarshipData);
+                ArrayList<Scholarship> ScholarshipRepo = new ArrayList<Scholarship>();
+
+                try {
+                    List<String[]> ReportData = readCSV("src/Test-Reports/ScholarshipInfo1.csv");
+                    for (int i = 1; i < ReportData.size(); i++) {
+                        String[] strings = ReportData.get(i);
+                        //Donor Contact, Scholarship Name, Amount, Deadline
+                        ScholarshipRepo.add(new Scholarship(strings[1],Integer.parseInt(strings[2]),strings[3],"NA","NA","NA",strings[0]));  
+                    }
+                }
+                catch (Exception a) {
+                    System.out.println("Could not read Report " + a.getMessage());
+                }
+                
+                ScholarshipReportGenerator generator = new ScholarshipReportGenerator(ScholarshipRepo);
                 String path = generator.writeToFile();
                 try {
                     new GMailer().sendMail("Scholarship Report", "We are the best Report Team!", new File(path), emailField.getText());
                 } catch (Exception a) {
-
+                    System.out.println(a.getMessage());
                 }
-
             }
         });
 
@@ -116,15 +209,48 @@ public class DemoMain extends JFrame {
         applicationButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
+                Scholarship Scholarship = new Scholarship();
+                Student Student = new Student();
+                ApplicationData ApplicationReport = new ApplicationData();
+
                 // Handle submission logic here
                 String email = emailField.getText();
                 String name = nameField.getText();
-                String scholarships = scholarshipsField.getText();
+                //String scholarships = scholarshipsField.getText();
 
-                // Print or process the data as needed
-                System.out.println("Email: " + email);
-                System.out.println("Name: " + name);
-                System.out.println("Number of Scholarships: " + scholarships);
+                Student.setName(name);
+                try {
+                    if(name.equalsIgnoreCase("Jorge Del Rio")){
+                        Scholarship.setScholarshipName("Sharon Donates to Broke College Students");
+                        List<String[]> ReportData = readCSV("src/Test-Reports/ApplicationInfo1.csv");
+                        for (int i = 1; i < ReportData.size(); i++) {
+                            String[] strings = ReportData.get(i);
+                            //Question, Answer
+                            ApplicationReport.addPair(strings[0],strings[1]);
+                        }
+                    }
+                    else {
+                        Scholarship.setScholarshipName("Hitting the Griddy");
+                        List<String[]> ReportData = readCSV("src/Test-Reports/ApplicationInfo2.csv");
+                        for (int i = 1; i < ReportData.size(); i++) {
+                            String[] strings = ReportData.get(i);
+                            //Question, Answer
+                            ApplicationReport.addPair(strings[0],strings[1]);
+                        }
+                    }
+                }
+                catch (Exception a) {
+                    System.out.println("Could not read Report " + a.getMessage());
+                }
+                
+                ApplicationReportGenerator generator = new ApplicationReportGenerator(Scholarship,Student,ApplicationReport);
+                String path = generator.writeToFile();
+                try {
+                    new GMailer().sendMail("Applicant Report", "These are the answers from "+Student.getName()+" to the scholarship "+Scholarship.getScholarshipName(), new File(path), email);
+                } catch (Exception a) {
+                    System.out.println(a.getMessage());
+                }
             }
         });
         
@@ -133,13 +259,11 @@ public class DemoMain extends JFrame {
             @Override
 
             public void actionPerformed(ActionEvent e) {
-                
                         // Create an ArrayList to store dummy scholarships
                         scholarshipData = new ArrayList<>();
 
                         // Generate a specified number of random scholarships and add them to the ArrayList
                         generateRandomScholarships(scholarshipData, 3150);
-
             }
         });
 
@@ -161,6 +285,7 @@ public class DemoMain extends JFrame {
         for (int i = 0; i < numberOfScholarships; i++) {
             scholarships.add(generateRandomScholarship(scholarships));
         }
+
     }
 
     /**

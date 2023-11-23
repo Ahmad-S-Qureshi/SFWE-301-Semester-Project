@@ -25,7 +25,7 @@ public class ScholarshipReportGenerator extends ReportGenerator {
 
     public String writeToFile() {
         try {
-            String completeFilePath = this.filepath + filePrefix + reportDate + fileNum + ".csv";
+            String completeFilePath = this.filepath + filePrefix + reportDate +" "+fileNum + ".csv";
             File newAnnualReport = new File(completeFilePath);
             //System.out.println(newAnnualReport.createNewFile());
             FileWriter ReportWriter = new FileWriter(completeFilePath);
