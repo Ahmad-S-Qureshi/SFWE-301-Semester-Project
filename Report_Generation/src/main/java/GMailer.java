@@ -123,11 +123,11 @@ public class GMailer {
         Message msg = new Message();
         msg.setRaw(encodedEmail);
 
-        System.out.println("Attempting Sending Email");
+        //System.out.println("Attempting Sending Email");
         try {
             msg = service.users().messages().send("me", msg).execute();
-            System.out.println("Message id: " + msg.getId());
-            System.out.println(msg.toPrettyString());
+            //System.out.println("Message id: " + msg.getId());
+            //System.out.println(msg.toPrettyString());
         } catch (GoogleJsonResponseException e) {
             GoogleJsonError error = e.getDetails();
             if (error.getCode() == 403) {
@@ -145,9 +145,11 @@ public class GMailer {
      * @throws Exception if an error occurs during execution
      */
     // public static void main(String[] args) throws Exception {
-    //     File attachment = new File("attachment.jpg");
-    //     new GMailer().sendMail("Hi From Java", "This was sent from Java!\nAhmad's team is making good progress",
-    //             attachment, "ahmadsqureshi@arizona.edu");
+        
+        // // Test 1
+        // File attachment = new File("src/Test-Reports/AnnualReportTest1.csv");
+        // new GMailer().sendMail("Hi From Java", "This was sent from Java!\nWE COOKIN",
+        //         attachment, "jorgedelrio@arizona.edu");
     // }
 
 }
