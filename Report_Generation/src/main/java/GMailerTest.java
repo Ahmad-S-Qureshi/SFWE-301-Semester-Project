@@ -54,10 +54,10 @@ public class GMailerTest {
         
         final String EmailAddress = "jorgedelrio@arizona.edu";
         
-        // Used for Annual Report Email Tests
+        // Used for Report Email Tests
         ArrayList<Scholarship> AnnualRepoData = new ArrayList<Scholarship>();
-        
-        // Used for Application Report Email Tests
+        ArrayList<Scholarship> ScholarshipList = new ArrayList<Scholarship>();
+        ArrayList<Student> StudentData = new ArrayList<Student>(); //could be used to check student name and ID
         Scholarship Scholarship = new Scholarship();
         Student Student = new Student();
         ApplicationData ApplicationReport = new ApplicationData();
@@ -192,6 +192,198 @@ public class GMailerTest {
 
         //----------------------------------------------------------------------------------------------------------------------------------------------//
 
+        //Disbursement Report Email Test 1  
+        try {
+            List<String[]> ReportData = readCSV("src/Test-Reports/DisbursementTest1.csv");
+            for (int i = 1; i < 2; i++) {
+                String[] strings = ReportData.get(i);
+                Scholarship.setScholarshipName(strings[0]);
+                Student.setStudentID(strings[1]);
+                Scholarship.setPayout(Integer.parseInt(strings[2]));
+                Scholarship.setDisbursementDate(strings[3]);
+            }
+        }
+        catch (Exception e) {
+            System.out.println("Could not read Report " + e.getMessage());
+        }
+         
+        DisbursementReportGenerator DisbursementRepo1 = new DisbursementReportGenerator(Student,Scholarship);
+        final String DisbursementReportFileGen1 = DisbursementRepo1.writeToFile();
+        
+        try {
+            new GMailer().sendMail("Disbursement Report", "Here is the Disbursement Report", new File(DisbursementReportFileGen1), EmailAddress);
+            System.out.println("Disbursement Report Sent! Please check your email inbox");
+            System.out.println("Test 5 passed");
+        } catch (Exception a) {
+            System.out.println("Disbursement Report NOT Sent.");
+            System.out.println("Test 5 Failed");
+            System.out.println(a.getMessage());
+        }
+
+        Scholarship = new Scholarship(); // reset for new test
+        Student = new Student(); // reset for new test
+
+        //----------------------------------------------------------------------------------------------------------------------------------------------//
+        
+        //Disbursement Report Email Test 2  
+        try {
+            List<String[]> ReportData = readCSV("src/Test-Reports/DisbursementTest2.csv");
+            for (int i = 1; i < 2; i++) {
+                String[] strings = ReportData.get(i);
+                Scholarship.setScholarshipName(strings[0]);
+                Student.setStudentID(strings[1]);
+                Scholarship.setPayout(Integer.parseInt(strings[2]));
+                Scholarship.setDisbursementDate(strings[3]);
+            }
+        }
+        catch (Exception e) {
+            System.out.println("Could not read Report " + e.getMessage());
+        }
+         
+        DisbursementReportGenerator DisbursementRepo2 = new DisbursementReportGenerator(Student,Scholarship);
+        final String DisbursementReportFileGen2 = DisbursementRepo2.writeToFile();
+        
+        try {
+            new GMailer().sendMail("Disbursement Report", "Here is the Disbursement Report", new File(DisbursementReportFileGen2), EmailAddress);
+            System.out.println("Disbursement Report Sent! Please check your email inbox");
+            System.out.println("Test 6 passed");
+        } catch (Exception a) {
+            System.out.println("Disbursement Report NOT Sent.");
+            System.out.println("Test 6 Failed");
+            System.out.println(a.getMessage());
+        }
+
+        Scholarship = new Scholarship(); // reset for new test
+        Student = new Student(); // reset for new test
+        
+        //----------------------------------------------------------------------------------------------------------------------------------------------//
+        
+        //Disbursement Report Email Test 3  
+        try {
+            List<String[]> ReportData = readCSV("src/Test-Reports/DisbursementTest3.csv");
+            for (int i = 1; i < 2; i++) {
+                String[] strings = ReportData.get(i);
+                Scholarship.setScholarshipName(strings[0]);
+                Student.setStudentID(strings[1]);
+                Scholarship.setPayout(Integer.parseInt(strings[2]));
+                Scholarship.setDisbursementDate(strings[3]);
+            }
+        }
+        catch (Exception e) {
+            System.out.println("Could not read Report " + e.getMessage());
+        }
+         
+        DisbursementReportGenerator DisbursementRepo3 = new DisbursementReportGenerator(Student,Scholarship);
+        final String DisbursementReportFileGen3 = DisbursementRepo3.writeToFile();
+        
+        try {
+            new GMailer().sendMail("Disbursement Report", "Here is the Disbursement Report", new File(DisbursementReportFileGen3), EmailAddress);
+            System.out.println("Disbursement Report Sent! Please check your email inbox");
+            System.out.println("Test 7 passed");
+        } catch (Exception a) {
+            System.out.println("Disbursement Report NOT Sent.");
+            System.out.println("Test 7 Failed");
+            System.out.println(a.getMessage());
+        }
+
+        Scholarship = new Scholarship(); // reset for new test
+        Student = new Student(); // reset for new test
+        
+        //----------------------------------------------------------------------------------------------------------------------------------------------//
+ 
+        // Matching Report Email Test 1
+        try {
+            List<String[]> ReportData = readCSV("src/Test-Reports/MatchingReportTest1.csv");
+            for (int i = 1; i < ReportData.size(); i++) {
+                String[] strings = ReportData.get(i);
+                if (strings[2].equalsIgnoreCase("Yes")) {
+                    ScholarshipList.add(new Scholarship(strings[0],Integer.parseInt(strings[1])));
+                }
+            }
+        }
+        catch (Exception e) {
+            System.out.println("Could not read Report");
+        }
+
+        MatchingReportGenerator MatchingRepo1 = new MatchingReportGenerator(ScholarshipList, StudentData);
+        final String MatchingRepoFile1 = MatchingRepo1.writeToFile();
+
+        try {
+            new GMailer().sendMail("Matching Report", "Here is the Matching Report", new File(MatchingRepoFile1), EmailAddress);
+            System.out.println("Matching Report Sent! Please check your email inbox");
+            System.out.println("Test 8 passed");
+        } catch (Exception a) {
+            System.out.println("Matching Report NOT Sent.");
+            System.out.println("Test 8 Failed");
+            System.out.println(a.getMessage());
+        }
+
+        ScholarshipList = new ArrayList<Scholarship>(); // reset for new test
+
+        //----------------------------------------------------------------------------------------------------------------------------------------------/
+
+        // Matching Report Email Test 2
+        try {
+            List<String[]> ReportData = readCSV("src/Test-Reports/MatchingReportTest2.csv");
+            for (int i = 1; i < ReportData.size(); i++) {
+                String[] strings = ReportData.get(i);
+                if (strings[2].equalsIgnoreCase("Yes")) {
+                    ScholarshipList.add(new Scholarship(strings[0],Integer.parseInt(strings[1])));
+                }
+            }
+        }
+        catch (Exception e) {
+            System.out.println("Could not read Report");
+        }
+
+        MatchingReportGenerator MatchingRepo2 = new MatchingReportGenerator(ScholarshipList, StudentData);
+        final String MatchingRepoFile2 = MatchingRepo2.writeToFile();
+
+        try {
+            new GMailer().sendMail("Matching Report", "Here is the Matching Report", new File(MatchingRepoFile2), EmailAddress);
+            System.out.println("Matching Report Sent! Please check your email inbox");
+            System.out.println("Test 9 passed");
+        } catch (Exception a) {
+            System.out.println("Matching Report NOT Sent.");
+            System.out.println("Test 9 Failed");
+            System.out.println(a.getMessage());
+        }
+
+        ScholarshipList = new ArrayList<Scholarship>(); // reset for new test
+
+        //----------------------------------------------------------------------------------------------------------------------------------------------/
+
+        // Matching Report Email Test 3
+        try {
+            List<String[]> ReportData = readCSV("src/Test-Reports/MatchingReportTest3.csv");
+            for (int i = 1; i < ReportData.size(); i++) {
+                String[] strings = ReportData.get(i);
+                if (strings[2].equalsIgnoreCase("Yes")) {
+                    ScholarshipList.add(new Scholarship(strings[0],Integer.parseInt(strings[1])));
+                }
+            }
+        }
+        catch (Exception e) {
+            System.out.println("Could not read Report");
+        }
+
+        MatchingReportGenerator MatchingRepo3 = new MatchingReportGenerator(ScholarshipList, StudentData);
+        final String MatchingRepoFile3 = MatchingRepo3.writeToFile();
+
+        try {
+            new GMailer().sendMail("Matching Report", "Here is the Matching Report", new File(MatchingRepoFile3), EmailAddress);
+            System.out.println("Matching Report Sent! Please check your email inbox");
+            System.out.println("Test 10 passed");
+        } catch (Exception a) {
+            System.out.println("Matching Report NOT Sent.");
+            System.out.println("Test 10 Failed");
+            System.out.println(a.getMessage());
+        }
+
+        ScholarshipList = new ArrayList<Scholarship>(); // reset for new test
+
+        //----------------------------------------------------------------------------------------------------------------------------------------------/
+    
         
     }
 }
