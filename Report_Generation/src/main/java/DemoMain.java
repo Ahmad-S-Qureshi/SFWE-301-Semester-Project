@@ -42,22 +42,22 @@ public class DemoMain extends JFrame {
         JLabel nameLabel = new JLabel("Name:");
         nameField = new JTextFieldWithPlaceholder("Enter your name");
 
-        // Number of Scholarships
-        JLabel scholarshipsLabel = new JLabel("Number of Scholarships:");
-        scholarshipsField = new JTextFieldWithPlaceholder("Enter the number of scholarships");
+        // // Number of Scholarships
+        // JLabel scholarshipsLabel = new JLabel("Number of Scholarships:");
+        // scholarshipsField = new JTextFieldWithPlaceholder("Enter the number of scholarships");
 
-        // Number of Students
-        JLabel studentsLabel = new JLabel("Number of Students:");
-        studentsField = new JTextFieldWithPlaceholder("Enter the number of students");
+        // // Number of Students
+        // JLabel studentsLabel = new JLabel("Number of Students:");
+        // studentsField = new JTextFieldWithPlaceholder("Enter the number of students");
 
         // Add components to the panel
         panel.add(emailLabel);
         panel.add(emailField);
         panel.add(nameLabel);
         panel.add(nameField);
-        panel.add(scholarshipsLabel);
+        //panel.add(scholarshipsLabel);
         panel.add(scholarshipsField);
-        panel.add(studentsLabel);
+        //panel.add(studentsLabel);
         panel.add(studentsField);
 
 

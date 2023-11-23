@@ -43,7 +43,7 @@ public class AnnualReportGenerator extends ReportGenerator {
             //System.out.println("Printed " + parseData());
             ReportWriter.close();
             //System.out.print(AnnualReportGenerator.scholarships.size());
-            System.out.println("Report Generated");
+            //System.out.println("Report Generated");
             return completeFilePath;
         } catch (Exception e) {
             System.out.println(e.getMessage());

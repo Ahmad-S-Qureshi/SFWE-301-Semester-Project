@@ -57,6 +57,7 @@ public class GMailerTest {
         // Used for Report Email Tests
         ArrayList<Scholarship> AnnualRepoData = new ArrayList<Scholarship>();
         ArrayList<Scholarship> ScholarshipList = new ArrayList<Scholarship>();
+        ArrayList<Scholarship> ScholarshipRepo = new ArrayList<Scholarship>();
         ArrayList<Student> StudentData = new ArrayList<Student>(); //could be used to check student name and ID
         Scholarship Scholarship = new Scholarship();
         Student Student = new Student();
@@ -82,10 +83,10 @@ public class GMailerTest {
 
         try {
             new GMailer().sendMail("Annual Report", "Here is the Annual Report", new File(AnnualReportPath1), EmailAddress);
-            System.out.println("Annual Report Sent! Please check your email inbox");
+            //System.out.println("Annual Report Sent! Please check your email inbox");
             System.out.println("Test 1 passed");
         } catch (Exception a) {
-            System.out.println("Annual Report NOT Sent.");
+            //System.out.println("Annual Report NOT Sent.");
             System.out.println("Test 1 Failed");
             System.out.println(a.getMessage());
         }
@@ -112,10 +113,10 @@ public class GMailerTest {
 
         try {
             new GMailer().sendMail("Annual Report", "Here is the Annual Report", new File(AnnualReportPath2), EmailAddress);
-            System.out.println("Annual Report Sent! Please check your email inbox");
+            //System.out.println("Annual Report Sent! Please check your email inbox");
             System.out.println("Test 2 passed");
         } catch (Exception a) {
-            System.out.println("Annual Report NOT Sent.");
+            //System.out.println("Annual Report NOT Sent.");
             System.out.println("Test 2 Failed");
             System.out.println(a.getMessage());
         }
@@ -144,10 +145,10 @@ public class GMailerTest {
         
         try {
             new GMailer().sendMail("Applicant Report", "Here is the Applicant Report", new File(ApplicationReportFile1), EmailAddress);
-            System.out.println("Applicant Report Sent! Please check your email inbox");
+            //System.out.println("Applicant Report Sent! Please check your email inbox");
             System.out.println("Test 3 passed");
         } catch (Exception a) {
-            System.out.println("Applicant Report NOT Sent.");
+            //System.out.println("Applicant Report NOT Sent.");
             System.out.println("Test 3 Failed");
             System.out.println(a.getMessage());
         }
@@ -178,10 +179,10 @@ public class GMailerTest {
         
         try {
             new GMailer().sendMail("Applicant Report", "Here is the Applicant Report", new File(ApplicationReportFile2), EmailAddress);
-            System.out.println("Applicant Report Sent! Please check your email inbox");
+            //System.out.println("Applicant Report Sent! Please check your email inbox");
             System.out.println("Test 4 passed");
         } catch (Exception a) {
-            System.out.println("Applicant Report NOT Sent.");
+            //System.out.println("Applicant Report NOT Sent.");
             System.out.println("Test 4 Failed");
             System.out.println(a.getMessage());
         }
@@ -212,10 +213,10 @@ public class GMailerTest {
         
         try {
             new GMailer().sendMail("Disbursement Report", "Here is the Disbursement Report", new File(DisbursementReportFileGen1), EmailAddress);
-            System.out.println("Disbursement Report Sent! Please check your email inbox");
+            //System.out.println("Disbursement Report Sent! Please check your email inbox");
             System.out.println("Test 5 passed");
         } catch (Exception a) {
-            System.out.println("Disbursement Report NOT Sent.");
+            //System.out.println("Disbursement Report NOT Sent.");
             System.out.println("Test 5 Failed");
             System.out.println(a.getMessage());
         }
@@ -245,10 +246,10 @@ public class GMailerTest {
         
         try {
             new GMailer().sendMail("Disbursement Report", "Here is the Disbursement Report", new File(DisbursementReportFileGen2), EmailAddress);
-            System.out.println("Disbursement Report Sent! Please check your email inbox");
+            //System.out.println("Disbursement Report Sent! Please check your email inbox");
             System.out.println("Test 6 passed");
         } catch (Exception a) {
-            System.out.println("Disbursement Report NOT Sent.");
+            //System.out.println("Disbursement Report NOT Sent.");
             System.out.println("Test 6 Failed");
             System.out.println(a.getMessage());
         }
@@ -278,10 +279,10 @@ public class GMailerTest {
         
         try {
             new GMailer().sendMail("Disbursement Report", "Here is the Disbursement Report", new File(DisbursementReportFileGen3), EmailAddress);
-            System.out.println("Disbursement Report Sent! Please check your email inbox");
+            //System.out.println("Disbursement Report Sent! Please check your email inbox");
             System.out.println("Test 7 passed");
         } catch (Exception a) {
-            System.out.println("Disbursement Report NOT Sent.");
+            //System.out.println("Disbursement Report NOT Sent.");
             System.out.println("Test 7 Failed");
             System.out.println(a.getMessage());
         }
@@ -310,10 +311,10 @@ public class GMailerTest {
 
         try {
             new GMailer().sendMail("Matching Report", "Here is the Matching Report", new File(MatchingRepoFile1), EmailAddress);
-            System.out.println("Matching Report Sent! Please check your email inbox");
+            //System.out.println("Matching Report Sent! Please check your email inbox");
             System.out.println("Test 8 passed");
         } catch (Exception a) {
-            System.out.println("Matching Report NOT Sent.");
+            //System.out.println("Matching Report NOT Sent.");
             System.out.println("Test 8 Failed");
             System.out.println(a.getMessage());
         }
@@ -341,10 +342,10 @@ public class GMailerTest {
 
         try {
             new GMailer().sendMail("Matching Report", "Here is the Matching Report", new File(MatchingRepoFile2), EmailAddress);
-            System.out.println("Matching Report Sent! Please check your email inbox");
+            //System.out.println("Matching Report Sent! Please check your email inbox");
             System.out.println("Test 9 passed");
         } catch (Exception a) {
-            System.out.println("Matching Report NOT Sent.");
+            //System.out.println("Matching Report NOT Sent.");
             System.out.println("Test 9 Failed");
             System.out.println(a.getMessage());
         }
@@ -372,10 +373,10 @@ public class GMailerTest {
 
         try {
             new GMailer().sendMail("Matching Report", "Here is the Matching Report", new File(MatchingRepoFile3), EmailAddress);
-            System.out.println("Matching Report Sent! Please check your email inbox");
+            //System.out.println("Matching Report Sent! Please check your email inbox");
             System.out.println("Test 10 passed");
         } catch (Exception a) {
-            System.out.println("Matching Report NOT Sent.");
+            //System.out.println("Matching Report NOT Sent.");
             System.out.println("Test 10 Failed");
             System.out.println(a.getMessage());
         }
@@ -384,6 +385,63 @@ public class GMailerTest {
 
         //----------------------------------------------------------------------------------------------------------------------------------------------/
     
+        // Scholarship Report Email Test 1
+        try {
+            List<String[]> ReportData = readCSV("src/Test-Reports/ScholarshipInfo1.csv");
+            for (int i = 1; i < ReportData.size(); i++) {
+                String[] strings = ReportData.get(i);
+                //Donor Contact, Scholarship Name, Amount, Deadline
+                ScholarshipRepo.add(new Scholarship(strings[1],Integer.parseInt(strings[2]),strings[3],"NA","NA","NA",strings[0]));  
+            }
+        }
+        catch (Exception e) {
+            System.out.println("Could not read Report " + e.getMessage());
+        }
         
-    }
+        ScholarshipReportGenerator ScholarshipRepo1 = new ScholarshipReportGenerator(ScholarshipRepo);
+        final String ScholarshipReportFile1 = ScholarshipRepo1.writeToFile();
+        
+        try {
+            new GMailer().sendMail("Scholarship Report", "Here is the Scholarship Report", new File(ScholarshipReportFile1), EmailAddress);
+            //System.out.println("Scholarship Report Sent! Please check your email inbox");
+            System.out.println("Test 11 passed");
+        } catch (Exception a) {
+            //System.out.println("Scholarship Report NOT Sent.");
+            System.out.println("Test 11 Failed");
+            System.out.println(a.getMessage());
+        }
+
+        ScholarshipRepo = new ArrayList<Scholarship>(); // reset for new tests
+
+        //----------------------------------------------------------------------------------------------------------------------------------------------/
+    
+        // Scholarship Report Email Test 2
+        try {
+            List<String[]> ReportData = readCSV("src/Test-Reports/ScholarshipInfo2.csv");
+            for (int i = 1; i < ReportData.size(); i++) {
+                String[] strings = ReportData.get(i);
+                //Donor Contact, Scholarship Name, Amount, Deadline
+                ScholarshipRepo.add(new Scholarship(strings[1],Integer.parseInt(strings[2]),strings[3],"NA","NA","NA",strings[0]));  
+            }
+        }
+        catch (Exception e) {
+            System.out.println("Could not read Report " + e.getMessage());
+        }
+        
+        ScholarshipReportGenerator ScholarshipRepo2 = new ScholarshipReportGenerator(ScholarshipRepo);
+        final String ScholarshipReportFile2 = ScholarshipRepo2.writeToFile();
+        
+        try {
+            new GMailer().sendMail("Scholarship Report", "Here is the Scholarship Report", new File(ScholarshipReportFile2), EmailAddress);
+            //System.out.println("Scholarship Report Sent! Please check your email inbox");
+            System.out.println("Test 12 passed");
+        } catch (Exception a) {
+            //System.out.println("Scholarship Report NOT Sent.");
+            System.out.println("Test 12 Failed");
+            System.out.println(a.getMessage());
+        }
+
+        ScholarshipRepo = new ArrayList<Scholarship>(); // reset for new tests
+
+    }   
 }
