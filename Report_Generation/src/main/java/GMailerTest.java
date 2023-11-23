@@ -53,9 +53,18 @@ public class GMailerTest {
     public static void main(String[] args) {
         
         final String EmailAddress = "jorgedelrio@arizona.edu";
+        
+        // Used for Annual Report Email Tests
         ArrayList<Scholarship> AnnualRepoData = new ArrayList<Scholarship>();
         
-        // Annual Report Test 1
+        // Used for Application Report Email Tests
+        Scholarship Scholarship = new Scholarship();
+        Student Student = new Student();
+        ApplicationData ApplicationReport = new ApplicationData();
+
+        //----------------------------------------------------------------------------------------------------------------------------------------------//
+
+        // Annual Report Email Test 1
         try {
             List<String[]> ReportData = readCSV("src/Test-Reports/AnnualReportTest1.csv");
             for (int i = 1; i < ReportData.size(); i++) {
@@ -83,7 +92,9 @@ public class GMailerTest {
 
         AnnualRepoData = new ArrayList<Scholarship>(); // reset for next test
 
-        // Annual Report Test 2
+        //----------------------------------------------------------------------------------------------------------------------------------------------//
+
+        // Annual Report Email Test 2
         try {
             List<String[]> ReportData = readCSV("src/Test-Reports/AnnualReportTest2.csv");
             for (int i = 1; i < ReportData.size(); i++) {
@@ -110,5 +121,77 @@ public class GMailerTest {
         }
 
         AnnualRepoData = new ArrayList<Scholarship>(); // reset for next test
+        
+        //----------------------------------------------------------------------------------------------------------------------------------------------//
+        
+        // Application Report Email Test 1
+        Student.setName("Jorge Del Rio");
+        Scholarship.setScholarshipName("Hitting The Griddy Scholarship");
+        try {
+            List<String[]> ReportData = readCSV("src/Test-Reports/ApplicationInfo1.csv");
+            for (int i = 1; i < ReportData.size(); i++) {
+                String[] strings = ReportData.get(i);
+                //Question, Answer
+                ApplicationReport.addPair(strings[0],strings[1]);
+            }
+        }
+        catch (Exception e) {
+            System.out.println("Could not read Report " + e.getMessage());
+        }
+        
+        ApplicationReportGenerator ApplicationRepo1 = new ApplicationReportGenerator(Scholarship,Student,ApplicationReport);
+        final String ApplicationReportFile1 = ApplicationRepo1.writeToFile();
+        
+        try {
+            new GMailer().sendMail("Applicant Report", "Here is the Applicant Report", new File(ApplicationReportFile1), EmailAddress);
+            System.out.println("Applicant Report Sent! Please check your email inbox");
+            System.out.println("Test 3 passed");
+        } catch (Exception a) {
+            System.out.println("Applicant Report NOT Sent.");
+            System.out.println("Test 3 Failed");
+            System.out.println(a.getMessage());
+        }
+
+        Scholarship = new Scholarship(); // reset for new test
+        Student = new Student(); // reset for new test
+        ApplicationReport = new ApplicationData(); // reset for new test
+
+        //----------------------------------------------------------------------------------------------------------------------------------------------//
+
+        // Application Report Email Test 2
+        Student.setName("Jorge Del Rio");
+        Scholarship.setScholarshipName("What in the Griddy?");
+        try {
+            List<String[]> ReportData = readCSV("src/Test-Reports/ApplicationInfo2.csv");
+            for (int i = 1; i < ReportData.size(); i++) {
+                String[] strings = ReportData.get(i);
+                //Question, Answer
+                ApplicationReport.addPair(strings[0],strings[1]);
+            }
+        }
+        catch (Exception e) {
+            System.out.println("Could not read Report " + e.getMessage());
+        }
+        
+        ApplicationReportGenerator ApplicationRepo2 = new ApplicationReportGenerator(Scholarship,Student,ApplicationReport);
+        final String ApplicationReportFile2 = ApplicationRepo2.writeToFile();
+        
+        try {
+            new GMailer().sendMail("Applicant Report", "Here is the Applicant Report", new File(ApplicationReportFile2), EmailAddress);
+            System.out.println("Applicant Report Sent! Please check your email inbox");
+            System.out.println("Test 4 passed");
+        } catch (Exception a) {
+            System.out.println("Applicant Report NOT Sent.");
+            System.out.println("Test 4 Failed");
+            System.out.println(a.getMessage());
+        }
+
+        Scholarship = new Scholarship(); // reset for new test
+        Student = new Student(); // reset for new test
+        ApplicationReport = new ApplicationData(); // reset for new test
+
+        //----------------------------------------------------------------------------------------------------------------------------------------------//
+
+        
     }
 }
