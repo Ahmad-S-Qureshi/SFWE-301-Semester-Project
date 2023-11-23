@@ -19,7 +19,7 @@ public class MatchingReportGenerator extends ReportGenerator {
     /** The year for which the annual report is generated. */
     private ArrayList<Scholarship> scholarshipData = new ArrayList<Scholarship>();
     private ArrayList<Student>  studentData = new ArrayList<Student>();
-    private static int reportNumber;
+    private static int reportNumber = 1;
 
     /**
      * Constructs an AnnualReportGenerator with the provided scholarship data and
@@ -29,7 +29,7 @@ public class MatchingReportGenerator extends ReportGenerator {
      * @param year    The year for which the annual report is generated.
      */
     public MatchingReportGenerator(ArrayList<Scholarship> scholarshipData, ArrayList<Student> studentData) {
-        this.filepath = "src/Reports/MatchingReport/";
+        this.filepath = "src/Reports/MatchingReports/";
         this.scholarshipData = scholarshipData;
         this.studentData = studentData;
         this.filePrefix = "MatchingReport";
@@ -47,10 +47,10 @@ public class MatchingReportGenerator extends ReportGenerator {
             System.out.println(newAnnualReport.createNewFile());
             FileWriter ReportWriter = new FileWriter(completeFilePath);
             ReportWriter.write(parseData());
-            System.out.println("Printed " + parseData());
+            //System.out.println("Printed " + parseData());
             ReportWriter.close();
             System.out.println("Report Generated");
-            reportNumber++;
+            MatchingReportGenerator.reportNumber++;
             return completeFilePath;
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -64,11 +64,12 @@ public class MatchingReportGenerator extends ReportGenerator {
      *
      * @return A string representation of the scholarship data in CSV format.
      */
+
     @Override
     public String parseData() {
-        String reportString = "Scholarship name, Student ID\n";
+        String reportString = "Scholarship name, Amount\n";
         for(int i = 0; i < scholarshipData.size(); i++) {
-            reportString += scholarshipData.get(i).getScholarshipName() + "," + studentData.get(i).getName() + "\n";
+            reportString += scholarshipData.get(i).getScholarshipName() + "," + scholarshipData.get(i).getPayout() + "\n";
         }
         return reportString;
     }
