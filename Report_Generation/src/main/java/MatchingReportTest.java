@@ -36,7 +36,7 @@ public class MatchingReportTest {
     public static void main(String[] args) {
 
         ArrayList<Scholarship> ScholarshipList1 = new ArrayList<Scholarship>();
-        ArrayList<Student> Student1 = new ArrayList<Student>(); //could be used to check student name and ID
+        Student Student1 = new Student(); //could be used to check student name and ID
 
         // Matching Report Test 1
         try {
@@ -73,7 +73,7 @@ public class MatchingReportTest {
         }
 
         ArrayList<Scholarship> ScholarshipList2 = new ArrayList<Scholarship>();
-        ArrayList<Student> Student2 = new ArrayList<Student>(); //could be used to check student name and ID
+        Student Student2 = new Student(); //could be used to check student name and ID
         
         // Matching Report Test 2
         try {
@@ -110,7 +110,7 @@ public class MatchingReportTest {
         }
 
         ArrayList<Scholarship> ScholarshipList3 = new ArrayList<Scholarship>();
-        ArrayList<Student> Student3 = new ArrayList<Student>(); //could be used to check student name and ID
+        Student Student3 = new Student(); //could be used to check student name and ID
 
         // Matching Report Test 3
         try {

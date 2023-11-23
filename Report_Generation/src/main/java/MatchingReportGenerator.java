@@ -18,8 +18,8 @@ public class MatchingReportGenerator extends ReportGenerator {
 
     /** The year for which the annual report is generated. */
     private ArrayList<Scholarship> scholarshipData = new ArrayList<Scholarship>();
-    private ArrayList<Student>  studentData = new ArrayList<Student>();
-    private static int reportNumber = 1;
+    private Student studentData = new Student();
+    
 
     /**
      * Constructs an AnnualReportGenerator with the provided scholarship data and
@@ -28,10 +28,10 @@ public class MatchingReportGenerator extends ReportGenerator {
      * @param annualD The ArrayList of scholarships for the annual report.
      * @param year    The year for which the annual report is generated.
      */
-    public MatchingReportGenerator(ArrayList<Scholarship> scholarshipData, ArrayList<Student> studentData) {
+    public MatchingReportGenerator(ArrayList<Scholarship> scholarshipData, Student studentInfo) {
         this.filepath = "src/Reports/MatchingReports/";
         this.scholarshipData = scholarshipData;
-        this.studentData = studentData;
+        this.studentData = studentInfo;
         this.filePrefix = "MatchingReport";
     }
 
@@ -42,7 +42,7 @@ public class MatchingReportGenerator extends ReportGenerator {
     @Override
     public String writeToFile() {
         try {
-            String completeFilePath = this.filepath + filePrefix + "_" + reportNumber + ".csv";
+            String completeFilePath = this.filepath + filePrefix + "_" + studentData.getName() + ".csv";
             File newAnnualReport = new File(completeFilePath);
             //System.out.println(newAnnualReport.createNewFile());
             FileWriter ReportWriter = new FileWriter(completeFilePath);
@@ -50,7 +50,6 @@ public class MatchingReportGenerator extends ReportGenerator {
             //System.out.println("Printed " + parseData());
             ReportWriter.close();
             //System.out.println("Report Generated");
-            MatchingReportGenerator.reportNumber++;
             return completeFilePath;
         } catch (Exception e) {
             System.out.println(e.getMessage());
