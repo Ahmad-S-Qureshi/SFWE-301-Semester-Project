@@ -36,8 +36,11 @@ public class MatchingReportTest {
     public static void main(String[] args) {
 
         ArrayList<Scholarship> ScholarshipList1 = new ArrayList<Scholarship>();
-        Student Student1 = new Student(); //could be used to check student name and ID
+        ArrayList<Student> Student1 = new ArrayList<Student>(); //could be used to check student name and ID
+        Student testStudent1 = new Student();
 
+        testStudent1.setName("Jorge");
+        Student1.add(0,testStudent1);
         // Matching Report Test 1
         try {
             List<String[]> ReportData = readCSV("src/Test-Reports/MatchingReportTest1.csv");
@@ -73,8 +76,11 @@ public class MatchingReportTest {
         }
 
         ArrayList<Scholarship> ScholarshipList2 = new ArrayList<Scholarship>();
-        Student Student2 = new Student(); //could be used to check student name and ID
-        
+        ArrayList<Student> Student2 = new ArrayList<Student>(); //could be used to check student name and ID
+        Student testStudent2 = new Student();
+
+        testStudent2.setName("Jorge");
+        Student2.add(0,testStudent2);
         // Matching Report Test 2
         try {
             List<String[]> ReportData = readCSV("src/Test-Reports/MatchingReportTest2.csv");
@@ -110,8 +116,11 @@ public class MatchingReportTest {
         }
 
         ArrayList<Scholarship> ScholarshipList3 = new ArrayList<Scholarship>();
-        Student Student3 = new Student(); //could be used to check student name and ID
+        ArrayList<Student> Student3 = new ArrayList<Student>(); //could be used to check student name and ID
+        Student testStudent3 = new Student();
 
+        testStudent3.setName("Jorge");
+        Student3.add(0,testStudent3);
         // Matching Report Test 3
         try {
             List<String[]> ReportData = readCSV("src/Test-Reports/MatchingReportTest3.csv");

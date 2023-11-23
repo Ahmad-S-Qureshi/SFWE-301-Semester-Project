@@ -18,7 +18,7 @@ public class MatchingReportGenerator extends ReportGenerator {
 
     /** The year for which the annual report is generated. */
     private ArrayList<Scholarship> scholarshipData = new ArrayList<Scholarship>();
-    private Student studentData = new Student();
+    private ArrayList<Student> studentData = new ArrayList<Student>();
     
 
     /**
@@ -28,10 +28,10 @@ public class MatchingReportGenerator extends ReportGenerator {
      * @param annualD The ArrayList of scholarships for the annual report.
      * @param year    The year for which the annual report is generated.
      */
-    public MatchingReportGenerator(ArrayList<Scholarship> scholarshipData, Student studentInfo) {
+    public MatchingReportGenerator(ArrayList<Scholarship> scholarshipData, ArrayList<Student> studentData) {
         this.filepath = "src/Reports/MatchingReports/";
         this.scholarshipData = scholarshipData;
-        this.studentData = studentInfo;
+        this.studentData = studentData;
         this.filePrefix = "MatchingReport";
     }
 
@@ -42,7 +42,7 @@ public class MatchingReportGenerator extends ReportGenerator {
     @Override
     public String writeToFile() {
         try {
-            String completeFilePath = this.filepath + filePrefix + "_" + studentData.getName() + ".csv";
+            String completeFilePath = this.filepath + filePrefix + "_" + studentData.get(0).getName() + ".csv";
             File newAnnualReport = new File(completeFilePath);
             //System.out.println(newAnnualReport.createNewFile());
             FileWriter ReportWriter = new FileWriter(completeFilePath);
@@ -66,9 +66,9 @@ public class MatchingReportGenerator extends ReportGenerator {
 
     @Override
     public String parseData() {
-        String reportString = "Scholarship name, Amount\n";
+        String reportString = "Scholarship name,Amount,Deadline\n";
         for(int i = 0; i < scholarshipData.size(); i++) {
-            reportString += scholarshipData.get(i).getScholarshipName() + "," + scholarshipData.get(i).getPayout() + "\n";
+            reportString += scholarshipData.get(i).getScholarshipName() + "," + scholarshipData.get(i).getPayout() + ","+scholarshipData.get(i).getDeadline()+ "\n";
         }
         return reportString;
     }
