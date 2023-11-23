@@ -38,7 +38,7 @@ import static javax.mail.Message.RecipientType.TO;
 /**
  * GMailer is a class for sending emails using the Gmail API.
  * An example is as follows: new GMailer.sendMail("Your Subject", "Your
- * message", your_file)
+ * message", your_file, "TheEmailTo@website.com")
  */
 public class GMailer {
 
