@@ -38,11 +38,11 @@ public class DisbursementReportGenerator extends ReportGenerator {
         try {
             String completeFilePath = this.filepath + filePrefix + "_" + student.getStudentID() + ".csv";
             File newAnnualReport = new File(completeFilePath);
-            System.out.println(newAnnualReport.createNewFile());
+            //System.out.println(newAnnualReport.createNewFile());
             FileWriter ReportWriter = new FileWriter(completeFilePath);
             ReportWriter.write(parseData());
             ReportWriter.close();
-            System.out.println("Report Generated");
+            //System.out.println("Report Generated");
             return completeFilePath;
         } catch (Exception e) {
             System.out.println(e.getMessage());

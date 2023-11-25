@@ -8,6 +8,7 @@ public class Scholarship {
     private String customRequiredInfo;
     private String preferedMajors;
     private String donorContact;
+    private String eligible;
 
     public Scholarship() { // This is the constructor
         this.scholarshipName = "No Name";
@@ -85,6 +86,17 @@ public class Scholarship {
         this.customRequiredInfo = customRequiredInfo;
         this.preferedMajors = preferedMajors;
         this.donorContact = donorContact;
+    }
+    public Scholarship(String scholarshipName, int payout, String deadline, String disbursmentDate, String customRequiredInfo,
+            String preferedMajors, String donorContact, String eligible) {
+        this.scholarshipName = scholarshipName;
+        this.payout = payout;
+        this.deadline = deadline;
+        this.disbursmentDate = disbursmentDate;
+        this.customRequiredInfo = customRequiredInfo;
+        this.preferedMajors = preferedMajors;
+        this.donorContact = donorContact;
+        this.eligible = eligible;
     }
     ///// End Overloaded constructors for the scholarship class /////
 
