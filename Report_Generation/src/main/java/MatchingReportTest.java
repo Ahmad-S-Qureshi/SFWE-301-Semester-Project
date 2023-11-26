@@ -6,8 +6,18 @@ import java.io.FileReader;
 import java.util.List;
 import main.java.*;
 
+/**
+ * This class contains test cases for the MatchingReportGenerator.
+ * @author Report Engine Team
+ */
 public class MatchingReportTest {
-
+    /**
+     * Reads the content of a CSV file into a list of string arrays.
+     *
+     * @param filePath The path to the CSV file.
+     * @return A list of string arrays representing the CSV data.
+     * @throws IOException If an I/O error occurs.
+     */
     private static List<String[]> readCSV(String filePath) throws IOException {
         try (CSVReader reader = new CSVReader(new FileReader(filePath))) {
             return reader.readAll();
@@ -17,6 +27,13 @@ public class MatchingReportTest {
         }
     }
 
+    /**
+     * Compares two lists of string arrays to check if they are equal.
+     *
+     * @param data1 The first list of string arrays.
+     * @param data2 The second list of string arrays.
+     * @return True if the lists are equal, false otherwise.
+     */
     private static boolean compareCSVData(List<String[]> data1, List<String[]> data2) {
     if (data1.size() != data2.size()) {
         return false; // Different number of rows
@@ -33,6 +50,12 @@ public class MatchingReportTest {
 
     return true; // All rows are identical
     }
+
+    /**
+     * Main method to execute MatchingReportGenerator test cases.
+     *
+     * @param args The command-line arguments (not used in this application).
+     */
     public static void main(String[] args) {
 
         ArrayList<Scholarship> ScholarshipList1 = new ArrayList<Scholarship>();

@@ -6,8 +6,19 @@ import java.io.FileReader;
 import java.util.List;
 import main.java.*;
 
+/**
+ * The AnnualReportTest class is used to test the functionality of the AnnualReportGenerator class
+ * by comparing generated annual reports with expected reports read from CSV files.
+ * @author Report Engine Team
+ */
 public class AnnualReportTest {
-
+    /**
+     * Reads data from a CSV file and returns it as a list of string arrays.
+     *
+     * @param filePath The path to the CSV file.
+     * @return A list of string arrays representing the data in the CSV file.
+     * @throws IOException If an I/O error occurs while reading the CSV file.
+     */
     private static List<String[]> readCSV(String filePath) throws IOException {
         try (CSVReader reader = new CSVReader(new FileReader(filePath))) {
             return reader.readAll();
@@ -17,23 +28,36 @@ public class AnnualReportTest {
         }
     }
 
+    /**
+     * Compares two lists of string arrays to check if their contents are identical.
+     *
+     * @param data1 The first list of string arrays.
+     * @param data2 The second list of string arrays.
+     * @return true if the lists have identical contents, false otherwise.
+     */
     private static boolean compareCSVData(List<String[]> data1, List<String[]> data2) {
-    if (data1.size() != data2.size()) {
-        return false; // Different number of rows
-    }
-
-    for (int i = 0; i < data1.size(); i++) {
-        String[] row1 = data1.get(i);
-        String[] row2 = data2.get(i);
-
-        if (!Arrays.equals(row1, row2)) {
-            return false; // Rows are different
+        if (data1.size() != data2.size()) {
+            return false; // Different number of rows
         }
+
+        
+        for (int i = 0; i < data1.size(); i++) {
+            String[] row1 = data1.get(i);
+            String[] row2 = data2.get(i);
+
+            if (!Arrays.equals(row1, row2)) {
+                return false; // Rows are different
+            }
+        }
+
+        return true; // All rows are identical
     }
 
-    return true; // All rows are identical
-    }
-
+    /**
+     * The main method to run the AnnualReportTest application.
+     *
+     * @param args The command-line arguments.
+     */
     public static void main(String[] args) {
 
         

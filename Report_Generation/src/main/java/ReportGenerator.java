@@ -4,10 +4,11 @@ import java.util.ArrayList;
 import java.io.File;
 
 /**
- * The ReportGenerator class is responsible for generating reports based on
+ * The is a superclass responsible for generating reports based on
  * scholarship and student data.
  * It provides methods to parse data, write reports to files, and create CSV
  * report files for different report types.
+ * @author Report Engine Team
  */
 public class ReportGenerator {
     /** The file path where the reports will be saved. */
@@ -20,8 +21,8 @@ public class ReportGenerator {
     public static ArrayList<Student> students;
 
     /**
-     * Parses the data for report generation.
-     *
+     * Parses the data for report generation. 
+     * Is overriden in subclasses
      * @return A string indicating that the parseData method is to be implemented.
      */
     public String parseData() {
@@ -33,17 +34,10 @@ public class ReportGenerator {
 
     /**
      * Writes the generated reports to files.
-     * This method currently prints a message indicating that it is not yet
-     * implemented.
+     * Is implemented in subclasses
      */
     public String writeToFile() {
         System.out.println("writeToFile not yet implemented");
         return null;
     }
-
-    /**
-     * Makes CSV report files for different types of reports.
-     * There should be one function for each type of report.
-     */
-    // TODO: Add specific report-generating methods here.
 }

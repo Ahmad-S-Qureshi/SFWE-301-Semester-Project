@@ -27,7 +27,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10};
+var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10,"i10":10,"i11":10,"i12":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -133,6 +133,8 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <hr>
 <pre>public class <span class="typeNameLabel">Scholarship</span>
 extends java.lang.Object</pre>
+<div class="block">This class represents a Scholarship with various attributes such as name, payout, deadline, etc.
+ The author of this class is backend.</div>
 </li>
 </ul>
 </div>
@@ -154,29 +156,39 @@ extends java.lang.Object</pre>
 </tr>
 <tr class="altColor">
 <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E()">Scholarship</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Default constructor for the Scholarship class.</div>
+</td>
 </tr>
 <tr class="rowColor">
 <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(java.lang.String)">Scholarship</a></span>&#8203;(java.lang.String&nbsp;scholarshipName)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Overloaded constructor with a parameter for scholarshipName.</div>
+</td>
 </tr>
 <tr class="altColor">
 <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(java.lang.String,int)">Scholarship</a></span>&#8203;(java.lang.String&nbsp;scholarshipName,
            int&nbsp;payout)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Overloaded constructor with parameters for scholarshipName and payout.</div>
+</td>
 </tr>
 <tr class="rowColor">
 <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(java.lang.String,int,java.lang.String)">Scholarship</a></span>&#8203;(java.lang.String&nbsp;scholarshipName,
            int&nbsp;payout,
            java.lang.String&nbsp;deadline)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Overloaded constructor with parameters for scholarshipName, payout, and deadline.</div>
+</td>
 </tr>
 <tr class="altColor">
 <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(java.lang.String,int,java.lang.String,java.lang.String)">Scholarship</a></span>&#8203;(java.lang.String&nbsp;scholarshipName,
            int&nbsp;payout,
            java.lang.String&nbsp;deadline,
            java.lang.String&nbsp;customRequiredInfo)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Overloaded constructor with parameters for scholarshipName, payout, deadline, and customRequiredInfo.</div>
+</td>
 </tr>
 <tr class="rowColor">
 <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(java.lang.String,int,java.lang.String,java.lang.String,java.lang.String)">Scholarship</a></span>&#8203;(java.lang.String&nbsp;scholarshipName,
@@ -184,7 +196,45 @@ extends java.lang.Object</pre>
            java.lang.String&nbsp;deadline,
            java.lang.String&nbsp;customRequiredInfo,
            java.lang.String&nbsp;preferedMajors)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Overloaded constructor with parameters for scholarshipName, payout, deadline, customRequiredInfo, and preferedMajors.</div>
+</td>
+</tr>
+<tr class="altColor">
+<th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(java.lang.String,int,java.lang.String,java.lang.String,java.lang.String,java.lang.String)">Scholarship</a></span>&#8203;(java.lang.String&nbsp;scholarshipName,
+           int&nbsp;payout,
+           java.lang.String&nbsp;deadline,
+           java.lang.String&nbsp;disbursmentDate,
+           java.lang.String&nbsp;customRequiredInfo,
+           java.lang.String&nbsp;preferedMajors)</code></th>
+<td class="colLast">
+<div class="block">Overloaded constructor with parameters for scholarshipName, payout, deadline, disbursmentDate, customRequiredInfo, and preferedMajors.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(java.lang.String,int,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)">Scholarship</a></span>&#8203;(java.lang.String&nbsp;scholarshipName,
+           int&nbsp;payout,
+           java.lang.String&nbsp;deadline,
+           java.lang.String&nbsp;disbursmentDate,
+           java.lang.String&nbsp;customRequiredInfo,
+           java.lang.String&nbsp;preferedMajors,
+           java.lang.String&nbsp;donorContact)</code></th>
+<td class="colLast">
+<div class="block">Overloaded constructor with parameters for scholarshipName, payout, deadline, disbursmentDate, customRequiredInfo, preferedMajors, and donorContact.</div>
+</td>
+</tr>
+<tr class="altColor">
+<th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(java.lang.String,int,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)">Scholarship</a></span>&#8203;(java.lang.String&nbsp;scholarshipName,
+           int&nbsp;payout,
+           java.lang.String&nbsp;deadline,
+           java.lang.String&nbsp;disbursmentDate,
+           java.lang.String&nbsp;customRequiredInfo,
+           java.lang.String&nbsp;preferedMajors,
+           java.lang.String&nbsp;donorContact,
+           java.lang.String&nbsp;eligible)</code></th>
+<td class="colLast">
+<div class="block">Overloaded constructor with parameters for scholarshipName, payout, deadline, disbursmentDate, customRequiredInfo, preferedMajors, donorContact, and eligible.</div>
+</td>
 </tr>
 </table>
 </li>
@@ -207,52 +257,93 @@ extends java.lang.Object</pre>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>java.lang.String</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getCustomRequiredInfo()">getCustomRequiredInfo</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Get the custom required information for the scholarship.</div>
+</td>
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code>java.lang.String</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getDeadline()">getDeadline</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Get the deadline of the scholarship.</div>
+</td>
 </tr>
 <tr id="i2" class="altColor">
-<td class="colFirst"><code>int</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getPayout()">getPayout</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colFirst"><code>java.lang.String</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getDisbursementDate()">getDisbursementDate</a></span>()</code></th>
+<td class="colLast">
+<div class="block">Get the disbursement date of the scholarship.</div>
+</td>
 </tr>
 <tr id="i3" class="rowColor">
 <td class="colFirst"><code>java.lang.String</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getPreferedMajors()">getPreferedMajors</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getDonorContact()">getDonorContact</a></span>()</code></th>
+<td class="colLast">
+<div class="block">Get the donor contact information for the scholarship.</div>
+</td>
 </tr>
 <tr id="i4" class="altColor">
-<td class="colFirst"><code>java.lang.String</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getScholarshipName()">getScholarshipName</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colFirst"><code>int</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getPayout()">getPayout</a></span>()</code></th>
+<td class="colLast">
+<div class="block">Get the payout amount of the scholarship.</div>
+</td>
 </tr>
 <tr id="i5" class="rowColor">
-<td class="colFirst"><code>void</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setCustomRequiredInfo(java.lang.String)">setCustomRequiredInfo</a></span>&#8203;(java.lang.String&nbsp;customRequiredInfo)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colFirst"><code>java.lang.String</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getPreferedMajors()">getPreferedMajors</a></span>()</code></th>
+<td class="colLast">
+<div class="block">Get the preferred majors for the scholarship.</div>
+</td>
 </tr>
 <tr id="i6" class="altColor">
-<td class="colFirst"><code>void</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setDeadline(java.lang.String)">setDeadline</a></span>&#8203;(java.lang.String&nbsp;deadline)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colFirst"><code>java.lang.String</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getScholarshipName()">getScholarshipName</a></span>()</code></th>
+<td class="colLast">
+<div class="block">Get the name of the scholarship.</div>
+</td>
 </tr>
 <tr id="i7" class="rowColor">
 <td class="colFirst"><code>void</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setPayout(int)">setPayout</a></span>&#8203;(int&nbsp;payout)</code></th>
-<td class="colLast">&nbsp;</td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setCustomRequiredInfo(java.lang.String)">setCustomRequiredInfo</a></span>&#8203;(java.lang.String&nbsp;customRequiredInfo)</code></th>
+<td class="colLast">
+<div class="block">Set the custom required information for the scholarship.</div>
+</td>
 </tr>
 <tr id="i8" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setPreferedMajors(java.lang.String)">setPreferedMajors</a></span>&#8203;(java.lang.String&nbsp;preferedMajors)</code></th>
-<td class="colLast">&nbsp;</td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setDeadline(java.lang.String)">setDeadline</a></span>&#8203;(java.lang.String&nbsp;deadline)</code></th>
+<td class="colLast">
+<div class="block">Set the deadline of the scholarship.</div>
+</td>
 </tr>
 <tr id="i9" class="rowColor">
 <td class="colFirst"><code>void</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setDisbursementDate(java.lang.String)">setDisbursementDate</a></span>&#8203;(java.lang.String&nbsp;disbursmentDate)</code></th>
+<td class="colLast">
+<div class="block">Set the disbursement date of the scholarship.</div>
+</td>
+</tr>
+<tr id="i10" class="altColor">
+<td class="colFirst"><code>void</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setPayout(int)">setPayout</a></span>&#8203;(int&nbsp;payout)</code></th>
+<td class="colLast">
+<div class="block">Set the payout amount of the scholarship.</div>
+</td>
+</tr>
+<tr id="i11" class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setPreferedMajors(java.lang.String)">setPreferedMajors</a></span>&#8203;(java.lang.String&nbsp;preferedMajors)</code></th>
+<td class="colLast">
+<div class="block">Set the preferred majors for the scholarship.</div>
+</td>
+</tr>
+<tr id="i12" class="altColor">
+<td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setScholarshipName(java.lang.String)">setScholarshipName</a></span>&#8203;(java.lang.String&nbsp;scholarshipName)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Set the name of the scholarship.</div>
+</td>
 </tr>
 </table>
 <ul class="blockList">
@@ -285,6 +376,8 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>Scholarship</h4>
 <pre>public&nbsp;Scholarship()</pre>
+<div class="block">Default constructor for the Scholarship class.
+ Initializes default values for various attributes.</div>
 </li>
 </ul>
 <a id="&lt;init&gt;(java.lang.String)">
@@ -294,6 +387,11 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>Scholarship</h4>
 <pre>public&nbsp;Scholarship&#8203;(java.lang.String&nbsp;scholarshipName)</pre>
+<div class="block">Overloaded constructor with a parameter for scholarshipName.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>scholarshipName</code> - The name of the scholarship.</dd>
+</dl>
 </li>
 </ul>
 <a id="&lt;init&gt;(java.lang.String,int)">
@@ -304,6 +402,12 @@ extends java.lang.Object</pre>
 <h4>Scholarship</h4>
 <pre>public&nbsp;Scholarship&#8203;(java.lang.String&nbsp;scholarshipName,
                    int&nbsp;payout)</pre>
+<div class="block">Overloaded constructor with parameters for scholarshipName and payout.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>scholarshipName</code> - The name of the scholarship.</dd>
+<dd><code>payout</code> - The payout amount of the scholarship.</dd>
+</dl>
 </li>
 </ul>
 <a id="&lt;init&gt;(java.lang.String,int,java.lang.String)">
@@ -315,6 +419,13 @@ extends java.lang.Object</pre>
 <pre>public&nbsp;Scholarship&#8203;(java.lang.String&nbsp;scholarshipName,
                    int&nbsp;payout,
                    java.lang.String&nbsp;deadline)</pre>
+<div class="block">Overloaded constructor with parameters for scholarshipName, payout, and deadline.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>scholarshipName</code> - The name of the scholarship.</dd>
+<dd><code>payout</code> - The payout amount of the scholarship.</dd>
+<dd><code>deadline</code> - The deadline of the scholarship.</dd>
+</dl>
 </li>
 </ul>
 <a id="&lt;init&gt;(java.lang.String,int,java.lang.String,java.lang.String)">
@@ -327,9 +438,89 @@ extends java.lang.Object</pre>
                    int&nbsp;payout,
                    java.lang.String&nbsp;deadline,
                    java.lang.String&nbsp;customRequiredInfo)</pre>
+<div class="block">Overloaded constructor with parameters for scholarshipName, payout, deadline, and customRequiredInfo.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>scholarshipName</code> - The name of the scholarship.</dd>
+<dd><code>payout</code> - The payout amount of the scholarship.</dd>
+<dd><code>deadline</code> - The deadline of the scholarship.</dd>
+<dd><code>customRequiredInfo</code> - Custom required information for the scholarship.</dd>
+</dl>
 </li>
 </ul>
 <a id="&lt;init&gt;(java.lang.String,int,java.lang.String,java.lang.String,java.lang.String)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>Scholarship</h4>
+<pre>public&nbsp;Scholarship&#8203;(java.lang.String&nbsp;scholarshipName,
+                   int&nbsp;payout,
+                   java.lang.String&nbsp;deadline,
+                   java.lang.String&nbsp;customRequiredInfo,
+                   java.lang.String&nbsp;preferedMajors)</pre>
+<div class="block">Overloaded constructor with parameters for scholarshipName, payout, deadline, customRequiredInfo, and preferedMajors.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>scholarshipName</code> - The name of the scholarship.</dd>
+<dd><code>payout</code> - The payout amount of the scholarship.</dd>
+<dd><code>deadline</code> - The deadline of the scholarship.</dd>
+<dd><code>customRequiredInfo</code> - Custom required information for the scholarship.</dd>
+<dd><code>preferedMajors</code> - Preferred majors for the scholarship.</dd>
+</dl>
+</li>
+</ul>
+<a id="&lt;init&gt;(java.lang.String,int,java.lang.String,java.lang.String,java.lang.String,java.lang.String)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>Scholarship</h4>
+<pre>public&nbsp;Scholarship&#8203;(java.lang.String&nbsp;scholarshipName,
+                   int&nbsp;payout,
+                   java.lang.String&nbsp;deadline,
+                   java.lang.String&nbsp;disbursmentDate,
+                   java.lang.String&nbsp;customRequiredInfo,
+                   java.lang.String&nbsp;preferedMajors)</pre>
+<div class="block">Overloaded constructor with parameters for scholarshipName, payout, deadline, disbursmentDate, customRequiredInfo, and preferedMajors.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>scholarshipName</code> - The name of the scholarship.</dd>
+<dd><code>payout</code> - The payout amount of the scholarship.</dd>
+<dd><code>deadline</code> - The deadline of the scholarship.</dd>
+<dd><code>disbursmentDate</code> - The disbursement date of the scholarship.</dd>
+<dd><code>customRequiredInfo</code> - Custom required information for the scholarship.</dd>
+<dd><code>preferedMajors</code> - Preferred majors for the scholarship.</dd>
+</dl>
+</li>
+</ul>
+<a id="&lt;init&gt;(java.lang.String,int,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>Scholarship</h4>
+<pre>public&nbsp;Scholarship&#8203;(java.lang.String&nbsp;scholarshipName,
+                   int&nbsp;payout,
+                   java.lang.String&nbsp;deadline,
+                   java.lang.String&nbsp;disbursmentDate,
+                   java.lang.String&nbsp;customRequiredInfo,
+                   java.lang.String&nbsp;preferedMajors,
+                   java.lang.String&nbsp;donorContact)</pre>
+<div class="block">Overloaded constructor with parameters for scholarshipName, payout, deadline, disbursmentDate, customRequiredInfo, preferedMajors, and donorContact.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>scholarshipName</code> - The name of the scholarship.</dd>
+<dd><code>payout</code> - The payout amount of the scholarship.</dd>
+<dd><code>deadline</code> - The deadline of the scholarship.</dd>
+<dd><code>disbursmentDate</code> - The disbursement date of the scholarship.</dd>
+<dd><code>customRequiredInfo</code> - Custom required information for the scholarship.</dd>
+<dd><code>preferedMajors</code> - Preferred majors for the scholarship.</dd>
+<dd><code>donorContact</code> - Contact information for the donor of the scholarship.</dd>
+</dl>
+</li>
+</ul>
+<a id="&lt;init&gt;(java.lang.String,int,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)">
 <!--   -->
 </a>
 <ul class="blockListLast">
@@ -338,8 +529,23 @@ extends java.lang.Object</pre>
 <pre>public&nbsp;Scholarship&#8203;(java.lang.String&nbsp;scholarshipName,
                    int&nbsp;payout,
                    java.lang.String&nbsp;deadline,
+                   java.lang.String&nbsp;disbursmentDate,
                    java.lang.String&nbsp;customRequiredInfo,
-                   java.lang.String&nbsp;preferedMajors)</pre>
+                   java.lang.String&nbsp;preferedMajors,
+                   java.lang.String&nbsp;donorContact,
+                   java.lang.String&nbsp;eligible)</pre>
+<div class="block">Overloaded constructor with parameters for scholarshipName, payout, deadline, disbursmentDate, customRequiredInfo, preferedMajors, donorContact, and eligible.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>scholarshipName</code> - The name of the scholarship.</dd>
+<dd><code>payout</code> - The payout amount of the scholarship.</dd>
+<dd><code>deadline</code> - The deadline of the scholarship.</dd>
+<dd><code>disbursmentDate</code> - The disbursement date of the scholarship.</dd>
+<dd><code>customRequiredInfo</code> - Custom required information for the scholarship.</dd>
+<dd><code>preferedMajors</code> - Preferred majors for the scholarship.</dd>
+<dd><code>donorContact</code> - Contact information for the donor of the scholarship.</dd>
+<dd><code>eligible</code> - Eligibility criteria for the scholarship.</dd>
+</dl>
 </li>
 </ul>
 </li>
@@ -359,6 +565,11 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>getScholarshipName</h4>
 <pre class="methodSignature">public&nbsp;java.lang.String&nbsp;getScholarshipName()</pre>
+<div class="block">Get the name of the scholarship.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>The name of the scholarship.</dd>
+</dl>
 </li>
 </ul>
 <a id="setScholarshipName(java.lang.String)">
@@ -368,6 +579,11 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>setScholarshipName</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;setScholarshipName&#8203;(java.lang.String&nbsp;scholarshipName)</pre>
+<div class="block">Set the name of the scholarship.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>scholarshipName</code> - The name of the scholarship.</dd>
+</dl>
 </li>
 </ul>
 <a id="getPayout()">
@@ -377,6 +593,11 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>getPayout</h4>
 <pre class="methodSignature">public&nbsp;int&nbsp;getPayout()</pre>
+<div class="block">Get the payout amount of the scholarship.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>The payout amount of the scholarship.</dd>
+</dl>
 </li>
 </ul>
 <a id="setPayout(int)">
@@ -386,6 +607,11 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>setPayout</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;setPayout&#8203;(int&nbsp;payout)</pre>
+<div class="block">Set the payout amount of the scholarship.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>payout</code> - The payout amount of the scholarship.</dd>
+</dl>
 </li>
 </ul>
 <a id="getDeadline()">
@@ -395,6 +621,11 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>getDeadline</h4>
 <pre class="methodSignature">public&nbsp;java.lang.String&nbsp;getDeadline()</pre>
+<div class="block">Get the deadline of the scholarship.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>The deadline of the scholarship.</dd>
+</dl>
 </li>
 </ul>
 <a id="setDeadline(java.lang.String)">
@@ -404,6 +635,39 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>setDeadline</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;setDeadline&#8203;(java.lang.String&nbsp;deadline)</pre>
+<div class="block">Set the deadline of the scholarship.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>deadline</code> - The deadline of the scholarship as a string.</dd>
+</dl>
+</li>
+</ul>
+<a id="getDisbursementDate()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getDisbursementDate</h4>
+<pre class="methodSignature">public&nbsp;java.lang.String&nbsp;getDisbursementDate()</pre>
+<div class="block">Get the disbursement date of the scholarship.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>The disbursement date of the scholarship.</dd>
+</dl>
+</li>
+</ul>
+<a id="setDisbursementDate(java.lang.String)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setDisbursementDate</h4>
+<pre class="methodSignature">public&nbsp;void&nbsp;setDisbursementDate&#8203;(java.lang.String&nbsp;disbursmentDate)</pre>
+<div class="block">Set the disbursement date of the scholarship.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>disbursmentDate</code> - The disbursement date of the scholarship.</dd>
+</dl>
 </li>
 </ul>
 <a id="getCustomRequiredInfo()">
@@ -413,6 +677,25 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>getCustomRequiredInfo</h4>
 <pre class="methodSignature">public&nbsp;java.lang.String&nbsp;getCustomRequiredInfo()</pre>
+<div class="block">Get the custom required information for the scholarship.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>Custom required information for the scholarship.</dd>
+</dl>
+</li>
+</ul>
+<a id="getDonorContact()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getDonorContact</h4>
+<pre class="methodSignature">public&nbsp;java.lang.String&nbsp;getDonorContact()</pre>
+<div class="block">Get the donor contact information for the scholarship.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>Donor contact information for the scholarship.</dd>
+</dl>
 </li>
 </ul>
 <a id="setCustomRequiredInfo(java.lang.String)">
@@ -422,6 +705,11 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>setCustomRequiredInfo</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;setCustomRequiredInfo&#8203;(java.lang.String&nbsp;customRequiredInfo)</pre>
+<div class="block">Set the custom required information for the scholarship.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>customRequiredInfo</code> - Custom required information for the scholarship.</dd>
+</dl>
 </li>
 </ul>
 <a id="getPreferedMajors()">
@@ -431,6 +719,11 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>getPreferedMajors</h4>
 <pre class="methodSignature">public&nbsp;java.lang.String&nbsp;getPreferedMajors()</pre>
+<div class="block">Get the preferred majors for the scholarship.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>Preferred majors for the scholarship.</dd>
+</dl>
 </li>
 </ul>
 <a id="setPreferedMajors(java.lang.String)">
@@ -440,6 +733,11 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>setPreferedMajors</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;setPreferedMajors&#8203;(java.lang.String&nbsp;preferedMajors)</pre>
+<div class="block">Set the preferred majors for the scholarship.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>preferedMajors</code> - Preferred majors for the scholarship.</dd>
+</dl>
 </li>
 </ul>
 </li>

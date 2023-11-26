@@ -5,22 +5,23 @@ import java.io.FileWriter;
 import java.util.ArrayList;
 
 /**
- * The AnnualReportGenerator class extends ReportGenerator and is specifically
- * designed
- * for generating annual reports based on scholarship data.
+ * The DisbursementReportGenerator class extends ReportGenerator and is specifically
+ * designed for generating disbursement reports based on scholarship data for a student.
+ * @author Report Engine Team
  */
 public class DisbursementReportGenerator extends ReportGenerator {
 
-    /** The year for which the annual report is generated. */
+    //** The student for whom the disbursement report is generated. */
     private Student student;
+
+    /** The scholarship for which the disbursement report is generated. */
     private Scholarship scholarship;
 
     /**
-     * Constructs an AnnualReportGenerator with the provided scholarship data and
-     * year.
+     * Constructs a DisbursementReportGenerator with the provided student and scholarship data.
      *
-     * @param student The student that won the scholarship.
-     * @param scholarship The scholarship student won.
+     * @param student The student who won the scholarship.
+     * @param scholarship The scholarship won by the student.
      */
     public DisbursementReportGenerator(Student student, Scholarship scholarship) {
         this.filepath = "src/Reports/DisbursementReports/";
@@ -30,8 +31,10 @@ public class DisbursementReportGenerator extends ReportGenerator {
     }
 
     /**
-     * Writes the annual report to a CSV file.
+     * Writes the disbursement report to a CSV file.
      * Overrides the method in the superclass.
+     *
+     * @return The complete file path of the generated disbursement report.
      */
     @Override
     public String writeToFile() {

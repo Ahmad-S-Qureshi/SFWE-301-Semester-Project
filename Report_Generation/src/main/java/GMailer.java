@@ -39,6 +39,7 @@ import static javax.mail.Message.RecipientType.TO;
  * GMailer is a class for sending emails using the Gmail API.
  * An example is as follows: new GMailer.sendMail("Your Subject", "Your
  * message", your_file, "TheEmailTo@website.com")
+ * @author Report Engine Team
  */
 public class GMailer {
 
@@ -137,19 +138,5 @@ public class GMailer {
             }
         }
     }
-
-    /**
-     * Main method for testing the GMailer class.
-     *
-     * @param args command line arguments
-     * @throws Exception if an error occurs during execution
-     */
-    // public static void main(String[] args) throws Exception {
-        
-        // // Test 1
-        // File attachment = new File("src/Test-Reports/AnnualReportTest1.csv");
-        // new GMailer().sendMail("Hi From Java", "This was sent from Java!\nWE COOKIN",
-        //         attachment, "jorgedelrio@arizona.edu");
-    // }
 
 }

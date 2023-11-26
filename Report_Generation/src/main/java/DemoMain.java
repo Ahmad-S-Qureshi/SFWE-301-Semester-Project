@@ -21,7 +21,13 @@ import main.java.DisbursementReportGenerator;
 import main.java.GMailer;
 import main.java.ApplicationData;
 
-
+/**
+ * The DemoMain class represents a Swing GUI application for generating scholarship-related reports
+ * and sending them via email. It includes functionality to generate annual reports, disbursement reports,
+ * scholarship reports, and application reports. It also allows the generation of random scholarship data.
+ * All data and file creation is done using dummy data
+ * @author Report Engine Team
+ */
 public class DemoMain extends JFrame {
 
     private JTextField emailField;
@@ -39,6 +45,10 @@ public class DemoMain extends JFrame {
             return null;
         }
     }
+
+    /**
+     * Constructs a new instance of the DemoMain class, initializing the GUI components.
+     */
     public DemoMain() {
         super("Scholarship Report Generator Demo Form");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -281,6 +291,12 @@ public class DemoMain extends JFrame {
         setVisible(true);
     }
 
+     /**
+     * Generates a specified number of random scholarships and adds them to the provided ArrayList.
+     *
+     * @param scholarships     The ArrayList to which the generated scholarships will be added.
+     * @param numberOfScholarships The number of scholarships to generate.
+     */
     private static void generateRandomScholarships(ArrayList<Scholarship> scholarships, int numberOfScholarships) {
         for (int i = 0; i < numberOfScholarships; i++) {
             scholarships.add(generateRandomScholarship(scholarships));
@@ -290,7 +306,7 @@ public class DemoMain extends JFrame {
 
     /**
      * Generates a single random scholarship.
-     *
+     * @param scholarships The ArrayList of existing scholarships to avoid duplicate names.
      * @return A randomly generated Scholarship object.
      */
     private static Scholarship generateRandomScholarship(ArrayList<Scholarship> scholarships) {
@@ -358,7 +374,11 @@ public class DemoMain extends JFrame {
         return String.format("%04d-%02d-%02d", randomYear, randomMonth, randomDay);
     }
 
-
+    /**
+     * The main method to start the Scholarship Report Generator demo application.
+     *
+     * @param args The command-line arguments.
+     */
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {
             @Override

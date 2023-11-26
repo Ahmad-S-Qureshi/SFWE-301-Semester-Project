@@ -9,24 +9,27 @@ import main.java.Scholarship;
 import main.java.Student;
 
 /**
- * The AnnualReportGenerator class extends ReportGenerator and is specifically
- * designed
- * for generating annual reports based on scholarship data.
+ * The ApplicationReportGenerator class extends ReportGenerator and is specifically designed
+ * for generating application reports based on scholarship and student data.
+ * @author Report Engine Team
  */
 public class ApplicationReportGenerator extends ReportGenerator {
 
-    /** The year for which the annual report is generated. */
+    /** The scholarship for which the application report is generated. */
     private Scholarship scholarship;
+
+    /** The student for whom the application report is generated. */
     private Student student;
+
+    /** The application data containing questions and answers. */
     private ApplicationData questions;
 
-// schlarship, studnet
     /**
-     * Constructs an AnnualReportGenerator with the provided scholarship data and
-     * year.
+     * Constructs an ApplicationReportGenerator with the provided scholarship, student, and application data.
      *
-     * @param annualD The ArrayList of scholarships for the annual report.
-     * @param year    The year for which the annual report is generated.
+     * @param scholarship The scholarship for the application report.
+     * @param student The student for the application report.
+     * @param data The application data containing questions and answers.
      */
     public ApplicationReportGenerator(Scholarship scholarship, Student student, ApplicationData data) {
         this.filepath = "src/Reports/ApplicationReports/";
@@ -37,8 +40,10 @@ public class ApplicationReportGenerator extends ReportGenerator {
     }
 
     /**
-     * Writes the annual report to a CSV file.
+     * Writes the application report to a CSV file.
      * Overrides the method in the superclass.
+     *
+     * @return A string with the filepath to the newly created file.
      */
     @Override
     public String writeToFile() {

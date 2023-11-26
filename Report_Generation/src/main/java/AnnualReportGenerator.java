@@ -8,6 +8,7 @@ import java.util.ArrayList;
  * The AnnualReportGenerator class extends ReportGenerator and is specifically
  * designed
  * for generating annual reports based on scholarship data.
+ * @author Report Engine Team
  */
 public class AnnualReportGenerator extends ReportGenerator {
 
@@ -31,6 +32,7 @@ public class AnnualReportGenerator extends ReportGenerator {
     /**
      * Writes the annual report to a CSV file.
      * Overrides the method in the superclass.
+     * @return A string of the filepath to the newly made file
      */
     @Override
     public String writeToFile() {

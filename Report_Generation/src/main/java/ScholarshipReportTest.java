@@ -6,8 +6,19 @@ import java.io.FileReader;
 import java.util.List;
 import main.java.*;
 
+/**
+ * This class contains test cases for the ScholarshipReportGenerator.
+ * @author Report Engine Team
+ */
 public class ScholarshipReportTest{
 
+    /**
+     * Reads CSV data from the specified file path.
+     *
+     * @param filePath The path of the CSV file to read.
+     * @return A list of arrays representing the data read from the CSV file.
+     * @throws IOException If an I/O error occurs while reading the CSV file.
+     */
     private static List<String[]> readCSV(String filePath) throws IOException {
     
         try (CSVReader reader = new CSVReader(new FileReader(filePath))) {
@@ -18,23 +29,35 @@ public class ScholarshipReportTest{
         }
     }
 
+    /**
+     * Compares two lists of CSV data and determines if they are identical.
+     *
+     * @param data1 The first list of CSV data.
+     * @param data2 The second list of CSV data for comparison.
+     * @return true if the lists are identical, false otherwise.
+     */
     private static boolean compareCSVData(List<String[]> data1, List<String[]> data2) {
-    if (data1.size() != data2.size()) {
-        return false; // Different number of rows
-    }
-
-    for (int i = 0; i < data1.size(); i++) {
-        String[] row1 = data1.get(i);
-        String[] row2 = data2.get(i);
-
-        if (!Arrays.equals(row1, row2)) {
-            return false; // Rows are different
+        if (data1.size() != data2.size()) {
+            return false; // Different number of rows
         }
+
+        for (int i = 0; i < data1.size(); i++) {
+            String[] row1 = data1.get(i);
+            String[] row2 = data2.get(i);
+
+            if (!Arrays.equals(row1, row2)) {
+                return false; // Rows are different
+            }
+        }
+
+        return true; // All rows are identical
     }
 
-    return true; // All rows are identical
-    }
-
+    /**
+     * The main method that runs the ScholarshipReportGenerator test cases.
+     *
+     * @param args The command-line arguments.
+     */
     public static void main(String[] args) {
 
         ArrayList<Scholarship> ScholarshipRepo = new ArrayList<Scholarship>();

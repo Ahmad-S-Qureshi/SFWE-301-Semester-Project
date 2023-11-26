@@ -1,8 +1,10 @@
 package main.java;
 
-//This is a parent class for all users
-//For this file we will use inheritance 
-//The specific users will be a child 
+/**
+ * This class represents a User with various attributes
+ * The author of this class is backend.
+ * @author Backend Team
+ */
 public class User {
     private String name;
     private String emailAddress;

@@ -10,23 +10,24 @@ import main.java.Scholarship;
 import main.java.Student;
 
 /**
- * The AnnualReportGenerator class extends ReportGenerator and is specifically
- * designed
- * for generating annual reports based on scholarship data.
+ * The MatchingReportGenerator class extends ReportGenerator and is specifically
+ * designed for generating matching reports based on scholarship data and student information.
+ * @author Report Generator Team
  */
 public class MatchingReportGenerator extends ReportGenerator {
 
     /** The year for which the annual report is generated. */
     private ArrayList<Scholarship> scholarshipData = new ArrayList<Scholarship>();
+
+    /** The list of students for the matching report. */
     private ArrayList<Student> studentData = new ArrayList<Student>();
     
 
     /**
-     * Constructs an AnnualReportGenerator with the provided scholarship data and
-     * year.
+     * Constructs a MatchingReportGenerator with the provided scholarship and student data.
      *
-     * @param annualD The ArrayList of scholarships for the annual report.
-     * @param year    The year for which the annual report is generated.
+     * @param scholarshipData The list of scholarships for the matching report.
+     * @param studentData The list of students for the matching report.
      */
     public MatchingReportGenerator(ArrayList<Scholarship> scholarshipData, ArrayList<Student> studentData) {
         this.filepath = "src/Reports/MatchingReports/";
@@ -38,6 +39,7 @@ public class MatchingReportGenerator extends ReportGenerator {
     /**
      * Writes the annual report to a CSV file.
      * Overrides the method in the superclass.
+     * @return The completed filepath to the generated file
      */
     @Override
     public String writeToFile() {

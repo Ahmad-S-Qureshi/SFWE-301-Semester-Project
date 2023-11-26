@@ -1,6 +1,10 @@
 package main.java;
 
-//This student class inherits from the user class
+/**
+ * This class represents a Scholarship with various attributes such as name, payout, deadline, etc.
+ * The author of this class is backend.
+ * @author Backend Team
+ */
 public class Student extends User {
     private String major;
     private double gpa;

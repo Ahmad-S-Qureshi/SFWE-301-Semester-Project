@@ -6,8 +6,20 @@ import java.io.FileReader;
 import java.util.List;
 import main.java.*;
 
+/**
+ * The DisbursementReportTest class is designed to test the functionality of the
+ * DisbursementReportGenerator class by comparing generated disbursement reports
+ * with expected results from test CSV files.
+ */
 public class DisbursementReportTest {
 
+    /**
+     * Reads the contents of a CSV file.
+     *
+     * @param filePath The path to the CSV file.
+     * @return A List containing the CSV data as arrays of strings.
+     * @throws IOException If an I/O error occurs while reading the CSV file.
+     */
     private static List<String[]> readCSV(String filePath) throws IOException {
         try (CSVReader reader = new CSVReader(new FileReader(filePath))) {
             return reader.readAll();
@@ -17,23 +29,35 @@ public class DisbursementReportTest {
         }
     }
 
+    /**
+     * Compares two sets of CSV data to determine if they are identical.
+     *
+     * @param data1 The first set of CSV data.
+     * @param data2 The second set of CSV data.
+     * @return true if the data sets are identical, false otherwise.
+     */
     private static boolean compareCSVData(List<String[]> data1, List<String[]> data2) {
-    if (data1.size() != data2.size()) {
-        return false; // Different number of rows
-    }
-
-    for (int i = 0; i < data1.size(); i++) {
-        String[] row1 = data1.get(i);
-        String[] row2 = data2.get(i);
-
-        if (!Arrays.equals(row1, row2)) {
-            return false; // Rows are different
+        if (data1.size() != data2.size()) {
+            return false; // Different number of rows
         }
+
+        for (int i = 0; i < data1.size(); i++) {
+            String[] row1 = data1.get(i);
+            String[] row2 = data2.get(i);
+
+            if (!Arrays.equals(row1, row2)) {
+                return false; // Rows are different
+            }
+        }
+
+        return true; // All rows are identical
     }
 
-    return true; // All rows are identical
-    }
-
+    /**
+     * The main method to execute the disbursement report tests.
+     *
+     * @param args The command-line arguments (not used in this application).
+     */
     public static void main(String[] args) {
 
         Student Student1 = new Student();

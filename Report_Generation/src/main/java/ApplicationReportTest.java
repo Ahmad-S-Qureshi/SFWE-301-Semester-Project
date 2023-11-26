@@ -6,8 +6,20 @@ import java.io.FileReader;
 import java.util.List;
 import main.java.*;
 
+/**
+ * The ApplicationReportTest class is used to test the functionality of the ApplicationReportGenerator class
+ * by comparing generated application reports with expected reports read from CSV files.
+ * @author Report Engine Team
+ */
 public class ApplicationReportTest {
     
+    /**
+     * Reads data from a CSV file and returns it as a list of string arrays.
+     *
+     * @param filePath The path to the CSV file.
+     * @return A list of string arrays representing the data in the CSV file.
+     * @throws IOException If an I/O error occurs while reading the CSV file.
+     */
     private static List<String[]> readCSV(String filePath) throws IOException {
         try (CSVReader reader = new CSVReader(new FileReader(filePath))) {
             return reader.readAll();
@@ -18,6 +30,13 @@ public class ApplicationReportTest {
         }
     }
 
+     /**
+     * Compares two lists of string arrays to check if their contents are identical.
+     *
+     * @param data1 The first list of string arrays.
+     * @param data2 The second list of string arrays.
+     * @return true if the lists have identical contents, false otherwise.
+     */
     private static boolean compareCSVData(List<String[]> data1, List<String[]> data2) {
         if (data1.size() != data2.size()) {
             return false; // Different number of rows
@@ -34,6 +53,12 @@ public class ApplicationReportTest {
 
         return true; // All rows are identical
     }
+
+    /**
+     * The main method to run the ApplicationReportTest application.
+     *
+     * @param args The command-line arguments.
+     */
     public static void main(String[] args) {
         
         Scholarship Scholarship1 = new Scholarship();

@@ -1,45 +1,24 @@
-import com.google.api.client.auth.oauth2.Credential;
-import com.google.api.client.extensions.java6.auth.oauth2.AuthorizationCodeInstalledApp;
-import com.google.api.client.extensions.jetty.auth.oauth2.LocalServerReceiver;
-import com.google.api.client.googleapis.auth.oauth2.GoogleAuthorizationCodeFlow;
-import com.google.api.client.googleapis.auth.oauth2.GoogleClientSecrets;
-import com.google.api.client.googleapis.javanet.GoogleNetHttpTransport;
-import com.google.api.client.googleapis.json.GoogleJsonError;
-import com.google.api.client.googleapis.json.GoogleJsonResponseException;
-import com.google.api.client.http.javanet.NetHttpTransport;
-import com.google.api.client.json.gson.GsonFactory;
-import com.google.api.client.util.store.FileDataStoreFactory;
-import com.google.api.services.gmail.Gmail;
-import com.google.api.services.gmail.model.Message;
 import com.opencsv.CSVReader;
-
-import org.apache.commons.codec.binary.Base64;
-
-import javax.mail.Session;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Properties;
-import java.util.Set;
-
-import javax.activation.DataHandler;
-import javax.activation.DataSource;
-import javax.activation.FileDataSource;
-import javax.mail.Multipart;
-import javax.mail.internet.MimeBodyPart;
-import javax.mail.internet.MimeMultipart;
 import java.io.File;
 import java.io.FileReader;
-import main.java.*;
+import main.java.Scholarship;
+import main.java.Student;
+import main.java.ApplicationData;
+import main.java.GMailer;
+import main.java.AnnualReportGenerator;
+import main.java.MatchingReportGenerator;
+import main.java.ScholarshipReportGenerator;
+import main.java.DisbursementReportGenerator;
+import main.java.ApplicationReportGenerator;
 
-import static com.google.api.services.gmail.GmailScopes.GMAIL_SEND;
-import static javax.mail.Message.RecipientType.TO;
-
+/**
+ * The GMailerTest class is designed to test the functionality of the GMailer class
+ * by simulating the generation and sending of various reports via email.
+ * @author Report Engine Team
+ */
 public class GMailerTest {
     
     private static List<String[]> readCSV(String filePath) throws IOException {
@@ -50,8 +29,20 @@ public class GMailerTest {
             return null;
         }
     }
+
+    /**
+     * The main method to execute the GMailer tests.
+     *
+     * @param args The command-line arguments (not used in this application).
+     */
     public static void main(String[] args) {
-        
+        /**
+         * Reads the contents of a CSV file.
+         *
+         * @param filePath The path to the CSV file.
+         * @return A List containing the CSV data as arrays of strings.
+         * @throws IOException If an I/O error occurs while reading the CSV file.
+         */
         final String EmailAddress = "jorgedelrio@arizona.edu";
         
         // Used for Report Email Tests
