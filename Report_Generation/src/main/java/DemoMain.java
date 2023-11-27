@@ -20,6 +20,7 @@ import main.java.ApplicationReportGenerator;
 import main.java.DisbursementReportGenerator;
 import main.java.GMailer;
 import main.java.ApplicationData;
+import main.java.MatchingReportGenerator;
 
 /**
  * The DemoMain class represents a Swing GUI application for generating scholarship-related reports
@@ -68,14 +69,6 @@ public class DemoMain extends JFrame {
         // Yeay
         JLabel yearLabel = new JLabel("Year:");
         yearField = new JTextFieldWithPlaceholder("Enter year:");
-
-        // // Number of Scholarships
-        // JLabel scholarshipsLabel = new JLabel("Number of Scholarships:");
-        // scholarshipsField = new JTextFieldWithPlaceholder("Enter the number of scholarships");
-
-        // // Number of Students
-        // JLabel studentsLabel = new JLabel("Number of Students:");
-        // studentsField = new JTextFieldWithPlaceholder("Enter the number of students");
 
         // Add components to the panel
         panel.add(emailLabel);
@@ -263,7 +256,64 @@ public class DemoMain extends JFrame {
                 }
             }
         });
-        
+        JButton matchingButton = new JButton("Generate Matching Report");
+        matchingButton.addActionListener(new ActionListener() {
+            @Override
+
+            public void actionPerformed(ActionEvent e){
+            
+                ArrayList<Scholarship> ScholarshipList1 = new ArrayList<Scholarship>();
+                ArrayList<Student> Student1 = new ArrayList<Student>(); //could be used to check student name and ID
+                Student testStudent1 = new Student();
+
+                testStudent1.setName(nameField.getText());
+                Student1.add(0,testStudent1);
+                
+                // Matching Report Test 1
+                try {
+                    if(nameField.getText().equalsIgnoreCase("Samuel Moreno")){
+                        List<String[]> ReportData = readCSV("src/Test-Reports/MatchingReportTest3.csv");
+                        for (int i = 1; i < ReportData.size(); i++) {
+                            String[] strings = ReportData.get(i);
+                            if (strings[2].equalsIgnoreCase("Yes")) {
+                                ScholarshipList1.add(new Scholarship(strings[0],Integer.parseInt(strings[1])));
+                            }
+                        }
+                    }
+                    else if (nameField.getText().equalsIgnoreCase("Random Name")) {
+                        List<String[]> ReportData = readCSV("src/Test-Reports/MatchingReportTest2.csv");
+                        for (int i = 1; i < ReportData.size(); i++) {
+                            String[] strings = ReportData.get(i);
+                            if (strings[2].equalsIgnoreCase("Yes")) {
+                                ScholarshipList1.add(new Scholarship(strings[0],Integer.parseInt(strings[1])));
+                            }
+                        }
+                    }
+                    else if (nameField.getText().equalsIgnoreCase("Jorge Del Rio")) {
+                        List<String[]> ReportData = readCSV("src/Test-Reports/MatchingReportTest1.csv");
+                        for (int i = 1; i < ReportData.size(); i++) {
+                            String[] strings = ReportData.get(i);
+                            if (strings[2].equalsIgnoreCase("Yes")) {
+                                ScholarshipList1.add(new Scholarship(strings[0],Integer.parseInt(strings[1])));
+                            }
+                        }
+                    }
+                }
+                catch (Exception a) {
+                    System.out.println("Could not read Report" + a.getMessage());
+                }
+
+            MatchingReportGenerator generator = new MatchingReportGenerator(ScholarshipList1, Student1);
+            String path = generator.writeToFile();
+
+            try {
+                    new GMailer().sendMail("Matching Report", "These are all the eligible scholarships for "+nameField.getText()+".", new File(path), emailField.getText());
+                } catch (Exception a) {
+                    System.out.println(a.getMessage());
+                }
+            }
+        });
+
         JButton generateDataButton = new JButton("Generate Data");
         generateDataButton.addActionListener(new ActionListener() {
             @Override
@@ -282,6 +332,7 @@ public class DemoMain extends JFrame {
         panel.add(scholarshipButton);
         panel.add(annualReportButton);
         panel.add(applicationButton);
+        panel.add(matchingButton);
         panel.add(generateDataButton);
 
         // Set up the frame
