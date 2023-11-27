@@ -21,6 +21,8 @@ public class MatchingReportGenerator extends ReportGenerator {
 
     /** The list of students for the matching report. */
     private ArrayList<Student> studentData = new ArrayList<Student>();
+
+    private static int fileNum = 1;
     
 
     /**
@@ -44,7 +46,7 @@ public class MatchingReportGenerator extends ReportGenerator {
     @Override
     public String writeToFile() {
         try {
-            String completeFilePath = this.filepath + filePrefix + "_" + studentData.get(0).getName() + ".csv";
+            String completeFilePath = this.filepath + filePrefix + "_" + studentData.get(0).getName() + "_"+fileNum+ ".csv";
             File newAnnualReport = new File(completeFilePath);
             //System.out.println(newAnnualReport.createNewFile());
             FileWriter ReportWriter = new FileWriter(completeFilePath);
@@ -52,6 +54,7 @@ public class MatchingReportGenerator extends ReportGenerator {
             //System.out.println("Printed " + parseData());
             ReportWriter.close();
             //System.out.println("Report Generated");
+            fileNum++;
             return completeFilePath;
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -68,9 +71,9 @@ public class MatchingReportGenerator extends ReportGenerator {
 
     @Override
     public String parseData() {
-        String reportString = "Scholarship name,Amount,Deadline\n";
+        String reportString = "Scholarship name,Amount\n";
         for(int i = 0; i < scholarshipData.size(); i++) {
-            reportString += scholarshipData.get(i).getScholarshipName() + "," + scholarshipData.get(i).getPayout() + ","+scholarshipData.get(i).getDeadline()+ "\n";
+            reportString += scholarshipData.get(i).getScholarshipName() + "," + scholarshipData.get(i).getPayout() +"\n";
         }
         return reportString;
     }

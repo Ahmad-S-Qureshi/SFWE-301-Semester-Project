@@ -26,6 +26,7 @@ public class GMailerTest {
             return reader.readAll();
         }
         catch (Exception e) {
+            System.out.println(e.getMessage());
             return null;
         }
     }
@@ -286,19 +287,29 @@ public class GMailerTest {
         // Matching Report Email Test 1
         try {
             List<String[]> ReportData = readCSV("src/Test-Reports/MatchingReportTest1.csv");
-            for (int i = 1; i < ReportData.size(); i++) {
-                String[] strings = ReportData.get(i);
-                if (strings[2].equalsIgnoreCase("Yes")) {
-                    ScholarshipList.add(new Scholarship(strings[0],Integer.parseInt(strings[1])));
+            Student.setName("Jorge Del Rio");
+            StudentData.add(Student);
+            for (String[] ReportDataLine : ReportData) {
+                // Start from index 1 to exclude the first index
+                String value = ReportDataLine[2];
+                // Process or use the value as needed
+                //System.out.println(value); 
+                if (value.equalsIgnoreCase("Yes")) {
+                    ScholarshipList.add(new Scholarship(ReportDataLine[0],Integer.parseInt(ReportDataLine[1])));
+                    // System.out.println(ScholarshipList.size());
                 }
             }
         }
+
         catch (Exception e) {
             System.out.println("Could not read Report");
+            System.out.println(e.getMessage());
         }
 
         MatchingReportGenerator MatchingRepo1 = new MatchingReportGenerator(ScholarshipList, StudentData);
         final String MatchingRepoFile1 = MatchingRepo1.writeToFile();
+
+        //System.out.println(MatchingRepoFile1);
 
         try {
             new GMailer().sendMail("Matching Report", "Here is the Matching Report", new File(MatchingRepoFile1), EmailAddress);
@@ -310,26 +321,38 @@ public class GMailerTest {
             System.out.println(a.getMessage());
         }
 
-        ScholarshipList = new ArrayList<Scholarship>(); // reset for new test
+        ScholarshipList = new ArrayList<Scholarship>();// reset for new test
+        StudentData = new ArrayList<Student>();// reset for new test
+        Student = new Student();// reset for new test
 
         //----------------------------------------------------------------------------------------------------------------------------------------------/
 
         // Matching Report Email Test 2
-        try {
+       try {
             List<String[]> ReportData = readCSV("src/Test-Reports/MatchingReportTest2.csv");
-            for (int i = 1; i < ReportData.size(); i++) {
-                String[] strings = ReportData.get(i);
-                if (strings[2].equalsIgnoreCase("Yes")) {
-                    ScholarshipList.add(new Scholarship(strings[0],Integer.parseInt(strings[1])));
+            Student.setName("Jorge Del Rio");
+            StudentData.add(Student);
+            for (String[] ReportDataLine : ReportData) {
+                // Start from index 1 to exclude the first index
+                String value = ReportDataLine[2];
+                // Process or use the value as needed
+                //System.out.println(value); 
+                if (value.equalsIgnoreCase("Yes")) {
+                    ScholarshipList.add(new Scholarship(ReportDataLine[0],Integer.parseInt(ReportDataLine[1])));
+                    // System.out.println(ScholarshipList.size());
                 }
             }
         }
+
         catch (Exception e) {
             System.out.println("Could not read Report");
+            System.out.println(e.getMessage());
         }
 
         MatchingReportGenerator MatchingRepo2 = new MatchingReportGenerator(ScholarshipList, StudentData);
         final String MatchingRepoFile2 = MatchingRepo2.writeToFile();
+
+        //System.out.println(MatchingRepoFile1);
 
         try {
             new GMailer().sendMail("Matching Report", "Here is the Matching Report", new File(MatchingRepoFile2), EmailAddress);
@@ -341,26 +364,38 @@ public class GMailerTest {
             System.out.println(a.getMessage());
         }
 
-        ScholarshipList = new ArrayList<Scholarship>(); // reset for new test
+        ScholarshipList = new ArrayList<Scholarship>();// reset for new test
+        StudentData = new ArrayList<Student>();// reset for new test
+        Student = new Student();// reset for new test
 
         //----------------------------------------------------------------------------------------------------------------------------------------------/
 
         // Matching Report Email Test 3
         try {
             List<String[]> ReportData = readCSV("src/Test-Reports/MatchingReportTest3.csv");
-            for (int i = 1; i < ReportData.size(); i++) {
-                String[] strings = ReportData.get(i);
-                if (strings[2].equalsIgnoreCase("Yes")) {
-                    ScholarshipList.add(new Scholarship(strings[0],Integer.parseInt(strings[1])));
+            Student.setName("Jorge Del Rio");
+            StudentData.add(Student);
+            for (String[] ReportDataLine : ReportData) {
+                // Start from index 1 to exclude the first index
+                String value = ReportDataLine[2];
+                // Process or use the value as needed
+                //System.out.println(value); 
+                if (value.equalsIgnoreCase("Yes")) {
+                    ScholarshipList.add(new Scholarship(ReportDataLine[0],Integer.parseInt(ReportDataLine[1])));
+                    // System.out.println(ScholarshipList.size());
                 }
             }
         }
+
         catch (Exception e) {
             System.out.println("Could not read Report");
+            System.out.println(e.getMessage());
         }
 
         MatchingReportGenerator MatchingRepo3 = new MatchingReportGenerator(ScholarshipList, StudentData);
         final String MatchingRepoFile3 = MatchingRepo3.writeToFile();
+
+        //System.out.println(MatchingRepoFile1);
 
         try {
             new GMailer().sendMail("Matching Report", "Here is the Matching Report", new File(MatchingRepoFile3), EmailAddress);
@@ -372,7 +407,9 @@ public class GMailerTest {
             System.out.println(a.getMessage());
         }
 
-        ScholarshipList = new ArrayList<Scholarship>(); // reset for new test
+        ScholarshipList = new ArrayList<Scholarship>();// reset for new test
+        StudentData = new ArrayList<Student>();// reset for new test
+        Student = new Student();// reset for new test
 
         //----------------------------------------------------------------------------------------------------------------------------------------------/
     
