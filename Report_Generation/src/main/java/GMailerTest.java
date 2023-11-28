@@ -44,7 +44,7 @@ public class GMailerTest {
          * @return A List containing the CSV data as arrays of strings.
          * @throws IOException If an I/O error occurs while reading the CSV file.
          */
-        final String EmailAddress = "jorgedelrio@arizona.edu";
+        final String EmailAddress = args[0];
         
         // Used for Report Email Tests
         ArrayList<Scholarship> AnnualRepoData = new ArrayList<Scholarship>();
