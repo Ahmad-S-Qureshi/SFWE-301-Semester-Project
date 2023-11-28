@@ -1,6 +1,7 @@
 plugins {
     id 'java'
     id 'application'
+    id 'com.github.johnrengelman.shadow' version '6.1.0'
 }
 
 mainClassName = 'DemoMain'
@@ -10,6 +11,7 @@ version = '1.0'
 
 repositories {
     mavenCentral()
+    jcenter()
 }
 
 dependencies {
@@ -18,10 +20,13 @@ dependencies {
     implementation 'com.google.apis:google-api-services-gmail:v1-rev20220404-2.0.0'
     implementation 'javax.mail:mail:1.4.7'
     implementation 'com.google.auth:google-auth-library-oauth2-http:1.11.0'
-    implementation 'com.opencsv:opencsv:5.6'
 }
 
-
+shadowJar {
+    manifest {
+        attributes 'Main-Class': 'main.java.DemoMain'
+    }
+}
 // Configuring the sourceSets explicitly
 sourceSets {
     main {
