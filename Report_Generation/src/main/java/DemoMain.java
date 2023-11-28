@@ -116,6 +116,7 @@ public class DemoMain extends JFrame {
                         
                         try {
                             new GMailer().sendMail("Annual Report " + yearField.getText(), "This is the Annual Report for the year "+yearField.getText(), new File(path), emailField.getText());
+                            System.out.println("Annual Report test passed");
                         } catch (Exception a) {
                             System.out.println(a.getMessage());
                         }
@@ -141,7 +142,7 @@ public class DemoMain extends JFrame {
                             Scholarship.setDisbursementDate(strings[3]);
                         }
                     }
-                    else if (nameField.getText().equalsIgnoreCase("Favorite Student")) {
+                    else if (nameField.getText().equalsIgnoreCase("Sharon O'Neal")) {
                         List<String[]> ReportData = readCSV("src/Test-Reports/DisbursementTest2.csv");
                         for (int i = 1; i < 2; i++) {
                             String[] strings = ReportData.get(i);
@@ -151,7 +152,7 @@ public class DemoMain extends JFrame {
                             Scholarship.setDisbursementDate(strings[3]);
                         }
                     }
-                    else if (nameField.getText().equalsIgnoreCase("Gradle")) {
+                    else {
                         List<String[]> ReportData = readCSV("src/Test-Reports/DisbursementTest3.csv");
                         for (int i = 1; i < 2; i++) {
                             String[] strings = ReportData.get(i);
@@ -172,6 +173,7 @@ public class DemoMain extends JFrame {
                 
                 try {
                     new GMailer().sendMail("Disbursement Report", "This is the Disbursement for " + Student.getName(), new File(path), emailField.getText());
+                    System.out.println("Disbursement Report test passed");
                 } catch (Exception a) {
                     System.out.println(a.getMessage());
                 }
@@ -186,11 +188,29 @@ public class DemoMain extends JFrame {
                 ArrayList<Scholarship> ScholarshipRepo = new ArrayList<Scholarship>();
 
                 try {
-                    List<String[]> ReportData = readCSV("src/Test-Reports/ScholarshipInfo1.csv");
-                    for (int i = 1; i < ReportData.size(); i++) {
-                        String[] strings = ReportData.get(i);
-                        //Donor Contact, Scholarship Name, Amount, Deadline
-                        ScholarshipRepo.add(new Scholarship(strings[1],Integer.parseInt(strings[2]),strings[3],"NA","NA","NA",strings[0]));  
+                    if(nameField.getText().equalsIgnoreCase("Jorge Del Rio")){
+                        List<String[]> ReportData = readCSV("src/Test-Reports/ScholarshipInfo1.csv");
+                        for (int i = 1; i < ReportData.size(); i++) {
+                            String[] strings = ReportData.get(i);
+                            //Donor Contact, Scholarship Name, Amount, Deadline
+                            ScholarshipRepo.add(new Scholarship(strings[1],Integer.parseInt(strings[2]),strings[3],"NA","NA","NA",strings[0]));  
+                        }
+                    }
+                    else if(nameField.getText().equalsIgnoreCase("Sharon O'Neal")){
+                        List<String[]> ReportData = readCSV("src/Test-Reports/ScholarshipInfo2.csv");
+                        for (int i = 1; i < ReportData.size(); i++) {
+                            String[] strings = ReportData.get(i);
+                            //Donor Contact, Scholarship Name, Amount, Deadline
+                            ScholarshipRepo.add(new Scholarship(strings[1],Integer.parseInt(strings[2]),strings[3],"NA","NA","NA",strings[0]));  
+                        }
+                    }
+                    else {
+                        List<String[]> ReportData = readCSV("src/Test-Reports/ScholarshipInfo3.csv");
+                        for (int i = 1; i < ReportData.size(); i++) {
+                            String[] strings = ReportData.get(i);
+                            //Donor Contact, Scholarship Name, Amount, Deadline
+                            ScholarshipRepo.add(new Scholarship(strings[1],Integer.parseInt(strings[2]),strings[3],"NA","NA","NA",strings[0]));  
+                        }
                     }
                 }
                 catch (Exception a) {
@@ -201,6 +221,7 @@ public class DemoMain extends JFrame {
                 String path = generator.writeToFile();
                 try {
                     new GMailer().sendMail("Scholarship Report", "We are the best Report Team!", new File(path), emailField.getText());
+                    System.out.println("Scholarship Report test passed");
                 } catch (Exception a) {
                     System.out.println(a.getMessage());
                 }
@@ -234,7 +255,7 @@ public class DemoMain extends JFrame {
                         }
                     }
                     else {
-                        Scholarship.setScholarshipName("Hitting the Griddy");
+                        Scholarship.setScholarshipName("Software Engineering Scholarship 2023-2024");
                         List<String[]> ReportData = readCSV("src/Test-Reports/ApplicationInfo2.csv");
                         for (int i = 1; i < ReportData.size(); i++) {
                             String[] strings = ReportData.get(i);
@@ -251,6 +272,7 @@ public class DemoMain extends JFrame {
                 String path = generator.writeToFile();
                 try {
                     new GMailer().sendMail("Applicant Report", "These are the answers from "+Student.getName()+" to the scholarship "+Scholarship.getScholarshipName(), new File(path), email);
+                    System.out.println("Applicant Report test passed");
                 } catch (Exception a) {
                     System.out.println(a.getMessage());
                 }
@@ -280,7 +302,7 @@ public class DemoMain extends JFrame {
                             }
                         }
                     }
-                    else if (nameField.getText().equalsIgnoreCase("Random Name")) {
+                    else if (nameField.getText().equalsIgnoreCase("Jorge Del Rio")) {
                         List<String[]> ReportData = readCSV("src/Test-Reports/MatchingReportTest2.csv");
                         for (int i = 1; i < ReportData.size(); i++) {
                             String[] strings = ReportData.get(i);
@@ -289,7 +311,7 @@ public class DemoMain extends JFrame {
                             }
                         }
                     }
-                    else if (nameField.getText().equalsIgnoreCase("Jorge Del Rio")) {
+                    else {
                         List<String[]> ReportData = readCSV("src/Test-Reports/MatchingReportTest1.csv");
                         for (int i = 1; i < ReportData.size(); i++) {
                             String[] strings = ReportData.get(i);
@@ -308,6 +330,7 @@ public class DemoMain extends JFrame {
 
             try {
                     new GMailer().sendMail("Matching Report", "These are all the eligible scholarships for "+nameField.getText()+".", new File(path), emailField.getText());
+                    System.out.println("Matching Report test passed");
                 } catch (Exception a) {
                     System.out.println(a.getMessage());
                 }
