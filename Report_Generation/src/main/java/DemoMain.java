@@ -196,16 +196,8 @@ public class DemoMain extends JFrame {
                             ScholarshipRepo.add(new Scholarship(strings[1],Integer.parseInt(strings[2]),strings[3],"NA","NA","NA",strings[0]));  
                         }
                     }
-                    else if(nameField.getText().equalsIgnoreCase("Sharon O'Neal")){
+                    else{
                         List<String[]> ReportData = readCSV("src/Test-Reports/ScholarshipInfo2.csv");
-                        for (int i = 1; i < ReportData.size(); i++) {
-                            String[] strings = ReportData.get(i);
-                            //Donor Contact, Scholarship Name, Amount, Deadline
-                            ScholarshipRepo.add(new Scholarship(strings[1],Integer.parseInt(strings[2]),strings[3],"NA","NA","NA",strings[0]));  
-                        }
-                    }
-                    else {
-                        List<String[]> ReportData = readCSV("src/Test-Reports/ScholarshipInfo3.csv");
                         for (int i = 1; i < ReportData.size(); i++) {
                             String[] strings = ReportData.get(i);
                             //Donor Contact, Scholarship Name, Amount, Deadline
