@@ -71,7 +71,7 @@ public class MatchingReportGenerator extends ReportGenerator {
 
     @Override
     public String parseData() {
-        String reportString = "Scholarship name,Amount\n";
+        String reportString = "Scholarship name, Amount\n";
         for(int i = 0; i < scholarshipData.size(); i++) {
             reportString += scholarshipData.get(i).getScholarshipName() + "," + scholarshipData.get(i).getPayout() +"\n";
         }
